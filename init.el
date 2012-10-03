@@ -24,7 +24,8 @@
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/manual-plugins"))
+; directory to search for manually added elisp files to load
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/my-plugins"))
 
 ; If using at least emacs 24, search melpa for packages to install
 (when (>= emacs-major-version 24)
