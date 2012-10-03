@@ -80,6 +80,7 @@
 (size-indication-mode 1)
 
 (defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
+(global-auto-revert-mode 1) ; Auto reload buffers when modified externally
 
 (ido-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p) ; Ask for confirmation using single chars
