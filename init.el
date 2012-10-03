@@ -1,8 +1,5 @@
-(require 'cl)
-(require 'package)
-
-(setq inhibit-default-init t) ; Do not load default.el
-(setq inhibit-startup-screen t) ; Do not show Welcome to emacs buffer
+(setq inhibit-default-init 1) ; Do not load default.el
+(setq inhibit-startup-screen 1) ; Do not show Welcome to emacs buffer
 
 (setq user-full-name "Adi Ratiu")
 (setq user-mail-address "adi@adirat.com")
@@ -10,7 +7,7 @@
 ; Disable editor menus, buttons and scrollbar
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(set-scroll-bar-mode nil)
+(scroll-bar-mode 0)
 
 ;; Find and edit a file as superuser
 (defun sudo-find (&optional arg)
@@ -27,12 +24,13 @@
 ; directory to search for manually added elisp files to load
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/my-plugins"))
 
+(require 'package)
 ; If using at least emacs 24, search melpa for packages to install
 (when (>= emacs-major-version 24)
   (add-to-list 'package-archives
 	       '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
-(package-initialize)
+(package-initialize) ; try to load all latest packages that are installed
 
 ;; required because of a package.el bug
 (setq url-http-attempt-keepalives nil)
@@ -41,48 +39,48 @@
   '(guru-mode volatile-highlights multi-term zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
+(require 'cl)
+; determine which of the needed packages are installed
 (defun packages-installed-p ()
   (loop for p in needed-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
+; install all missing packages, get them from remote repositories
 (defun install-packages ()
   (unless (packages-installed-p)
-    ;; check for new packages (package versions)
-    (message "%s" "Emacs is now refreshing its package database...")
     (package-refresh-contents)
-    (message "%s" " done.")
-    ;; install the missing packages
     (dolist (p needed-packages)
       (unless (package-installed-p p)
         (package-install p)))))
 
 (install-packages)
-(load-theme 'zenburn t)
+
+(load-theme 'zenburn 1)
 
 (require 'volatile-highlights)
-(volatile-highlights-mode t)
+(volatile-highlights-mode 1)
 
 (require 'guru-mode)
-(guru-global-mode +1)
+(guru-global-mode 1)
 
-;; frame-title: show either a file or a buffer name
+;; show either the file or buffer name as the frame title
 (setq frame-title-format
       '(:eval (if (buffer-file-name)
 		  (abbreviate-file-name (buffer-file-name)) "%b")))
 
 ; Preserve hard links + owner&group of the file being edited
-(setq backup-by-copying-when-linked t
-      backup-by-copying-when-mismatch t
+(setq backup-by-copying-when-linked 1
+      backup-by-copying-when-mismatch 1
       make-backup-files nil) ; Don't make backup files
 
-(column-number-mode 1) ; Show cursor line and position in status bar
+(column-number-mode 1)
 (line-number-mode 1)
-(size-indication-mode t)
+(size-indication-mode 1)
 
 (defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
 
-(ido-mode 1) ; Make buffer switch command show suggestions
+(ido-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p) ; Ask for confirmation using single chars
 
 ; Generate buffer names using parent dir names
@@ -90,16 +88,16 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ; Search & scroll options
-(setq search-highlight t ; Highlight matched string
-      query-replace-highlight t ; Same as above for search + replace
-      case-fold-search t) ; Make search case insensitive
+(setq search-highlight 1 ; Highlight matched string
+      query-replace-highlight 1 ; Same as above for search + replace
+      case-fold-search 1) ; Make search case insensitive
  (setq scroll-margin 0
        scroll-conservatively 100000
        scroll-preserve-screen-position 1)
 
-(show-paren-mode t) ; Enable matching highlight mode
+(show-paren-mode 1) ; Enable matching highlight mode
 (setq show-paren-style 'parenthesis) ; Highlight only matching paranthesis
-(electric-pair-mode t) ; Insert matching parenthesis, "'s etc
+(electric-pair-mode 1) ; Insert matching parenthesis, "'s etc
 
 ; Make fringes smaller
 (if (fboundp 'fringe-mode)
@@ -107,6 +105,6 @@
 
 ; Disable whitespace mode globally because it interferes with the themes
 (global-whitespace-mode -1)
-(global-font-lock-mode t) ; Syntax coloring always on
+(global-font-lock-mode 1) ; Syntax coloring always on
 
 (setq-default tab-width 8) ; Tabs are 8 chars in size
