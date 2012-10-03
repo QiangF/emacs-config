@@ -104,8 +104,8 @@
 (if (fboundp 'fringe-mode)
     (fringe-mode 4))
 
-; Global whitespace settings
-; (global-whitespace-mode 1)
+; Disable whitespace mode globally because it interferes with the themes
+(global-whitespace-mode -1)
 (global-font-lock-mode t) ; Syntax coloring always on
 
 (setq-default tab-width 8) ; Tabs are 8 chars in size
