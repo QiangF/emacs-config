@@ -5,7 +5,8 @@
 (setq user-mail-address "adi@adirat.com")
 
 ; Disable editor menus, buttons and scrollbar
-(tool-bar-mode 0)
+(when (fboundp 'tool-bar-mode) ; in a tty toolbarmode does not properly load
+  (tool-bar-mode 0))
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
