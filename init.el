@@ -37,7 +37,7 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar needed-packages
-  '(guru-mode volatile-highlights multi-term zenburn-theme)
+  '(guru-mode volatile-highlights multi-term haskell-mode zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
