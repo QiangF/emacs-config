@@ -57,6 +57,9 @@
 
 (install-packages)
 
+(global-whitespace-mode 1)
+(global-font-lock-mode 1) ; Syntax coloring always on
+
 (load-theme 'zenburn 1)
 
 (require 'volatile-highlights)
@@ -104,10 +107,6 @@
 ; Make fringes smaller
 (if (fboundp 'fringe-mode)
     (fringe-mode 4))
-
-; Disable whitespace mode globally because it interferes with the themes
-(global-whitespace-mode 0)
-(global-font-lock-mode 1) ; Syntax coloring always on
 
 (setq-default tab-width 8) ; Tabs are 8 chars in size
 
