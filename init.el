@@ -36,8 +36,9 @@
 ;; required because of a package.el bug
 (setq url-http-attempt-keepalives nil)
 
-(defvar needed-packages
-  '(guru-mode volatile-highlights multi-term haskell-mode cc-mode zenburn-theme)
+(defvar needed-packages 
+  '(magit volatile-highlights guru-mode multi-term haskell-mode cc-mode
+          zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
