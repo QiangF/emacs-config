@@ -113,3 +113,6 @@
 
 (blink-cursor-mode 0) ; Stop cursor blinking
 (global-hl-line-mode 1) ; Highlight current line
+
+;; Setup haskell-mode indentation type
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
