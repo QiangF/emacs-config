@@ -117,6 +117,8 @@
 (blink-cursor-mode 0) ; Stop cursor blinking
 (global-hl-line-mode 1) ; Highlight current line
 
+(require 'magit)
+
 ;; Setup haskell-mode indentation type
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
