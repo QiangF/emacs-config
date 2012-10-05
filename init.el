@@ -117,10 +117,15 @@
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
+;; Customizations for CC Mode
 (require 'cc-mode)
 (setq-default c-basic-offset 8)
+(add-hook 'initialization-hook
+          (lambda ()
+            (c-set-style "linux")))
 
-;; Customizations for Emacs-Lisp mode
+
+;; Customizations for emacs-lisp mode
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)))
