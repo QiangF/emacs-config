@@ -29,7 +29,7 @@
 ; If using at least emacs 24, search melpa for packages to install
 (when (>= emacs-major-version 24)
   (add-to-list 'package-archives
-	       '("melpa" . "http://melpa.milkbox.net/packages/") t))
+               '("melpa" . "http://melpa.milkbox.net/packages/") t))
 
 (package-initialize) ; try to load all latest packages that are installed
 
@@ -37,7 +37,7 @@
 (setq url-http-attempt-keepalives nil)
 
 (defvar needed-packages
-  '(guru-mode volatile-highlights multi-term haskell-mode zenburn-theme)
+  '(guru-mode volatile-highlights multi-term haskell-mode cc-mode zenburn-theme)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
@@ -71,7 +71,7 @@
 ;; show either the file or buffer name as the frame title
 (setq frame-title-format
       '(:eval (if (buffer-file-name)
-		  (abbreviate-file-name (buffer-file-name)) "%b")))
+                  (abbreviate-file-name (buffer-file-name)) "%b")))
 
 ; Preserve hard links + owner&group of the file being edited
 (setq backup-by-copying-when-linked 1
@@ -114,4 +114,13 @@
 (global-hl-line-mode 1) ; Highlight current line
 
 ;; Setup haskell-mode indentation type
+(require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+(require 'cc-mode)
+(setq-default c-basic-offset 8)
+
+;; Customizations for Emacs-Lisp mode
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)))
