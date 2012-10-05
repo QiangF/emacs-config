@@ -62,6 +62,9 @@
 
 (load-theme 'zenburn 1)
 
+;; Zenburn changes this, revert tab color to be consistent with whitespace mode
+(set-face-foreground 'whitespace-tab "#4f4f4f")
+
 (require 'volatile-highlights)
 (volatile-highlights-mode 1)
 
