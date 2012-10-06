@@ -135,3 +135,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)))
+
+(require 'multi-term)
+;; Make multi-term ignore these key combinations, let emacs handle them
+(setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
