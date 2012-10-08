@@ -139,3 +139,6 @@
 (require 'multi-term)
 ;; Make multi-term ignore these key combinations, let emacs handle them
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
+
+;; When the cursor is in a function, show the function name in the modeline
+(which-function-mode 1)
