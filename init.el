@@ -11,7 +11,7 @@
 (scroll-bar-mode 0)
 
 ;; Find and edit a file as superuser
-(defun sudo-find (&optional arg)
+(defun sudo-find-file (&optional arg)
   (interactive "p")
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
