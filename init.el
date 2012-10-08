@@ -38,7 +38,7 @@
 
 (defvar needed-packages 
   '(magit volatile-highlights guru-mode multi-term haskell-mode cc-mode
-          zenburn-theme)
+          zenburn-theme icicles)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
@@ -89,7 +89,6 @@
 (defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
 (global-auto-revert-mode 1) ; Auto reload buffers when modified externally
 
-(ido-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p) ; Ask for confirmation using single chars
 
 ; Generate buffer names using parent dir names
@@ -142,3 +141,7 @@
 
 ;; When the cursor is in a function, show the function name in the modeline
 (which-function-mode 1)
+
+;; icicles is a minor mode which improves minibufer autocompletion
+(require 'icicles)
+(icy-mode 1)
