@@ -142,3 +142,6 @@
 
 ;; When the cursor is in a function, show the function name in the modeline
 (which-function-mode 1)
+
+;; xcscope isn't in the repos now so it should be in found in my-plugins
+(require 'xcscope)
