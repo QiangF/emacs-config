@@ -10,13 +10,6 @@
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 
-;; Find and edit a file as superuser
-(defun sudo-find-file (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
 ; Reload emacs init.el file
 (defun reconfigure ()
   (interactive)
@@ -145,3 +138,5 @@
 
 ;; xcscope isn't in the repos now so it should be in found in my-plugins
 (require 'xcscope)
+
+(setq tramp-default-method "ssh")
