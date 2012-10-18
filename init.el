@@ -133,6 +133,12 @@
 ;; Make multi-term ignore these key combinations, let emacs handle them
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
 
+;; Disable guru-mode when in multi-term
+(add-hook 'term-mode-hook 
+          (lambda()
+            (guru-mode 0)
+))
+
 ;; When the cursor is in a function, show the function name in the modeline
 (which-function-mode 1)
 
