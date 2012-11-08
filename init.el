@@ -152,3 +152,6 @@
           (lambda()
             (setq sgml-basic-offset 4)
             (setq indent-tabs-mode nil)))
+
+;; enable erase-buffer command
+(put 'erase-buffer 'disabled nil)
