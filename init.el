@@ -173,3 +173,24 @@
                                  (forward-line 1))))
              (guru-mode 0) ;disable guru mode
              ))
+
+;; Delete current buffer
+(defun delete-current-file (ξno-backup-p)
+  "Delete the file associated with the current buffer.
+   If no file is associated, just close buffer without prompt for save.
+   A backup file is created with filename appended “~‹date time stamp›~”.
+   when called with `universal-argument', don't create backup."
+  (interactive "P")
+  (let (fName)
+    (when (buffer-file-name) ; buffer is associated with a file
+      (setq fName (buffer-file-name))
+      (save-buffer fName)
+      (if ξno-backup-p
+          (progn )
+        (copy-file fName (concat fName "~" (format-time-string "%Y%m%d_%H%M%S") "~") t)
+        )
+      (delete-file fName)
+      (message "「%s」 deleted." fName)
+      )
+    (kill-buffer (current-buffer))
+    ) )
