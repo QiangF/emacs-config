@@ -10,8 +10,9 @@
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-init-dir)))
 
-(load-user-file "environement.el")
+(load-user-file "packages.el")
 (load-user-file "ui.el")
+(load-user-file "modes.el")
 (load-user-file "commands.el")
 (load-user-file "personal.el")
 (load-user-file "haskell.el")
