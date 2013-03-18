@@ -7,7 +7,14 @@
 
 ;; Zenburn changes this, revert tab color to be consistent with whitespace mode
 (set-face-foreground 'whitespace-tab "#4f4f4f")
+(set-face-background 'whitespace-tab nil)
 (set-face-background 'whitespace-space nil)
+;;(set-face-foreground 'whitespace-indentation "#4f4f4f")
+(set-face-background 'whitespace-indentation nil)
+;;(set-face-foreground 'whitespace-space-after-tab "#4f4f4f")
+(set-face-background 'whitespace-space-after-tab nil)
+;;(set-face-foreground 'whitespace-trailing "#4f4f4f")
+(set-face-background 'whitespace-trailing nil)
 
 ;; show either the file or buffer name as the frame title
 (setq frame-title-format
