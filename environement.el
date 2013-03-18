@@ -49,6 +49,16 @@
       backup-by-copying-when-mismatch 1
       make-backup-files nil) ; Don't make backup files
 
+(defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
+(global-auto-revert-mode 1) ; Auto reload buffers when modified externally
+
+(ido-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p) ; Ask for confirmation using single chars
+
+; Generate buffer names using parent dir names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
 (require 'multi-term)
 ;; Make multi-term ignore these key combinations, let emacs handle them
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
