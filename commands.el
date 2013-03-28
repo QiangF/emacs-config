@@ -73,3 +73,18 @@
     (let ((process-connection-type nil)) (start-process "" nil "xdg-open" "."))
     ;; (shell-command "xdg-open .") ;; 2013-02-10 this sometimes froze emacs till the folder is closed. ⁖ with nautilus
     )))
+
+(setq make-backup-files nil) ; stop creating those backup~ files
+(setq auto-save-default nil) ; stop creating those #autosave# files
+
+(defun make-backup ()
+  "Make a backup copy of current file.
+
+The backup file name has the form 「‹name›~‹timestamp›~」, in the same dir.
+If such a file already exist, it's overwritten. (the timestamp includes seconds)
+If the current buffer is not associated with a file, its a error."
+  (interactive)
+  (let ((currentFileName (buffer-file-name)) backupFileName)
+    (setq backupFileName (concat currentFileName "~" (format-time-string "%Y%m%d_%H%M%S") "~"))
+    (copy-file currentFileName backupFileName t)
+    (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
