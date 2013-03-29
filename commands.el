@@ -88,3 +88,21 @@ If the current buffer is not associated with a file, its a error."
     (setq backupFileName (concat currentFileName "~" (format-time-string "%Y%m%d_%H%M%S") "~"))
     (copy-file currentFileName backupFileName t)
     (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
+
+(defun copy-line-or-region ()
+  "Copy current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
+
+(defun cut-line-or-region ()
+  "Cut the current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-region (region-beginning) (region-end))
+    (kill-region (line-beginning-position) (line-beginning-position 2))))
+
+(global-set-key (kbd "<f2>") 'cut-line-or-region) ; cut.
+(global-set-key (kbd "<f3>") 'copy-line-or-region) ; copy.
+(global-set-key (kbd "<f4>") 'yank) ; paste.
