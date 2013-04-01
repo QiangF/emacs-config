@@ -106,3 +106,6 @@ If the current buffer is not associated with a file, its a error."
 (global-set-key (kbd "<f2>") 'cut-line-or-region) ; cut.
 (global-set-key (kbd "<f3>") 'copy-line-or-region) ; copy.
 (global-set-key (kbd "<f4>") 'yank) ; paste.
+
+; Enable dired 'a' command
+(put 'dired-find-alternate-file 'disabled nil)
