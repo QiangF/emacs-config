@@ -27,6 +27,7 @@
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (require 'multi-term)
+(setq multi-term-program "/bin/bash") ; use bash shell in terminals
 ;; Make multi-term ignore these key combinations, let emacs handle them
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
 
