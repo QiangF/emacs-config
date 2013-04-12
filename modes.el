@@ -1,6 +1,3 @@
-(require 'guru-mode)
-(guru-global-mode 1)
-
 ; Disable editor menus, buttons and scrollbar
 (when (fboundp 'tool-bar-mode) ; in a tty toolbarmode does not properly load
       (tool-bar-mode 0))
@@ -30,11 +27,6 @@
 (setq multi-term-program "/bin/bash") ; use bash shell in terminals
 ;; Make multi-term ignore these key combinations, let emacs handle them
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>"))
-
-;; Disable guru-mode when in multi-term
-(add-hook 'term-mode-hook 
-          (lambda()
-            (guru-mode 0)))
 
 ; Preserve hard links + owner&group of the file being edited
 (setq backup-by-copying-when-linked 1

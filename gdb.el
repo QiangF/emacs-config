@@ -13,5 +13,4 @@
                                (if (comint-after-pmark-p)
                                    (comint-next-input 1)
                                  (forward-line 1))))
-             (guru-mode 0) ;disable guru mode
              ))
