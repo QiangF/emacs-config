@@ -53,7 +53,19 @@
 	     (ibuffer-auto-mode 1)
 	     (ibuffer-switch-to-saved-filter-groups "home")))
 
-(global-auto-revert-mode 1) ; Auto reload buffers when modified externally
+
+; Enable ibuffer-filter-by-filename to filter on directory names too.
+(eval-after-load "ibuf-ext"
+  '(define-ibuffer-filter filename
+     "Toggle current view to buffers with file or directory name matching QUALIFIER."
+     (:description "filename"
+                   :reader (read-from-minibuffer "Filter by file/directory name (regexp): "))
+     (ibuffer-awhen (or (buffer-local-value 'buffer-file-name buf)
+                        (buffer-local-value 'dired-directory buf))
+                    (string-match qualifier it))))
+
 
 (require 'volatile-highlights)
 (volatile-highlights-mode 1)
+
+(global-auto-revert-mode 1) ; Auto reload buffers when modified externally
