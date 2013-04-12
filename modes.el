@@ -34,6 +34,25 @@
       make-backup-files nil) ; Don't make backup files
 
 (defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
+(setq ibuffer-expert 1) ; Don't ask for permission when deleting buffers
+(setq ibuffer-show-empty-filter-groups nil)
+
+(setq ibuffer-saved-filter-groups
+      '(("home"
+	 ("Emacs Config" (filename . ".emacs.d"))
+         ("Workspace" (filename . "workspace"))
+         ("Terminals" (mode . term-mode))
+	 ("Org" (mode . org-mode))
+	 ("IRC" (mode . rcirc-mode))
+	 ("Help" (or (name . "\*Help\*")
+		     (name . "\*Apropos\*")
+		     (name . "\*info\*"))))))
+
+(add-hook 'ibuffer-mode-hook 
+	  '(lambda ()
+	     (ibuffer-auto-mode 1)
+	     (ibuffer-switch-to-saved-filter-groups "home")))
+
 (global-auto-revert-mode 1) ; Auto reload buffers when modified externally
 
 (require 'volatile-highlights)
