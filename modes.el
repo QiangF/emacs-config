@@ -64,6 +64,26 @@
                         (buffer-local-value 'dired-directory buf))
                     (string-match qualifier it))))
 
+(eval-after-load 'ibuffer
+  '(progn
+     ;; Use human readable Size column instead of original one
+     (define-ibuffer-column size-h
+       (:name "Size" :inline t)
+       (cond
+        ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1048576)))
+        ((> (buffer-size) 1000) (format "%7.1fK" (/ (buffer-size) 1024)))
+        (t (format "%8d" (buffer-size)))))))
+
+;; Modify the default ibuffer-formats
+(setq ibuffer-formats
+      '((mark modified read-only " "
+              (name 18 18 :left :elide)
+              " "
+              (size-h 9 -1 :right)
+              " "
+              (mode 16 16 :left :elide)
+              " "
+              filename-and-process)))
 
 (require 'volatile-highlights)
 (volatile-highlights-mode 1)
