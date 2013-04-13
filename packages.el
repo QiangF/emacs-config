@@ -1,5 +1,7 @@
 (setq inhibit-default-init 1) ; Do not load default.el
 
+(add-to-list 'load-path "~/.emacs.d/local-packages/")
+
 (require 'package)
 ; If using at least emacs 24, search melpa for packages to install
 (when (>= emacs-major-version 24)
