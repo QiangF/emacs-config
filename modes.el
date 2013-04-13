@@ -37,3 +37,6 @@
 (volatile-highlights-mode 1)
 
 (global-auto-revert-mode 1) ; Auto reload buffers when modified externally
+
+(require 'notify)
+(setq notify-method 'notify-via-libnotify)
