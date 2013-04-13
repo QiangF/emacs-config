@@ -12,6 +12,7 @@
 
 (load-user-file "packages.el")
 (load-user-file "ui.el")
+(load-user-file "ibuffer.el")
 (load-user-file "modes.el")
 (load-user-file "commands.el")
 (load-user-file "personal.el")
