@@ -14,6 +14,7 @@
 ;; (require 'rcirc-notify-mode)
 
 (require 'rcirc)
+(require 'notify)
 
 (defgroup rcirc-notify-mode nil "rcirc-notify-mode customization group"
   :group 'convenience)
@@ -149,17 +150,20 @@ matches a regexp in `rcirc-keywords'."
 	     ;(not (string= (rcirc-nick proc) sender))
              (not (string= (rcirc-server-name proc) sender))
              (rcirc-notify-mode:nick-allowed sender))
-    (rcirc-notify-mode:notify sender target (current-buffer))))
+
+    (progn
+      (notify (format rcirc-notify-mode:message sender target) text)
+      (rcirc-notify-mode:notify sender target (current-buffer)))))
 
 (defun rcirc-notify-mode:privmsg (proc sender response target text)
   "Notify the current user when someone sends a private message to them."
   (interactive)
   (when (and (string= response "PRIVMSG")
-             ;(not (string= sender (rcirc-nick proc)))
+             (not (string= sender rcirc-default-nick))
              (not (rcirc-channel-p target))
              (rcirc-notify-mode:nick-allowed sender))
 
-    (rcirc-notify-mode:notify-private sender target (current-buffer))))
+      (notify sender text)))
 
 (defun rcirc-notify-mode:switch-to-notify-buffer ()
   "A way to quickly switch to notifications buffer"

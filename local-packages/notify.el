@@ -33,12 +33,12 @@
 ;; 'notify-via-libnotify or 'notify-via-message
 ;;; Code:
 
-(defvar notify-defaults (list :app "Emacs" :icon "emacs" :timeout 5000
+(defvar notify-defaults (list :app "Emacs" :icon "emacs" :timeout 9000
 			      :urgency "low"
 			      :category "emacs.message")
   "Notification settings' defaults.
 May be overridden with key-value additional arguments to `notify'.")
-(defvar notify-delay '(0 5 0)
+(defvar notify-delay '(0 1 0)
   "Minimum time allowed between notifications in time format.")
 (defvar notify-last-notification '(0 0 0) "Time of last notification.")
 (defvar notify-method nil "Notification method among

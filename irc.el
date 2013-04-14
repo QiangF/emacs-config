@@ -1,6 +1,16 @@
 (require 'rcirc)
+(require 'rcirc-notify-mode)
 
-(setq rcirc-default-user-name "adirat"
+(add-hook 'rcirc-mode-hook 'rcirc-omit-mode)
+(add-hook 'rcirc-mode-hook 'rcirc-track-minor-mode)
+
+(setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY")
+      rcirc-notify-mode:buffer-name "*notifications*"
+      rcirc-keywords '("air00")
+      rcirc-fill-column 80
+      rcirc-server-alist nil
+
+      rcirc-default-user-name "adirat"
       rcirc-default-full-name "Adi Ratiu"
       rcirc-default-nick "air00")
 
@@ -8,18 +18,12 @@
       '(("freenode" nickserv "user" "pass")
         ("localhost" bitlbee "user" "pass")))
 
-(setq rcirc-server-alist
-      '(("irc.freenode.net" :channels ("#archlinux"))
-        ("localhost" :channels ("#bitlbee"))))
+(add-to-list 'rcirc-server-alist
+             '("irc.freenode.net"
+               :channels ("#archlinux"
+                          "#haskell"
+                          "#emacs")))
 
-(setq rcirc-omit-responses '("JOIN" "PART" "QUIT" "NICK" "AWAY"))
-
-(add-hook 'rcirc-mode-hook
-          (lambda ()
-            ; keep input line at bottom
-            (set (make-local-variable 'scroll-conservatively) 8192)
-            (rcirc-omit-mode)
-            (rcirc-track-minor-mode 1))) ; show IRC updates
-
-(require 'rcirc-notify-mode)
-(setq rcirc-notify-mode:buffer-name "*notifications*")
+(add-to-list 'rcirc-server-alist
+             '("localhost"
+               :channels ("#bitlbee")))
