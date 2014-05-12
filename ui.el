@@ -1,4 +1,3 @@
-(require 'volatile-highlights)
 (volatile-highlights-mode 1)
 
 (load-theme 'zenburn 1)
@@ -34,7 +33,7 @@
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
 
-(require 'uniquify) ; make all buffer names unique
+; make all buffer names unique
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (setq search-highlight 1
@@ -48,5 +47,3 @@
 (setq backup-by-copying-when-linked 1
       backup-by-copying-when-mismatch 1
       make-backup-files nil)
-
-

@@ -33,3 +33,10 @@
         (package-install p)))))
 
 (install-packages)
+
+(require 'org-journal)
+(require 'volatile-highlights)
+(require 'uniquify)
+(require 'multi-term)
+(require 'haskell-mode)
+(require 'haskell-mode)

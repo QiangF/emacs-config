@@ -1,5 +1,3 @@
-;; Customizations for CC Mode
-(require 'cc-mode)
 (setq-default c-basic-offset 8)
 (add-hook 'initialization-hook
           (lambda ()
