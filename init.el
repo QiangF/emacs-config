@@ -21,4 +21,3 @@
 (load-user-file "lisp.el")
 (load-user-file "html.el")
 (load-user-file "gdb.el")
-(load-user-file "irc.el")

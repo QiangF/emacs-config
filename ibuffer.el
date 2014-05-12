@@ -8,8 +8,6 @@
          ("Workspace" (filename . "workspace"))
          ("Terminals" (mode . term-mode))
 	 ("Org" (mode . org-mode))
-	 ("IRC" (or (mode . rcirc-mode)
-                    (mode . rcirc-notify-mode)))
 	 ("Help" (or (name . "\*Help\*")
 		     (name . "\*Apropos\*")
 		     (name . "\*info\*"))))))
