@@ -1,33 +1,32 @@
-(setq inhibit-default-init 1) ; Do not load default.el
+(setq inhibit-default-init 1) ; don't load default.el
 
 (add-to-list 'load-path "~/.emacs.d/local-packages/")
 
 (require 'package)
-; If using at least emacs 24, search melpa for packages to install
-(when (>= emacs-major-version 24)
+(when (>= emacs-major-version 24) ; pkg mgmt introduced in emacs 24
   (add-to-list 'package-archives
 ;               '("melpa" . "http://melpa.milkbox.net/packages/") t))
                '("marmalade" . "http://marmalade-repo.org/packages/")) t)
 
-(package-initialize) ; try to load all latest packages that are installed
+(package-initialize) ; load and init all pkg's in package-load-list
 
 ;; required because of a package.el bug
-(setq url-http-attempt-keepalives nil)
+;;(setq url-http-attempt-keepalives nil)
 
 (defvar needed-packages
-  '(volatile-highlights multi-term haskell-mode cc-mode zenburn-theme)
+  '(volatile-highlights multi-term haskell-mode cc-mode zenburn-theme org-journal)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
-; determine which of the needed packages are installed
-(defun packages-installed-p ()
+
+(defun all-packages-installed ()
   (loop for p in needed-packages
         when (not (package-installed-p p)) do (return nil)
         finally (return t)))
 
-; install all missing packages, get them from remote repositories
+; install missing packages (download from remote)
 (defun install-packages ()
-  (unless (packages-installed-p)
+  (unless (all-packages-installed)
     (package-refresh-contents)
     (dolist (p needed-packages)
       (unless (package-installed-p p)
