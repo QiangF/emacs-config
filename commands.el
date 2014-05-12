@@ -6,6 +6,10 @@
 ;; enable erase-buffer command
 (put 'erase-buffer 'disabled nil)
 
+(require 'multi-term)
+(setq multi-term-program "/bin/bash")
+(setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>")) ; combos to ignore
+
 ;; Delete current buffer
 (defun delete-current-file (ξno-backup-p)
   "Delete the file associated with the current buffer.
@@ -62,7 +66,7 @@
        ((string-equal system-type "gnu/linux")
         (mapc (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath)) ) myFileList))))))
 
-(defun open-in-desktop ()
+(defun open-in-filemanager ()
   "Show current file in desktop (OS's file manager)."
   (interactive)
   (cond

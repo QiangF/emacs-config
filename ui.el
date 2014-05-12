@@ -1,24 +1,52 @@
-(setq inhibit-startup-screen 1) ; Do not show Welcome to emacs buffer
-
-(global-font-lock-mode 1) ; Syntax coloring always on
+(require 'volatile-highlights)
+(volatile-highlights-mode 1)
 
 (load-theme 'zenburn 1)
 
-;; show either the file or buffer name as the frame title
+(setq inhibit-startup-screen 1)
+
+(blink-cursor-mode 0)
+
+(global-font-lock-mode 1) ; syntax coloring is on if available
+(global-auto-revert-mode 1) ; reload buffers if modifid externally
+(global-hl-line-mode 1)
+
+(fringe-mode 4)
+
+(setq-default tab-width 8)
+
+(electric-pair-mode 1)
+(show-paren-mode 1)
+(setq show-paren-style 'parenthesis)
+
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+(column-number-mode 1)
+(line-number-mode 1)
+(size-indication-mode 1)
+
+(ido-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (setq frame-title-format
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
 
-; Search & scroll options
-(setq search-highlight 1 ; Highlight matched string
-      query-replace-highlight 1 ; Same as above for search + replace
-      case-fold-search 1) ; Make search case insensitive
+(require 'uniquify) ; make all buffer names unique
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+
+(setq search-highlight 1
+      query-replace-highlight 1
+      case-fold-search 1)
+
 (setq scroll-margin 0
       scroll-conservatively 100000
       scroll-preserve-screen-position 1)
 
-; Make fringes smaller
-(if (fboundp 'fringe-mode)
-    (fringe-mode 4))
+(setq backup-by-copying-when-linked 1
+      backup-by-copying-when-mismatch 1
+      make-backup-files nil)
 
-(setq-default tab-width 8) ; Tabs are 8 chars in size
+

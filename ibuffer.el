@@ -1,5 +1,5 @@
-(defalias 'list-buffers 'ibuffer) ; Use ibuffer for buffer management
-(setq ibuffer-expert 1) ; Don't ask for permission when deleting buffers
+(defalias 'list-buffers 'ibuffer)	; intelligent buffer management
+(setq ibuffer-expert 1)			; no confirmation for buffer delete
 (setq ibuffer-show-empty-filter-groups nil)
 
 (setq ibuffer-saved-filter-groups
@@ -18,7 +18,7 @@
 	     (ibuffer-switch-to-saved-filter-groups "home")))
 
 
-; Enable ibuffer-filter-by-filename to filter on directory names too.
+; ibuffer-filter-by-filename to also use directory names
 (eval-after-load "ibuf-ext"
   '(define-ibuffer-filter filename
      "Toggle current view to buffers with file or directory name matching QUALIFIER."
@@ -28,9 +28,9 @@
                         (buffer-local-value 'dired-directory buf))
                     (string-match qualifier it))))
 
+; make size column human readable
 (eval-after-load 'ibuffer
   '(progn
-     ;; Use human readable Size column instead of original one
      (define-ibuffer-column size-h
        (:name "Size" :inline t)
        (cond
@@ -38,7 +38,7 @@
         ((> (buffer-size) 1000) (format "%7.1fK" (/ (buffer-size) 1024)))
         (t (format "%8d" (buffer-size)))))))
 
-;; Modify the default ibuffer-formats
+;; default ibuffer-formats
 (setq ibuffer-formats
       '((mark modified read-only " "
               (name 18 18 :left :elide)
