@@ -16,6 +16,5 @@
 (load-user-file "commands.el")
 (load-user-file "haskell.el")
 (load-user-file "cpp.el")
-(load-user-file "lisp.el")
 (load-user-file "html.el")
 (load-user-file "gdb.el")
