@@ -14,7 +14,6 @@
 (load-user-file "ui.el")
 (load-user-file "ibuffer.el")
 (load-user-file "commands.el")
-(load-user-file "personal.el")
 (load-user-file "haskell.el")
 (load-user-file "cpp.el")
 (load-user-file "lisp.el")
