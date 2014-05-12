@@ -6,7 +6,8 @@
 ; If using at least emacs 24, search melpa for packages to install
 (when (>= emacs-major-version 24)
   (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t))
+;               '("melpa" . "http://melpa.milkbox.net/packages/") t))
+               '("marmalade" . "http://marmalade-repo.org/packages/")) t)
 
 (package-initialize) ; try to load all latest packages that are installed
 
