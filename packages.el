@@ -4,9 +4,10 @@
 
 (require 'package)
 (when (>= emacs-major-version 24) ; pkg mgmt introduced in emacs 24
-  (add-to-list 'package-archives
-;               '("melpa" . "http://melpa.milkbox.net/packages/") t))
-               '("marmalade" . "http://marmalade-repo.org/packages/")) t)
+  (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+			   ("marmalade" . "http://marmalade-repo.org/packages/")
+			   ("melpa" . "http://melpa.milkbox.net/packages/"))))
+
 
 (package-initialize) ; load and init all pkg's in package-load-list
 
