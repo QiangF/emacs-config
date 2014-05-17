@@ -1,0 +1,4 @@
+1. Download emacs binary distribution for windows
+2. Put .emacs.d in the binary distribution root
+3. copy .emacs.d/windows/start_emacs.bat to root
+4. run start_emacs.bat
