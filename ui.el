@@ -7,6 +7,7 @@
 (blink-cursor-mode 0)
 
 (setq-default major-mode 'org-mode)
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 ;;(setq initial-buffer-choice "~/workspace/journal/TODO")
 
 (global-font-lock-mode 1) ; syntax coloring is on if available
