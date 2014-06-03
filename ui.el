@@ -1,6 +1,7 @@
 (volatile-highlights-mode 1)
 
-(load-theme 'zenburn 1)
+;(load-theme 'zenburn 1)
+(add-to-list 'default-frame-alist '(background-color . "#F0F0F0"))
 
 (setq inhibit-startup-screen 1)
 
@@ -12,7 +13,7 @@
 
 (global-font-lock-mode 1) ; syntax coloring is on if available
 (global-auto-revert-mode 1) ; reload buffers if modifid externally
-(global-hl-line-mode 1)
+;(global-hl-line-mode 1)
 
 (fringe-mode 4)
 
