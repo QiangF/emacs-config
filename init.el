@@ -18,3 +18,5 @@
 (load-user-file "cpp.el")
 (load-user-file "html.el")
 (load-user-file "gdb.el")
+(load-user-file "w3m.el")
+(load-user-file "newsticker.el")
