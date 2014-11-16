@@ -39,5 +39,3 @@
 (require 'volatile-highlights)
 (require 'uniquify)
 (require 'multi-term)
-(require 'haskell-mode)
-(require 'haskell-mode)
