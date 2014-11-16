@@ -7,7 +7,7 @@
 (put 'erase-buffer 'disabled nil)
 
 (setq multi-term-program "/bin/bash")
-(setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-y" "C-v" "<ESC>")) ; combos to ignore
+(setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-t" "C-h" "C-y" "C-v" "<ESC>")) ; combos to ignore
 
 ;; Delete current buffer
 (defun delete-current-file (ξno-backup-p)
