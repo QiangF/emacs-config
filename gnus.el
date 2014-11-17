@@ -4,7 +4,7 @@
       gnus-init-file nil
       gnus-read-newsrc-file nil)
 
-(setq user-full-name "Ioan-Adrian Ratiu")
+(setq user-full-name "Ioan-Adrian Rațiu")
 (setq user-mail-address "adi@adirat.com")
 
 (setq gnus-select-method '(nntp "news.gmane.org"))
@@ -22,11 +22,12 @@
 (setq gnus-summary-thread-gathering-function 
       'gnus-gather-threads-by-subject)
 
-(setq gnus-thread-hide-subtree t)
+;(setq gnus-thread-hide-subtree t)
 (setq gnus-thread-ignore-subject t)
 
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'smtpmail-send-it
+      message-signature "Ioan-Adrian Rațiu"
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
       smtpmail-auth-credentials '(("smtp.gmail.com" 587
 				   "adi@adirat.com" nil))
