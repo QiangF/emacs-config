@@ -15,7 +15,7 @@
 ;;(setq url-http-attempt-keepalives nil)
 
 (defvar needed-packages
-  '(volatile-highlights multi-term haskell-mode cc-mode zenburn-theme org-journal)
+  '(volatile-highlights multi-term haskell-mode cc-mode zenburn-theme undo-tree)
   "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
@@ -35,7 +35,7 @@
 
 (install-packages)
 
-(require 'org-journal)
 (require 'volatile-highlights)
 (require 'uniquify)
 (require 'multi-term)
+(require 'undo-tree)
