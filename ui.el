@@ -34,6 +34,8 @@
 (ido-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(global-undo-tree-mode)
+
 (setq frame-title-format
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
