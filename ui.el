@@ -1,7 +1,9 @@
 (volatile-highlights-mode 1)
 
-;(load-theme 'zenburn 1)
-(add-to-list 'default-frame-alist '(background-color . "#E2E2E2"))
+(load-theme 'zenburn 1)
+;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
+
+(set-face-attribute 'default nil :height 120)
 
 (setq inhibit-startup-screen 1)
 
