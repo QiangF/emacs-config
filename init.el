@@ -19,3 +19,5 @@
 ;(load-user-file "gdb.el")
 ;(load-user-file "w3m.el")
 ;(load-user-file "newsticker.el")
+
+; start emacsclient with: emacsclient -ce "(client-init)"
