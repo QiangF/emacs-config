@@ -9,7 +9,8 @@
 			   ("melpa" . "http://melpa.milkbox.net/packages/"))))
 
 (defvar needed-packages
-  '(volatile-highlights multi-term haskell-mode cc-mode zenburn-theme undo-tree))
+  '(volatile-highlights multi-term haskell-mode
+    cc-mode zenburn-theme undo-tree ibuffer-vc))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages
