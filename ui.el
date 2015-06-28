@@ -1,4 +1,3 @@
-(require 'uniquify)
 (require 'volatile-highlights)
 (require 'undo-tree)
 
@@ -21,9 +20,6 @@
 (setq frame-title-format
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
-
-; prepend dirnames to identical filenames
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 (setq search-highlight 1
       query-replace-highlight 1
