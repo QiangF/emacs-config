@@ -36,11 +36,12 @@
 (global-set-key (kbd "C-z") nil)
 
 (load-theme 'zenburn 1)
+
 (blink-cursor-mode 0)
 (global-font-lock-mode 1) ; syntax coloring on
 (global-auto-revert-mode 1)
 (volatile-highlights-mode 1)
-(global-undo-tree-mode)
+(global-undo-tree-mode 1)
 (ido-mode 1)
 
 (menu-bar-mode 0)
