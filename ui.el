@@ -1,6 +1,7 @@
 (require 'volatile-highlights)
 (require 'undo-tree)
 (require 'windmove)
+(require 'anzu)
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
@@ -43,6 +44,7 @@
 (global-auto-revert-mode 1)
 (volatile-highlights-mode 1)
 (global-undo-tree-mode 1)
+(global-anzu-mode 1)
 (ido-mode 1)
 
 (menu-bar-mode 0)

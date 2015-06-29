@@ -10,7 +10,7 @@
 
 (defvar needed-packages
   '(volatile-highlights multi-term haskell-mode
-    cc-mode zenburn-theme undo-tree ibuffer-vc))
+    cc-mode zenburn-theme undo-tree ibuffer-vc anzu))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages
