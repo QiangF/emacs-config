@@ -6,3 +6,4 @@
 (global-set-key (kbd "<f1>") 'multi-term)
 (global-set-key (kbd "<f2>") 'multi-term-prev)
 (global-set-key (kbd "<f3>") 'multi-term-next)
+(global-set-key (kbd "<f4>") 'multi-term-dedicated-toggle)
