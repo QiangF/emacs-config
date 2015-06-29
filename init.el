@@ -7,7 +7,8 @@
 
 (load-user-file "packages.el")
 (load-user-file "ui.el")
-(load-user-file "ibuffer.el")
+(load-user-file "helm.el")
+; (load-user-file "ibuffer.el")
 (load-user-file "dired.el")
 (load-user-file "multi-term.el")
 (load-user-file "commands.el")

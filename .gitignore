@@ -7,3 +7,5 @@ newsticker/*
 .newsrc*
 ido.last
 session.*
+data/helm-history
+recentf
