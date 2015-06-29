@@ -6,21 +6,11 @@
 (setq ibuffer-expert t)
 (setq ibuffer-show-empty-filter-groups nil)
 
-(setq ibuffer-saved-filter-groups
-      '(("home"
-         ("Terminals" (mode . term-mode))
-	 ("Org" (mode . org-mode))
-	 ("Help" (or (name . "\*Help\*")
-		     (name . "\*Apropos\*")
-		     (name . "\*info\*"))))))
-
 (setq ibuffer-formats
       '((mark modified read-only vc-status-mini " "
 	      (name 18 18 :left :elide)
               " "
               (size-h -1 -1)
-              " "
-              (mode 12 12 :left :elide)
               " "
               filename-and-process)))
 
