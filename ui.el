@@ -2,6 +2,7 @@
 (require 'undo-tree)
 (require 'windmove)
 (require 'anzu)
+(require 'ido)
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
@@ -49,7 +50,7 @@
 (volatile-highlights-mode 1)
 (global-undo-tree-mode 1)
 (global-anzu-mode 1)
-(ido-mode 1)
+(ido-everywhere 1)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
