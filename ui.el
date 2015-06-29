@@ -33,6 +33,8 @@
       backup-by-copying-when-mismatch 1
       make-backup-files nil)
 
+(global-set-key (kbd "C-z") nil)
+
 (load-theme 'zenburn 1)
 (blink-cursor-mode 0)
 (global-font-lock-mode 1) ; syntax coloring on
