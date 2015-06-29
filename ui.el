@@ -1,5 +1,6 @@
 (require 'volatile-highlights)
 (require 'undo-tree)
+(require 'windmove)
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
@@ -58,5 +59,7 @@
 (fringe-mode 4)
 
 (delete-selection-mode 1)
+
+(windmove-default-keybindings)
 
 ;(global-hl-line-mode 1)
