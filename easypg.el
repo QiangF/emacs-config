@@ -9,3 +9,5 @@
   (interactive)
   (unless (member 'my-config features)
     (load-user-file "my-config.gpg")))
+
+(setq password-cache-expiry nil)
