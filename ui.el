@@ -5,6 +5,9 @@
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
+; shut up 'got redefined' startup msgs
+(setq ad-redefinition-action 'accept)
+
 (setq-default tab-width 8)
 
 (set-face-attribute 'default nil :height 120)
