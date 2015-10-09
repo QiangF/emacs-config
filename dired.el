@@ -4,5 +4,8 @@
 
 (put 'dired-find-alternate-file 'disabled nil) ; allow 'a' cmd
 
-(global-set-key (kbd "<f5>") 'dired-jump)
-(global-set-key (kbd "<f6>") 'dired-jump-other-window)
+;(global-set-key (kbd "<f5>") 'dired-jump)
+;(global-set-key (kbd "<f6>") 'dired-jump-other-window)
+
+(add-hook 'dired-mode-hook
+ '(lambda() (define-key dired-mode-map (kbd "C-l") 'dired-up-directory)))
