@@ -17,6 +17,7 @@
 (load-user-file "org-mode.el")
 ;(load-user-file "haskell.el")
 (load-user-file "cpp.el")
+(load-user-file "python.el")
 ;(load-user-file "html.el")
 ;(load-user-file "gdb.el")
 ;(load-user-file "w3m.el")
