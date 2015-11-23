@@ -12,6 +12,7 @@
 (load-user-file "dired.el")
 (load-user-file "multi-term.el")
 (load-user-file "commands.el")
+(load-user-file "gnus.el")
 (load-private-config)
 (load-user-file "org-mode.el")
 ;(load-user-file "haskell.el")
