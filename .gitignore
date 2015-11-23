@@ -4,6 +4,7 @@
 elpa
 tramp
 newsticker/*
+eshell/*
 .newsrc*
 ido.last
 session.*
