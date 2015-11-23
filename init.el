@@ -1,3 +1,5 @@
+;(package-initialize)
+
 (setq inhibit-default-init 1)
 
 (defun load-user-file (file)
