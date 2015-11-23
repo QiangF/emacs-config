@@ -20,6 +20,7 @@
 ;(load-user-file "haskell.el")
 (load-user-file "cpp.el")
 (load-user-file "python.el")
+(load-user-file "eshell.el")
 (load-user-file "sh.el")
 ;(load-user-file "html.el")
 ;(load-user-file "gdb.el")
