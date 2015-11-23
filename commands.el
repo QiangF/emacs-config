@@ -62,7 +62,11 @@ If the current buffer is not associated with a file, its a error."
     (copy-file currentFileName backupFileName t)
     (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
 
-(defun client-init ()
+(require 'epa)
+
+(defun load-private-config ()
   (interactive)
-  (load-my-config)
-  (dired "~"))
+  (unless (member 'my-config features)
+    (load-user-file "config.gpg")))
+
+(setq password-cache-expiry nil)
