@@ -38,7 +38,7 @@
       helm-imenu-fuzzy-match    t)
 
 (helm-mode t)
-(helm-adaptative-mode t)
+(helm-adaptive-mode t)
 
 ;; Enable helm-gtags-mode
 (add-hook 'dired-mode-hook 'helm-gtags-mode)
