@@ -22,6 +22,7 @@
 (load-user-file "python.el")
 (load-user-file "eshell.el")
 (load-user-file "sh.el")
+(load-user-file "notmuch.el")
 ;(load-user-file "html.el")
 ;(load-user-file "gdb.el")
 ;(load-user-file "w3m.el")
