@@ -1,0 +1,2 @@
+(require 'pinentry)
+(pinentry-start)

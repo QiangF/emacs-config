@@ -9,8 +9,8 @@
 			   ("melpa" . "http://melpa.milkbox.net/packages/"))))
 
 (defvar needed-packages
-  '(volatile-highlights multi-term haskell-mode ggtags helm helm-gtags
-    cc-mode zenburn-theme undo-tree ibuffer-vc anzu notmuch))
+  '(volatile-highlights multi-term haskell-mode ggtags helm helm-gtags cc-mode
+    zenburn-theme undo-tree ibuffer-vc anzu auto-compile pinentry notmuch))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages
