@@ -24,5 +24,8 @@
       (unless (package-installed-p p)
         (package-install p)))))
 
+(setq load-prefer-newer t)
 (package-initialize)
 (install-packages)
+(require 'auto-compile)
+(auto-compile-on-load-mode)
