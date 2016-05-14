@@ -5,6 +5,8 @@
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
+(set-frame-font "DejaVu Sans Mono-11" t t)
+
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)
 
