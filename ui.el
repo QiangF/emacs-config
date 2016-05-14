@@ -10,6 +10,8 @@
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)
 
+(setq-default bidi-display-reordering nil)
+
 (setq-default tab-width 8)
 
 (set-face-attribute 'default nil :height 120)
@@ -73,3 +75,5 @@
 (windmove-default-keybindings)
 
 ;(global-hl-line-mode 1)
+
+(setq font-lock-maximum-decoration nil)
