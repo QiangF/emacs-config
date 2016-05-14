@@ -18,6 +18,7 @@
 ;(load-private-config)
 (load-user-file "pinentry.el")
 (load-user-file "org-mode.el")
+(load-user-file "magit.el")
 ;(load-user-file "haskell.el")
 (load-user-file "cpp.el")
 (load-user-file "python.el")
