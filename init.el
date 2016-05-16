@@ -30,4 +30,7 @@
 ;(load-el-file "w3m.el")
 ;(load-el-file "newsticker.el")
 
-; start emacsclient with: emacsclient -ce "(client-init)"
+; load custom local configs under ~/.emacs.d/load.d
+(require 'load-dir)
+(setq load-dirs t)
+(load-dirs)

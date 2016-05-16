@@ -11,7 +11,7 @@
 (defvar needed-packages
   '(volatile-highlights multi-term haskell-mode ggtags helm helm-gtags cc-mode
     zenburn-theme undo-tree ibuffer-vc anzu auto-compile pinentry notmuch
-    helm-mt magit))
+    helm-mt magit load-dir))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages
