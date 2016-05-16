@@ -15,7 +15,7 @@
 (load-el-file "multi-term.el")
 (load-el-file "commands.el")
 ;(load-el-file "gnus.el")
-;(load-private-config)
+(load-private-config)
 (load-el-file "pinentry.el")
 (load-el-file "org-mode.el")
 (load-el-file "magit.el")
