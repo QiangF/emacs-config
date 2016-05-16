@@ -8,6 +8,6 @@ eshell/*
 .newsrc*
 ido.last
 session.*
-data/helm-history
+data/*
 recentf
 network-security.data
