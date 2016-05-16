@@ -67,7 +67,7 @@ If the current buffer is not associated with a file, its a error."
 (defun load-private-config ()
   (interactive)
   (unless (member 'my-config features)
-    (load-user-file "config.gpg")))
+    (load-el-file "private.gpg")))
 
 (setq password-cache-expiry nil)
 
