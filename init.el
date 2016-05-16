@@ -33,4 +33,3 @@
 ; load custom local configs under ~/.emacs.d/load.d
 (require 'load-dir)
 (setq load-dirs t)
-(load-dirs)
