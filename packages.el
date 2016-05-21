@@ -1,7 +1,7 @@
 (require 'package)
 (require 'cl) ; clisp
 
-(add-to-list 'load-path "~/.emacs.d/local-packages/")
+;(add-to-list 'load-path "~/.emacs.d/local-packages/")
 
 (when (>= emacs-major-version 24) ; pkg mgmt introduced in emacs 24
   (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -10,8 +10,7 @@
 
 (defvar needed-packages
   '(volatile-highlights multi-term haskell-mode ggtags helm helm-gtags cc-mode
-    undo-tree ibuffer-vc anzu auto-compile pinentry notmuch
-    helm-mt magit load-dir))
+    undo-tree ibuffer-vc anzu pinentry notmuch helm-mt load-dir))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages

@@ -1,3 +1,12 @@
 [submodule "lib/zenburn"]
 	path = lib/zenburn
 	url = https://github.com/bbatsov/zenburn-emacs.git
+[submodule "lib/magit"]
+	path = lib/magit
+	url = https://github.com/magit/magit.git
+[submodule "lib/dash"]
+	path = lib/dash
+	url = https://github.com/magnars/dash.el.git
+[submodule "lib/with-editor"]
+	path = lib/with-editor
+	url = https://github.com/magit/with-editor.git

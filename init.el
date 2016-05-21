@@ -7,6 +7,15 @@
   "Load a file in current user's configuration directory"
   (load-file (expand-file-name file user-emacs-directory)))
 
+(defun add-to-load-path (path)
+  (interactive "f")
+  "Add a path relative to user-emacs-directory to load-path"
+  (add-to-list 'load-path (expand-file-name path user-emacs-directory)))
+
+(add-to-load-path "lib/dash")
+(add-to-load-path "lib/with-editor")
+(add-to-load-path "lib/magit/lisp")
+
 (load-el-file "packages.el")
 (load-el-file "ui.el")
 (load-el-file "helm.el")
