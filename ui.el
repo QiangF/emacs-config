@@ -21,7 +21,10 @@
 
 (set-face-attribute 'default nil :height 120)
 
-(setq inhibit-startup-screen 1)
+(setq inhibit-startup-screen 1
+      inhibit-startup-buffer-menu t)
+
+(setq initial-scratch-message "")
 
 ;; (setq-default major-mode 'org-mode)
 ;; (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))

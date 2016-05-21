@@ -25,6 +25,9 @@
       (unless (package-installed-p p)
         (package-install p)))))
 
+; enable packages only manually by calling package-initialize
+(setq package-enable-at-startup nil)
+
 (setq load-prefer-newer t)
 (package-initialize)
 (install-packages)
