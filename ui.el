@@ -5,6 +5,9 @@
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
+(add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
+(load-theme 'zenburn t)
+
 (set-frame-font "DejaVu Sans Mono-11" t t)
 (add-to-list 'default-frame-alist '(height . 42))
 (add-to-list 'default-frame-alist '(width . 80))
@@ -49,8 +52,6 @@
           'executable-make-buffer-file-executable-if-script-p)
 
 (global-set-key (kbd "C-z") nil)
-
-(load-theme 'zenburn 1)
 
 (blink-cursor-mode 0)
 (global-font-lock-mode 1) ; syntax coloring on
