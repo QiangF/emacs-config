@@ -10,3 +10,6 @@
 [submodule "lib/with-editor"]
 	path = lib/with-editor
 	url = https://github.com/magit/with-editor.git
+[submodule "lib/volatile-highlights"]
+	path = lib/volatile-highlights
+	url = https://github.com/k-talo/volatile-highlights.el.git
