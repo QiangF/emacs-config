@@ -3,6 +3,10 @@
   (unless (member 'my-config features)
     (load file)))
 
+(defun load-private-config ()
+  (interactive)
+  (load-el-gpg "private.gpg"))
+
 (defun find-file-as-root ()
   "Like `ido-find-file, but automatically edit the file with
   root-privileges (using tramp/sudo), if the file is not writable by

@@ -33,8 +33,6 @@
 ;(load "w3m")
 ;(load "newsticker")
 
-(load-el-gpg "private.gpg")
-
 ; load custom local configs under ~/.emacs.d/load.d
 ;(require 'load-dir)
 ;(setq load-dirs t)
