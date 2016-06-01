@@ -1,7 +1,8 @@
 (require 'volatile-highlights)
 (require 'undo-tree)
 (require 'windmove)
-(require 'anzu) ; prvides more isearch info
+(require 'anzu)
+(require 'dired-x)
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
@@ -9,8 +10,16 @@
 (load-theme 'zenburn t)
 
 (set-frame-font "DejaVu Sans Mono-11" t t)
+
 (add-to-list 'default-frame-alist '(height . 42))
 (add-to-list 'default-frame-alist '(width . 80))
+
+(setq make-backup-files nil) ;don't create backup~
+(setq auto-save-default nil) ;don't create #autosave#
+
+(put 'erase-buffer 'disabled nil) ;allow (erase-buffer)
+
+(global-set-key (kbd "C-x F") 'find-file-as-root)
 
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)
@@ -53,6 +62,17 @@
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+
+
+(setq dired-listing-switches "-alh")
+
+(put 'dired-find-alternate-file 'disabled nil) ; allow 'a' cmd
+
+;(global-set-key (kbd "<f5>") 'dired-jump)
+;(global-set-key (kbd "<f6>") 'dired-jump-other-window)
+
+(add-hook 'dired-mode-hook
+ '(lambda() (define-key dired-mode-map (kbd "C-l") 'dired-up-directory)))
 
 (global-set-key (kbd "C-z") nil)
 

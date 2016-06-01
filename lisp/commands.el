@@ -1,9 +1,7 @@
-(setq make-backup-files nil) ; stop creating backup~ files
-(setq auto-save-default nil) ; stop creating #autosave#
-
-(put 'erase-buffer 'disabled nil) ; allow the erase-buffer cmd
-
-(global-set-key (kbd "C-x F") 'find-file-as-root)
+(defun load-el-gpg (file)
+  (interactive "f")
+  (unless (member 'my-config features)
+    (load file)))
 
 (defun find-file-as-root ()
   "Like `ido-find-file, but automatically edit the file with
@@ -63,12 +61,6 @@ If the current buffer is not associated with a file, its a error."
     (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
 
 (require 'epa)
-
-(defun load-private-config ()
-  (interactive)
-  (unless (member 'my-config features)
-    (load-el-file "private.gpg")))
-
 (setq password-cache-expiry nil)
 
 (defadvice show-paren-function
@@ -82,3 +74,4 @@ If the current buffer is not associated with a file, its a error."
 			     (char-equal (char-syntax cb) ?\) )
 			     (blink-matching-open))))
     (when matching-text (message matching-text))))
+

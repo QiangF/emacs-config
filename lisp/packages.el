@@ -30,5 +30,5 @@
 (setq load-prefer-newer t)
 (package-initialize)
 (install-packages)
-(require 'auto-compile)
-(auto-compile-on-load-mode)
+;(require 'auto-compile)
+;(auto-compile-on-load-mode)
