@@ -21,7 +21,7 @@
 ;(load "gnus")
 (load "pin-entry")
 (load "org-mode")
-(load "magit")
+(load "my-magit")
 ;(load "haskell")
 (load "cpp")
 (load "python")
