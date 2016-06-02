@@ -13,3 +13,6 @@
 [submodule "lib/volatile-highlights"]
 	path = lib/volatile-highlights
 	url = https://github.com/k-talo/volatile-highlights.el.git
+[submodule "lib/multi-term"]
+	path = lib/multi-term
+	url = https://github.com/emacsmirror/multi-term.git

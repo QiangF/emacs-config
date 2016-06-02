@@ -8,7 +8,8 @@
 	    "lib/dash"
 	    "lib/with-editor"
 	    "lib/magit/lisp"
-	    "lib/volatile-highlights")))
+	    "lib/volatile-highlights"
+	    "lib/multi-term")))
 
 (mapc (lambda (p) (add-to-list 'load-path p)) my-load-paths)
 
@@ -17,7 +18,7 @@
 (load "ui")
 (load "my-helm")
 ; (load "ibuffer")
-(load "multi-term")
+(load "my-multi-term")
 ;(load "gnus")
 (load "pin-entry")
 (load "org-mode")
