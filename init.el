@@ -35,6 +35,4 @@
 ;(load "w3m")
 ;(load "newsticker")
 
-; load custom local configs under ~/.emacs.d/load.d
-;(require 'load-dir)
-;(setq load-dirs t)
+(mapc 'load (file-expand-wildcards (concat user-emacs-directory "load.d/*.el")))
