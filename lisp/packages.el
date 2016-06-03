@@ -10,7 +10,7 @@
 
 (defvar needed-packages
   '(haskell-mode ggtags helm helm-gtags cc-mode
-    undo-tree ibuffer-vc anzu pinentry notmuch helm-mt load-dir))
+    ibuffer-vc anzu pinentry notmuch helm-mt load-dir))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages

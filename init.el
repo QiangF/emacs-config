@@ -9,7 +9,8 @@
 	    "lib/with-editor"
 	    "lib/magit/lisp"
 	    "lib/volatile-highlights"
-	    "lib/multi-term")))
+	    "lib/multi-term"
+	    "lib/undo-tree")))
 
 (mapc (lambda (p) (add-to-list 'load-path p)) my-load-paths)
 
