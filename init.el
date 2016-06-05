@@ -14,7 +14,8 @@
 	    "lib/haskell-mode"
 	    "lib/pinentry"
 	    "lib/anzu"
-	    "lib/notmuch")))
+	    "lib/notmuch"
+	    "lib/helm")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 

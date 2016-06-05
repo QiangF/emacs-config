@@ -31,3 +31,6 @@
 [submodule "lib/notmuch"]
 	path = lib/notmuch
 	url = git://git.notmuchmail.org/git/notmuch
+[submodule "lib/helm"]
+	path = lib/helm
+	url = https://github.com/emacs-helm/helm.git
