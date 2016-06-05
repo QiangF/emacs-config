@@ -13,7 +13,8 @@
 	    "lib/undo-tree"
 	    "lib/haskell-mode"
 	    "lib/pinentry"
-	    "lib/anzu")))
+	    "lib/anzu"
+	    "lib/notmuch")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
@@ -31,7 +32,7 @@
 (load "python")
 ;(load "e-shell")
 (load "sh")
-;(load "notmuch")
+(load "my-notmuch")
 ;(load "html")
 ;(load "gdb")
 ;(load "w3m")
