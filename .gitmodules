@@ -19,3 +19,6 @@
 [submodule "lib/undo-tree"]
 	path = lib/undo-tree
 	url = http://www.dr-qubit.org/git/undo-tree.git
+[submodule "lib/haskell-mode"]
+	path = lib/haskell-mode
+	url = https://github.com/haskell/haskell-mode.git

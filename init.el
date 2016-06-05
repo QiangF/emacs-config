@@ -10,7 +10,8 @@
 	    "lib/magit/lisp"
 	    "lib/volatile-highlights"
 	    "lib/multi-term"
-	    "lib/undo-tree")))
+	    "lib/undo-tree"
+	    "lib/haskell-mode")))
 
 (mapc (lambda (p) (add-to-list 'load-path p)) my-load-paths)
 
@@ -24,7 +25,7 @@
 (load "pin-entry")
 (load "org-mode")
 (load "my-magit")
-;(load "haskell")
+(load "haskell")
 (load "cpp")
 (load "python")
 ;(load "e-shell")
