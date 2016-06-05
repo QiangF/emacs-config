@@ -20,7 +20,6 @@
 (load "packages")
 (load "ui")
 (load "my-helm")
-; (load "ibuffer")
 (load "my-multi-term")
 ;(load "gnus")
 (load "pin-entry")
