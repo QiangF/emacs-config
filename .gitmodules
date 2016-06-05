@@ -22,3 +22,6 @@
 [submodule "lib/haskell-mode"]
 	path = lib/haskell-mode
 	url = https://github.com/haskell/haskell-mode.git
+[submodule "lib/pinentry"]
+	path = lib/pinentry
+	url = https://github.com/ueno/pinentry-el.git

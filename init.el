@@ -11,7 +11,8 @@
 	    "lib/volatile-highlights"
 	    "lib/multi-term"
 	    "lib/undo-tree"
-	    "lib/haskell-mode")))
+	    "lib/haskell-mode"
+	    "lib/pinentry")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
