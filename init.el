@@ -12,7 +12,8 @@
 	    "lib/multi-term"
 	    "lib/undo-tree"
 	    "lib/haskell-mode"
-	    "lib/pinentry")))
+	    "lib/pinentry"
+	    "lib/anzu")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
