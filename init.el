@@ -13,7 +13,7 @@
 	    "lib/undo-tree"
 	    "lib/haskell-mode")))
 
-(mapc (lambda (p) (add-to-list 'load-path p)) my-load-paths)
+(mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
 (load "commands")
 (load "packages")
