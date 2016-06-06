@@ -16,7 +16,8 @@
 	    "lib/anzu"
 	    "lib/notmuch"
 	    "lib/helm"
-	    "lib/helm-mt")))
+	    "lib/helm-mt"
+	    "lib/helm-gtags")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
