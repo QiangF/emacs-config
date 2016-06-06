@@ -15,7 +15,8 @@
 	    "lib/pinentry"
 	    "lib/anzu"
 	    "lib/notmuch"
-	    "lib/helm")))
+	    "lib/helm"
+	    "lib/helm-mt")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 

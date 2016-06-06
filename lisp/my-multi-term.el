@@ -6,3 +6,5 @@
 
 (global-set-key (kbd "<f5>") 'multi-term)
 (global-set-key (kbd "C-x t") 'helm-mt)
+
+(helm-mt/wrap-shells t)

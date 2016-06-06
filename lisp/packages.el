@@ -9,7 +9,7 @@
 			   ("melpa" . "http://melpa.milkbox.net/packages/"))))
 
 (defvar needed-packages
-  '(helm-gtags helm-mt))
+  '(helm-gtags))
 
 (defun all-packages-installed ()
   (loop for p in needed-packages
