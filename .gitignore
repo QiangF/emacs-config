@@ -6,6 +6,7 @@ tramp
 newsticker/*
 eshell/*
 .newsrc*
+.helm-history
 ido.last
 session.*
 data/*
