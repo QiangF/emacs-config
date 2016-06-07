@@ -1,3 +1,7 @@
+(let ((default-directory (concat user-emacs-directory "lib/helm/")))
+  (if (not (file-exists-p "helm-autoloads.el"))
+      (shell-command "make autoloads")))
+
 (require 'helm)
 (require 'helm-config)
 (require 'helm-semantic)
