@@ -25,7 +25,6 @@
 (load "ui")
 (load "my-helm")
 (load "my-multi-term")
-;(load "gnus")
 (load "pin-entry")
 (load "org-mode")
 (load "my-magit")
