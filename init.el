@@ -30,7 +30,6 @@
 (load "my-magit")
 (load "haskell")
 (load "cpp")
-(load "python")
 ;(load "e-shell")
 (load "sh")
 (load "my-notmuch")
