@@ -34,7 +34,6 @@
 (load "sh")
 (load "my-notmuch")
 ;(load "html")
-;(load "gdb")
 ;(load "w3m")
 ;(load "newsticker")
 
