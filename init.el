@@ -17,7 +17,10 @@
 	    "lib/notmuch"
 	    "lib/helm"
 	    "lib/helm-mt"
-	    "lib/helm-gtags")))
+	    "lib/helm-gtags"
+	    "lib/bitbake-el"
+	    "lib/mmm-mode"
+	    "lib/s")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
@@ -31,6 +34,7 @@
 (load "haskell")
 (load "clang")
 (load "python")
+(load "mode-config")
 ;(load "e-shell")
 (load "sh")
 (load "my-notmuch")
