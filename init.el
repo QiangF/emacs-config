@@ -30,7 +30,7 @@
 (load "my-multi-term")
 (load "pin-entry")
 (load "org-mode")
-(load "my-magit")
+;(load "my-magit")
 (load "haskell")
 (load "clang")
 (load "python")
