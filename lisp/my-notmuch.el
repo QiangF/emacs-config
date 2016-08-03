@@ -1,1 +1,134 @@
 (require 'notmuch)
+
+(setq notmuch-show-logo nil
+      notmuch-always-prompt-for-sender t
+      notmuch-hello-thousands-separator ""
+      notmuch-show-empty-saved-searches t
+      notmuch-show-all-tags-list t
+      iden-smtp-servers '(("Ioan-Adrian Ratiu <xxx@xxxxxx.com>" setGmail)
+			  ("Ioan-Adrian Ratiu <xxxxxxxxxxxx@xx.com>" setNI))
+      notmuch-identities (mapcar (lambda (n) (car n)) iden-smtp-servers))
+
+(setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches notmuch-hello-insert-search notmuch-hello-insert-recent-searches notmuch-hello-insert-alltags))
+
+(global-set-key (kbd "C-x m") 'notmuch-mua-new-mail)
+
+(setq user-full-name "Ioan-Adrian Ratiu")
+
+(setq message-send-mail-function 'message-smtpmail-send-it
+      send-mail-function 'smtpmail-send-it
+      message-kill-buffer-on-exit t
+      message-sendmail-envelope-from 'header
+      mail-user-agent 'notmuch-user-agent)
+
+(defun setTlsConfig ()
+  (interactive)
+  (setq smtpmail-stream-type 'starttls
+	starttls-extra-arguments nil
+	starttls-gnutls-program "/usr/bin/gnutls-cli"
+	starttls-use-gnutls t))
+
+(defun setGmail ()
+  (interactive)
+  (setq user-mail-address "xxx@xxxxxx.com")
+  (setq smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+	smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+	smtpmail-default-smtp-server "smtp.gmail.com"
+	smtpmail-smtp-server "smtp.gmail.com"
+	smtpmail-smtp-service 587)
+  (setTlsConfig)
+  (message "Mail will be sent through gmail"))
+
+(defun setNI ()
+  (interactive)
+  (setq user-mail-address "xxxxxxxxxxxx@xx.com")
+  (setq smtpmail-starttls-credentials '(("smtp.office365.com" 587 nil nil))
+	smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+	smtpmail-default-smtp-server "smtp.office365.com"
+	smtpmail-smtp-server "smtp.office365.com"
+	smtpmail-smtp-service 587)
+  (setTlsConfig)
+  (message "Mail will be sent through ni"))
+
+(defun setVPNNI ()
+  (interactive)
+  (setq user-mail-address "xxxxxxxxxxx@xx.com")
+  (setq smtpmail-starttls-credentials '(("xxxxxxxxxxxx" 25 nil nil))
+	smtpmail-default-smtp-server "xxxxxxxxxxxxxx"
+	smtpmail-smtp-server "xxxxxxxxxxx"
+	smtpmail-smtp-service 25
+	smtpmail-stream-type nil)
+  (message "Mail will be sent through ni vpn"))
+
+(defun set-smtp-server ()
+  (interactive)
+  (if (message-mail-p)
+      (save-excursion
+	(let* ((from (or (save-restriction
+			  (message-narrow-to-headers)
+			  (message-fetch-field "from")) ""))
+	       (set-smtp-fun (cadr (assoc from iden-smtp-servers))))
+	  (funcall set-smtp-fun)))))
+
+(add-hook 'message-send-mail-hook 'set-smtp-server)
+
+(setq notmuch-fcc-dirs nil
+      notmuch-search-oldest-first nil)
+
+(define-key notmuch-hello-mode-map "G" #'notmuch-poll-and-refresh-this-buffer)
+(define-key notmuch-search-mode-map "G" #'notmuch-poll-and-refresh-this-buffer)
+(define-key notmuch-hello-mode-map "g" #'notmuch-refresh-this-buffer)
+(define-key notmuch-search-mode-map "g" #'notmuch-refresh-this-buffer)
+
+(define-key notmuch-show-mode-map "r" 'notmuch-show-reply)
+(define-key notmuch-show-mode-map "R" 'notmuch-show-reply-sender)
+
+(setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
+(setq message-citation-line-function 'message-insert-formatted-citation-line)
+
+(define-key notmuch-show-mode-map "d"
+      (lambda ()
+        "toggle deleted tag for message"
+        (interactive)
+        (if (member "deleted" (notmuch-show-get-tags))
+            (notmuch-show-tag (list "-deleted"))
+          (notmuch-show-tag (list "+deleted")))))
+
+(define-key notmuch-search-mode-map "d"
+  (lambda (&optional beg end)
+        "toggle deleted tag for message"
+        (interactive (notmuch-search-interactive-region))
+        (if (member "deleted" (notmuch-search-get-tags))
+            (notmuch-search-tag (list "-deleted") beg end)
+          (notmuch-search-tag (list "+deleted") beg end))))
+
+(define-key notmuch-show-mode-map "i"
+      (lambda ()
+        "toggle inbox tag for message"
+        (interactive)
+        (if (member "inbox" (notmuch-show-get-tags))
+            (notmuch-show-tag (list "-inbox"))
+          (notmuch-show-tag (list "+inbox")))))
+
+(define-key notmuch-search-mode-map "i"
+  (lambda (&optional beg end)
+        "toggle deleted tag for message"
+        (interactive (notmuch-search-interactive-region))
+        (if (member "inbox" (notmuch-search-get-tags))
+            (notmuch-search-tag (list "-inbox") beg end)
+          (notmuch-search-tag (list "+inbox") beg end))))
+
+(setq notmuch-saved-searches
+      '((:name "inbox" :query "tag:inbox" :key "i")
+	(:name "sent"  :query "tag:sent" :key "s")
+	(:name "all"   :query "*" :key "a")))
+
+(defun notmuch-hello-insert-saved-searches ()
+  "Insert the saved-searches section."
+  (let ((searches (notmuch-hello-query-counts
+		   notmuch-saved-searches
+		   :show-empty-searches notmuch-show-empty-saved-searches)))
+    (when searches
+      (widget-insert "Defaults")
+      (let ((start (point)))
+	(notmuch-hello-insert-buttons searches)))))

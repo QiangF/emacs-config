@@ -19,7 +19,8 @@
 	    "lib/helm-mt"
 	    "lib/helm-gtags"
 	    "lib/mmm-mode"
-	    "lib/s")))
+	    "lib/s"
+	    "lib/notmuch/emacs")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
