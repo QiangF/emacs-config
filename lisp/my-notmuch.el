@@ -75,8 +75,6 @@
 (setq notmuch-fcc-dirs nil
       notmuch-search-oldest-first nil)
 
-(define-key notmuch-hello-mode-map "G" #'notmuch-poll-and-refresh-this-buffer)
-(define-key notmuch-search-mode-map "G" #'notmuch-poll-and-refresh-this-buffer)
 (define-key notmuch-hello-mode-map "g" #'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "g" #'notmuch-refresh-this-buffer)
 
@@ -137,3 +135,35 @@
 (setq notmuch-address-selection-function
       (lambda (prompt collection initial-input)
         (completing-read prompt (cons initial-input collection) nil t nil 'notmuch-address-history)))
+
+(setq process-connection-type nil)
+
+(defun done-index-sentinel (process event)
+  (notmuch-refresh-all-buffers t)
+  (message "Mail sync complete"))
+
+(defun done-sync-sentinel (process event)
+  (message "Indexing mail using notmuch")
+  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new")
+			'done-index-sentinel))
+
+(defun run-mail-sync ()
+  (message "Syncing mail in background")
+  (set-process-sentinel (start-process "mbsync" nil "mbsync" "gmail" "ni")
+			  'done-sync-sentinel))
+
+(defvar mail-daemon-active-dir
+  (concat temporary-file-directory "emacs" (format "%s" (user-uid))))
+
+(defvar mail-daemon-active-file
+  (concat mail-daemon-active-dir "/mail-daemon-is-active"))
+
+(defun start-mail-daemon ()
+    (make-directory mail-daemon-active-dir t)
+    (if (file-exists-p mail-daemon-active-file)
+	(message "Not starting mail daemon, already started")
+      (add-hook 'kill-emacs-hook (lambda () (delete-file mail-daemon-active-file)))
+      (write-region "" nil mail-daemon-active-file)
+      (run-at-time "0 sec" 600 'run-mail-sync)))
+
+(start-mail-daemon)
