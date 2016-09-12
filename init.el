@@ -34,7 +34,7 @@
 ;(load "haskell")
 (load "clang")
 (load "python")
-;(load "e-shell")
+(load "my-eshell")
 (load "sh")
 (load "my-notmuch")
 ;(load "html")
