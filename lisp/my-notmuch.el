@@ -138,32 +138,45 @@
 
 (setq process-connection-type nil)
 
+(defun mail-log-add (strmsg &optional append)
+  (write-region (concat (current-time-string) ": " strmsg "\n")
+		nil mail-daemon-log-file append 'nomessage))
+
 (defun done-index-sentinel (process event)
+  (mail-log-add "Updating emacs buffers" t)
   (notmuch-refresh-all-buffers t)
-  (message "Mail sync complete"))
+  (mail-log-add "Mail sync completed" t))
 
 (defun done-sync-sentinel (process event)
-  (message "Indexing mail using notmuch")
+  (mail-log-add "Indexing mail" t)
   (set-process-sentinel (start-process "notmuch" nil "notmuch" "new")
 			'done-index-sentinel))
 
 (defun run-mail-sync ()
-  (message "Syncing mail in background")
+  (mail-log-add "Fetching mail" t)
   (set-process-sentinel (start-process "mbsync" nil "mbsync" "gmail" "ni")
-			  'done-sync-sentinel))
+			'done-sync-sentinel))
 
-(defvar mail-daemon-active-dir
+(defvar mail-daemon-temp-dir
   (concat temporary-file-directory "emacs" (format "%s" (user-uid))))
 
 (defvar mail-daemon-active-file
-  (concat mail-daemon-active-dir "/mail-daemon-is-active"))
+  (concat mail-daemon-temp-dir "/mail-daemon-is-active"))
+
+(defvar mail-daemon-log-file
+  (concat mail-daemon-temp-dir "/mail-daemon-log"))
+
+(defun clean-mail-daemon-files ()
+  (delete-file mail-daemon-active-file))
 
 (defun start-mail-daemon ()
-    (make-directory mail-daemon-active-dir t)
+    (make-directory mail-daemon-temp-dir t)
     (if (file-exists-p mail-daemon-active-file)
 	(message "Not starting mail daemon, already started")
-      (add-hook 'kill-emacs-hook (lambda () (delete-file mail-daemon-active-file)))
-      (write-region "" nil mail-daemon-active-file)
-      (run-at-time "0 sec" 600 'run-mail-sync)))
+      (add-hook 'kill-emacs-hook 'clean-mail-daemon-files)
+      (write-region "" nil mail-daemon-active-file nil 'nomessage)
+      (run-at-time "0 sec" 600 'run-mail-sync)
+      (mail-log-add "Mail daemon started")
+      (message "Mail daemon started")))
 
 (start-mail-daemon)
