@@ -8,7 +8,7 @@
     (concat "[" (getenv "USER") " " (pretty-print-dir (eshell/pwd)) "]"
 	    (if (= (user-uid) 0) "# " "$ "))))
 
-(defun eshell-clear-buffer ()
+(defun eshell-erase-buffer ()
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)
@@ -27,7 +27,7 @@
 		   comint-scroll-to-bottom-on-input nil
 		   comint-scroll-to-bottom-on-output nil
 		   comint-prompt-read-only t)
-;	     (define-key eshell-mode-map "\C-l" 'eshell-clear-buffer)
+;	     (define-key eshell-mode-map "\C-l" 'eshell-erase-buffer)
 	     (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
 
 (remove-hook 'comint-output-filter-functions
