@@ -21,13 +21,19 @@
         (if (= p (point))
             (beginning-of-line))))
 
+(defun eshell-exit ()
+  (interactive)
+  (insert "exit")
+  (eshell-send-input)
+  (delete-window))
+
 (add-hook 'eshell-mode-hook
 	  '(lambda ()
 	     (setq comint-scroll-show-maximum-output nil
 		   comint-scroll-to-bottom-on-input nil
 		   comint-scroll-to-bottom-on-output nil
 		   comint-prompt-read-only t)
-;	     (define-key eshell-mode-map "\C-l" 'eshell-erase-buffer)
+	     (define-key eshell-mode-map "\C-d" 'eshell-exit)
 	     (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
 
 (remove-hook 'comint-output-filter-functions
