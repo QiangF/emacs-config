@@ -12,7 +12,6 @@
 	    "lib/multi-term"
 	    "lib/undo-tree"
 	    "lib/haskell-mode"
-	    "lib/pinentry"
 	    "lib/anzu"
 	    "lib/notmuch"
 	    "lib/helm"
@@ -28,7 +27,7 @@
 (load "ui")
 (load "my-helm")
 (load "my-multi-term")
-(load "pin-entry")
+(load "my-pinentry")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")
