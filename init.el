@@ -28,6 +28,7 @@
 (load "my-helm")
 (load "my-multi-term")
 (load "my-pinentry")
+(load "my-easypg")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")

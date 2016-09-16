@@ -142,10 +142,19 @@
   (write-region (concat (current-time-string) ": " strmsg "\n")
 		nil mail-daemon-log-file append 'nomessage))
 
-(defun done-index-sentinel (process event)
+(defun done-all-sentinel (process event)
   (mail-log-add "Updating emacs buffers" t)
   (notmuch-refresh-all-buffers t)
   (mail-log-add "Mail sync completed" t))
+
+(defvar notmuch-filter-file ".notmuch-filters.gpg")
+
+(defun done-index-sentinel (process event)
+  (mail-log-add "Applying filters" t)
+  (let ((nm-process (start-process "notmuch" nil "notmuch" "tag" "--batch")))
+    (set-process-sentinel nm-process 'done-all-sentinel)
+    (process-send-string nm-process (gpg-read-file notmuch-filter-file))
+    (process-send-eof nm-process)))
 
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
@@ -153,6 +162,7 @@
 			'done-index-sentinel))
 
 (defun run-mail-sync ()
+  (interactive)
   (mail-log-add "Fetching mail" t)
   (set-process-sentinel (start-process "mbsync" nil "mbsync" "gmail" "ni")
 			'done-sync-sentinel))
