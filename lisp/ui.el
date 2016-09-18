@@ -24,6 +24,10 @@
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)
 
+; use system clipboard
+(setq select-enable-primary t
+      select-enable-clipboard nil)
+
 (setq-default bidi-display-reordering nil)
 
 (setq-default tab-width 8)
