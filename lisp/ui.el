@@ -25,8 +25,9 @@
 (setq ad-redefinition-action 'accept)
 
 ; use system clipboard
-(setq select-enable-primary t
-      select-enable-clipboard nil)
+(setq select-enable-primary nil
+      select-enable-clipboard t
+      mouse-drag-copy-region t)
 
 (setq-default bidi-display-reordering nil)
 
