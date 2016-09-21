@@ -29,6 +29,7 @@
 (load "my-multi-term")
 (load "my-pinentry")
 (load "my-easypg")
+(load "my-private.el.gpg")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")
