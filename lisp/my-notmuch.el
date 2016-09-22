@@ -4,16 +4,11 @@
       notmuch-always-prompt-for-sender t
       notmuch-hello-thousands-separator ""
       notmuch-show-empty-saved-searches t
-      notmuch-show-all-tags-list t
-      iden-smtp-servers '(("Ioan-Adrian Ratiu <xxx@xxxxxx.com>" setGmail)
-			  ("Ioan-Adrian Ratiu <xxxxxxxxxxxx@xx.com>" setNI))
-      notmuch-identities (mapcar (lambda (n) (car n)) iden-smtp-servers))
+      notmuch-show-all-tags-list t)
 
 (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches notmuch-hello-insert-search notmuch-hello-insert-recent-searches notmuch-hello-insert-alltags))
 
 (global-set-key (kbd "C-x m") 'notmuch-mua-new-mail)
-
-(setq user-full-name "Ioan-Adrian Ratiu")
 
 (setq message-send-mail-function 'message-smtpmail-send-it
       send-mail-function 'smtpmail-send-it
@@ -27,38 +22,6 @@
 	starttls-extra-arguments nil
 	starttls-gnutls-program "/usr/bin/gnutls-cli"
 	starttls-use-gnutls t))
-
-(defun setGmail ()
-  (interactive)
-  (setq user-mail-address "xxx@xxxxxx.com")
-  (setq smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-	smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-	smtpmail-default-smtp-server "smtp.gmail.com"
-	smtpmail-smtp-server "smtp.gmail.com"
-	smtpmail-smtp-service 587)
-  (setTlsConfig)
-  (message "Mail will be sent through gmail"))
-
-(defun setNI ()
-  (interactive)
-  (setq user-mail-address "xxxxxxxxxxxx@xx.com")
-  (setq smtpmail-starttls-credentials '(("smtp.office365.com" 587 nil nil))
-	smtpmail-auth-credentials (expand-file-name "~/.authinfo")
-	smtpmail-default-smtp-server "smtp.office365.com"
-	smtpmail-smtp-server "smtp.office365.com"
-	smtpmail-smtp-service 587)
-  (setTlsConfig)
-  (message "Mail will be sent through ni"))
-
-(defun setVPNNI ()
-  (interactive)
-  (setq user-mail-address "xxxxxxxxxxx@xx.com")
-  (setq smtpmail-starttls-credentials '(("xxxxxxxxxxxx" 25 nil nil))
-	smtpmail-default-smtp-server "xxxxxxxxxxxxxx"
-	smtpmail-smtp-server "xxxxxxxxxxx"
-	smtpmail-smtp-service 25
-	smtpmail-stream-type nil)
-  (message "Mail will be sent through ni vpn"))
 
 (defun set-smtp-server ()
   (interactive)
@@ -164,7 +127,7 @@
 (defun run-mail-sync ()
   (interactive)
   (mail-log-add "Fetching mail" t)
-  (set-process-sentinel (start-process "mbsync" nil "mbsync" "gmail" "ni")
+  (set-process-sentinel (start-process "mbsync" nil "mbsync" "-a")
 			'done-sync-sentinel))
 
 (defvar mail-daemon-temp-dir
