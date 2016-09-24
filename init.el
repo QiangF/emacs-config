@@ -2,6 +2,9 @@
 
 (setq inhibit-default-init 1)
 
+(setq load-suffixes '(".el" ".el.gpg" ".elc" ".so")
+      load-prefer-newer t)
+
 (defvar my-load-paths
   (mapcar (lambda (p) (concat user-emacs-directory p))
 	  '("lisp"
@@ -29,7 +32,7 @@
 (load "my-multi-term")
 (load "my-pinentry")
 (load "my-easypg")
-(load "my-private.el.gpg")
+(load "my-private")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")
