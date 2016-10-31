@@ -1,5 +1,7 @@
 (require 'epa)
 
+(setq password-cache-expiry nil)
+
 (defun gpg-read-file (file)
   (let ((decrypt-file (expand-file-name file user-emacs-directory))
 	(ctx (epg-make-context epa-protocol)))
