@@ -107,7 +107,7 @@
 
 (defun done-all-sentinel (process event)
   (mail-log-add "Updating emacs buffers" t)
-  (notmuch-refresh-all-buffers t)
+  (notmuch-refresh-all-buffers)
   (mail-log-add "Mail sync completed" t))
 
 (defvar notmuch-filter-file ".notmuch-filters.gpg")
