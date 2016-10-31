@@ -54,3 +54,6 @@ If the current buffer is not associated with a file, its a error."
     (setq backupFileName (concat currentFileName "~" (format-time-string "%Y%m%d_%H%M%S") "~"))
     (copy-file currentFileName backupFileName t)
     (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium")
