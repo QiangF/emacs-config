@@ -140,7 +140,8 @@
   (concat mail-daemon-temp-dir "/mail-daemon-log"))
 
 (defun clean-mail-daemon-files ()
-  (delete-file mail-daemon-active-file))
+  (when (file-exists-p mail-daemon-active-file)
+    (delete-file mail-daemon-active-file)))
 
 (defun start-mail-daemon ()
     (make-directory mail-daemon-temp-dir t)
