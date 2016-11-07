@@ -1,8 +1,6 @@
 ;(package-initialize)
 
-(setq inhibit-default-init 1)
-
-(setq load-suffixes '(".el" ".el.gpg" ".elc" ".so")
+(setq inhibit-default-init 1
       load-prefer-newer t)
 
 (defvar my-load-paths
@@ -32,7 +30,7 @@
 (load "my-multi-term")
 (load "my-pinentry")
 (load "my-easypg")
-(load "my-private")
+(load-gpg "my-private")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")
