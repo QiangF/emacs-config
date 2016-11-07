@@ -8,7 +8,7 @@
 (when have-private-key
   (add-to-list 'load-suffixes ".el.gpg"))
 
-(defun gpg-read-file (file)
+(defun read-gpg-file (file)
   (let ((decrypt-file (expand-file-name file user-emacs-directory))
 	(ctx (epg-make-context epa-protocol)))
     (if (not (file-exists-p decrypt-file))

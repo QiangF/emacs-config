@@ -116,7 +116,7 @@
   (mail-log-add "Applying filters" t)
   (let ((nm-process (start-process "notmuch" nil "notmuch" "tag" "--batch")))
     (set-process-sentinel nm-process 'done-all-sentinel)
-    (process-send-string nm-process (gpg-read-file notmuch-filter-file))
+    (process-send-string nm-process (read-gpg-file notmuch-filter-file))
     (process-send-eof nm-process)))
 
 (defun done-sync-sentinel (process event)
