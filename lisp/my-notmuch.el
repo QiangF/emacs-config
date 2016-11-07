@@ -153,4 +153,5 @@
       (mail-log-add "Mail daemon started")
       (message "Mail daemon started")))
 
-(start-mail-daemon)
+(when have-private-key
+  (start-mail-daemon))
