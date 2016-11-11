@@ -144,14 +144,14 @@
     (delete-file mail-daemon-active-file)))
 
 (defun start-mail-daemon ()
-    (make-directory mail-daemon-temp-dir t)
-    (if (file-exists-p mail-daemon-active-file)
-	(message "Not starting mail daemon, already started")
-      (add-hook 'kill-emacs-hook 'clean-mail-daemon-files)
-      (write-region "" nil mail-daemon-active-file nil 'nomessage)
-      (run-at-time "0 sec" 600 'run-mail-sync)
-      (mail-log-add "Mail daemon started")
-      (message "Mail daemon started")))
+  (make-directory mail-daemon-temp-dir t)
+  (if (file-exists-p mail-daemon-active-file)
+      (message "Not starting mail daemon, already started")
+    (add-hook 'kill-emacs-hook 'clean-mail-daemon-files)
+    (write-region "" nil mail-daemon-active-file nil 'nomessage)
+    (run-at-time "0 sec" 600 'run-mail-sync)
+    (mail-log-add "Mail daemon started")
+    (message "Mail daemon started")))
 
 (when have-private-key
   (start-mail-daemon))
