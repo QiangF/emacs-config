@@ -139,19 +139,48 @@
 (defvar mail-daemon-log-file
   (concat mail-daemon-temp-dir "/mail-daemon-log"))
 
+(defvar mail-daemon-current-session nil)
+
+(defvar mail-daemon-timer nil)
+
 (defun clean-mail-daemon-files ()
   (when (file-exists-p mail-daemon-active-file)
     (delete-file mail-daemon-active-file)))
 
+(defun is-mail-daemon-started ()
+  (interactive)
+  (let ((is-started (or (file-exists-p mail-daemon-active-file)
+			(not (null mail-daemon-timer))
+			mail-daemon-current-session)))
+    (if (not (called-interactively-p 'any))
+	is-started
+      (if is-started
+	  (message "Mail daemon is started")
+	(message "Mail daemon is not started")))))
+
 (defun start-mail-daemon ()
+  (interactive)
   (make-directory mail-daemon-temp-dir t)
-  (if (file-exists-p mail-daemon-active-file)
+  (if (is-mail-daemon-started)
       (message "Not starting mail daemon, already started")
     (add-hook 'kill-emacs-hook 'clean-mail-daemon-files)
+    (setq mail-daemon-current-session t)
     (write-region "" nil mail-daemon-active-file nil 'nomessage)
-    (run-at-time "0 sec" 600 'run-mail-sync)
+    (setq mail-daemon-timer (run-at-time "0 sec" 600 'run-mail-sync))
     (mail-log-add "Mail daemon started")
     (message "Mail daemon started")))
+
+(defun stop-mail-daemon ()
+  (interactive)
+  (if (not (is-mail-daemon-started))
+      (message "WARNING (stop-mail-daemon): Mail deamon is not started")
+    (cancel-timer mail-daemon-timer)
+    (setq mail-daemon-current-session nil
+	  mail-daemon-timer nil)
+    (remove-hook 'kill-emacs-hook 'clean-mail-daemon-files)
+    (clean-mail-daemon-files)
+    (mail-log-add "Mail daemon stopped")
+    (message "Mail daemon stopped")))
 
 (when have-private-key
   (start-mail-daemon))
