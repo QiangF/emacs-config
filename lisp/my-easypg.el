@@ -10,11 +10,11 @@
   (message "WARNING: Private GPG key not found"))
 
 (defun read-gpg-file (file)
-  (let ((decrypt-file (expand-file-name file user-emacs-directory))
+  (let ((file-to-decrypt (expand-file-name file user-emacs-directory))
 	(ctx (epg-make-context epa-protocol)))
-    (if (not (file-exists-p decrypt-file))
-	(error "File %s does not exist" decrypt-file)
-      (epg-decrypt-file ctx decrypt-file nil))))
+    (if (not (file-exists-p file-to-decrypt))
+	(error "File %s does not exist" file-to-decrypt)
+      (epg-decrypt-file ctx file-to-decrypt nil))))
 
 (defun load-gpg (file)
   (if have-private-key
