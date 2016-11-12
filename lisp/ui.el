@@ -20,6 +20,7 @@
 (put 'erase-buffer 'disabled nil) ;allow (erase-buffer)
 
 (global-set-key (kbd "C-x F") 'find-file-as-root)
+(global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)
