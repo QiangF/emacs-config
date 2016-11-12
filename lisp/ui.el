@@ -69,6 +69,7 @@
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
+(setq recenter-positions '(top middle bottom))
 
 (setq dired-listing-switches "-alh")
 
