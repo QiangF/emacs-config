@@ -155,8 +155,10 @@
     (if (not (called-interactively-p 'any))
 	is-started
       (if is-started
-	  (message "Mail daemon is started")
-	(message "Mail daemon is not started")))))
+	  (if (file-exists-p mail-daemon-active-file)
+	      (message "Mail daemon started in another session")
+	    (message "Mail daemon started in current session"))
+	(message "Mail daemon stopped")))))
 
 (defun start-mail-daemon ()
   (interactive)
