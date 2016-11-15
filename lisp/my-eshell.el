@@ -111,3 +111,5 @@
 
 (setq eshell-prefer-lisp-functions t)
 (setq eshell-prefer-lisp-variables t)
+
+(setq eshell-hist-ignoredups t)
