@@ -108,3 +108,6 @@
 ;(remove-hook 'comint-output-filter-functions 'ansi-color-process-output)
 
 (setq eshell-scroll-show-maximum-output nil)
+
+(setq eshell-prefer-lisp-functions t)
+(setq eshell-prefer-lisp-variables t)
