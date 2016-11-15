@@ -22,18 +22,19 @@
 (defun compare-char-before (pos char-to-compare)
   (char-equal char-to-compare (char-before (- (point) pos))))
 
-(defun eshell-quick-exit ()
+(defun eshell-quick-exit-or-del ()
   (interactive)
-  (when (and (eolp)
-	     (compare-char-before 0 ?\s)
-	     (or (compare-char-before 1 ?$)
-		 (compare-char-before 1 ?#)))
-      (insert "exit")
-      (eshell-send-input)))
+  (if (not (and (eolp)
+		(compare-char-before 0 ?\s)
+		(or (compare-char-before 1 ?$)
+		    (compare-char-before 1 ?#))))
+      (delete-char 1)
+    (insert "exit")
+    (eshell-send-input)))
 
 (add-hook 'eshell-mode-hook
 	  '(lambda ()
-	     (define-key eshell-mode-map "\C-d" 'eshell-quick-exit)
+	     (define-key eshell-mode-map "\C-d" 'eshell-quick-exit-or-del)
 	     (define-key eshell-mode-map "\C-a" 'eshell-maybe-bol)))
 
 ;; (remove-hook 'comint-output-filter-functions
