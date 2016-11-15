@@ -1,0 +1,10 @@
+eshell-history:
+  - Add gpg read/write capability to
+    eshell-read-history and eshell-write-history
+
+eshell-alias:
+  - add file to git, maybe encrypt?
+
+my-eshell:
+  - cleanup dead code
+
