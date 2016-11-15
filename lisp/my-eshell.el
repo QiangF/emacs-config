@@ -104,7 +104,7 @@
 
 ;; (global-set-key (kbd "C-!") 'eshell-here)
 
-(remove-hook 'comint-output-filter-functions 'comint-postoutput-scroll-to-bottom)
-(remove-hook 'comint-output-filter-functions 'ansi-color-process-output)
+;(remove-hook 'comint-output-filter-functions 'comint-postoutput-scroll-to-bottom)
+;(remove-hook 'comint-output-filter-functions 'ansi-color-process-output)
 
 (setq eshell-scroll-show-maximum-output nil)
