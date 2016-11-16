@@ -1,10 +1,8 @@
-eshell-history:
-  - Add gpg read/write capability to
-    eshell-read-history and eshell-write-history
-
-eshell-alias:
-  - add file to git, maybe encrypt?
-
 my-eshell:
   - cleanup dead code
+  - enable external command arg completion
 
+my-easypg:
+  - make gpg passphrase insertion wait if it is not introduces
+  (currently it lets the load process continue and if you enter the pass
+  later you get: GETPIN error (error "Selecting deleted buffer"))
