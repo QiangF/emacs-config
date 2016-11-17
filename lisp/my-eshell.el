@@ -85,7 +85,9 @@
 ;(setq scroll-conservatively 10000)
 ;(setq auto-window-vscroll nil)
 
-;(add-to-list 'eshell-visual-commands "ssh")
+(add-to-list 'eshell-visual-commands "ssh")
+(add-to-list 'eshell-visual-subcommands
+	     '("git" "log" "diff" "show"))
 
 ;; (defun eshell-here ()
 ;;   "Opens up a new shell in the directory associated with the
