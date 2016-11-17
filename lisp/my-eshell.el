@@ -60,7 +60,8 @@ directory to make multiple eshell windows easier."
 (setq eshell-prefer-lisp-functions t
       eshell-prefer-lisp-variables t
       eshell-scroll-show-maximum-output nil
-      eshell-hist-ignoredups t)
+      eshell-hist-ignoredups t
+      eshell-escape-control-x nil)
 
 (setq comint-scroll-show-maximum-output nil
       comint-input-ignoredups t)
