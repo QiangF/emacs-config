@@ -13,3 +13,4 @@ session.*
 data/*
 recentf
 network-security.data
+.tramp_history
