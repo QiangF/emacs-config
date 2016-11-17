@@ -1,5 +1,6 @@
 (require 'eshell)
 (require 'em-tramp)
+(require 'em-term)
 
 (defun pretty-print-dir (dir)
   (cond ((string-equal dir "/") "/")
