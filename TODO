@@ -1,6 +1,6 @@
 my-eshell:
-  - cleanup dead code
   - enable external command arg completion
+  - syntax coloring in eshell prompt for git status and others
 
 my-easypg:
   - make gpg passphrase insertion wait if it is not introduces
