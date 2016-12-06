@@ -111,6 +111,7 @@
   (mail-log-add "Mail sync completed" t))
 
 (defvar notmuch-filter-file ".notmuch-filters.gpg")
+(defvar mbsync-config-file ".mbsyncrc.gpg")
 
 (defun done-index-sentinel (process event)
   (mail-log-add "Applying filters" t)
@@ -127,8 +128,10 @@
 (defun run-mail-sync ()
   (interactive)
   (mail-log-add "Fetching mail" t)
-  (set-process-sentinel (start-process "mbsync" nil "mbsync" "-a")
-			'done-sync-sentinel))
+  (let ((mbsc-process (start-process "mbsync" nil "mbsync" "-c" "/dev/stdin" "-a")))
+    (set-process-sentinel mbsc-process 'done-sync-sentinel)
+    (process-send-string mbsc-process (read-gpg-file mbsync-config-file))
+    (process-send-eof mbsc-process)))
 
 (defvar mail-daemon-temp-dir
   (concat temporary-file-directory "emacs" (format "%s" (user-uid))))
