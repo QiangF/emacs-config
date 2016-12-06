@@ -13,8 +13,11 @@
   (let ((file-to-decrypt (expand-file-name file user-emacs-directory))
 	(ctx (epg-make-context epa-protocol)))
     (if (not (file-exists-p file-to-decrypt))
-	(error "File %s does not exist" file-to-decrypt)
-      (epg-decrypt-file ctx file-to-decrypt nil))))
+	(progn
+	  (error "File %s does not exist" file-to-decrypt)
+	  (message "Decrypting %s...failed" file-to-decrypt))
+      (epg-decrypt-file ctx file-to-decrypt nil)
+      (message "Decrypting %s...done" file-to-decrypt))))
 
 (defun load-gpg (file)
   (if have-private-key
