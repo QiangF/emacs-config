@@ -10,3 +10,5 @@ my-easypg:
 notmuch:
   - use locally compiled notmuch exe (not the binary shipped by distros)
   - apply patch  & use encrypted notmuch config from local exe
+  - use saved searches instead of tags
+  - call redraw-redisplay after creating a new window on notmuch-hello
