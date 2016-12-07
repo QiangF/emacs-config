@@ -12,3 +12,5 @@ notmuch:
   - apply patch  & use encrypted notmuch config from local exe
   - use saved searches instead of tags
   - call redraw-redisplay after creating a new window on notmuch-hello
+  - make notmuch-show refresh function keep the value of point, not reset
+  beginning of msg
