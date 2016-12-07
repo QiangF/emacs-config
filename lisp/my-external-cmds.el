@@ -55,5 +55,14 @@ If the current buffer is not associated with a file, its a error."
     (copy-file currentFileName backupFileName t)
     (message (concat "Backup saved as: " (file-name-nondirectory backupFileName)))))
 
+(defun delete-this-file-and-kill-its-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (delete-file filename)
+      (message "Deleted file %s" filename)
+      (kill-buffer))))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
