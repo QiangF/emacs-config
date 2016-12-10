@@ -110,8 +110,8 @@
   (notmuch-refresh-all-buffers)
   (mail-log-add "Mail sync completed" t))
 
-(defvar notmuch-filter-file ".notmuch-filters.gpg")
-(defvar mbsync-config-file ".mbsyncrc.gpg")
+(defvar notmuch-filter-file "config/notmuch-filters.gpg")
+(defvar mbsync-config-file "config/mbsyncrc.gpg")
 
 (defun done-index-sentinel (process event)
   (mail-log-add "Applying filters" t)
