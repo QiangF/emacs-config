@@ -3,9 +3,7 @@ my-eshell:
   - syntax coloring in eshell prompt for git status and others
 
 my-easypg:
-  - make gpg passphrase insertion wait if it is not introduces
-  (currently it lets the load process continue and if you enter the pass
-  later you get: GETPIN error (error "Selecting deleted buffer"))
+  - make emacs pop-up a frame or window when gpg-agent requests a passw
 
 notmuch:
   - use locally compiled notmuch exe (not the binary shipped by distros)
