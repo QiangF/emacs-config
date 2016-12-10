@@ -187,5 +187,9 @@
     (mail-log-add "Mail daemon stopped")
     (message "Mail daemon stopped")))
 
+(require 'nsm)
+(setq nsm-settings-file (concat user-emacs-directory
+				"tmp/network-security.data"))
+
 (when have-private-key
   (start-mail-daemon))
