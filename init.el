@@ -31,6 +31,7 @@
 (load "my-pinentry")
 (load "my-easypg")
 (load-gpg "private-config")
+(load "my-tramp")
 (load "my-multi-term")
 (load "my-eshell")
 (load "org-mode")
