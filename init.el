@@ -5,7 +5,8 @@
 
 (defvar my-load-paths
   (mapcar (lambda (p) (concat user-emacs-directory p))
-	  '("lisp"
+	  '("config"
+	    "lisp"
 	    "lib/dash"
 	    "lib/with-editor"
 	    "lib/magit/lisp"
@@ -30,7 +31,7 @@
 (load "my-multi-term")
 (load "my-pinentry")
 (load "my-easypg")
-(load-gpg "my-private")
+(load-gpg "private-config")
 (load "org-mode")
 ;(load "my-magit")
 ;(load "haskell")
