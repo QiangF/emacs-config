@@ -8,7 +8,6 @@
 (require 'helm-gtags)
 
 (setq helm-ff-transformer-show-only-basename nil
-      helm-adaptive-history-file             "~/.emacs.d/.helm-history"
       helm-yank-symbol-first                 t
       helm-move-to-line-cycle-in-source      t
       helm-buffers-fuzzy-matching            t
@@ -42,7 +41,6 @@
       helm-imenu-fuzzy-match    t)
 
 (helm-mode t)
-(helm-adaptive-mode t)
 
 ;; Enable helm-gtags-mode
 (add-hook 'dired-mode-hook 'helm-gtags-mode)
