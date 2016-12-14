@@ -25,7 +25,7 @@
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
-(load "my-external-cmds")
+(load "external-interaction")
 (load "ui")
 (load "my-helm")
 (load "my-pinentry")
