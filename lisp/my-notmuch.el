@@ -133,14 +133,11 @@
     (process-send-string mbsc-process (read-gpg-file mbsync-config-file))
     (process-send-eof mbsc-process)))
 
-(defvar mail-daemon-temp-dir
-  (concat temporary-file-directory "emacs" (format "%s" (user-uid))))
-
 (defvar mail-daemon-active-file
-  (concat mail-daemon-temp-dir "/mail-daemon-is-active"))
+  (concat temporary-file-directory "mail-daemon-is-active"))
 
 (defvar mail-daemon-log-file
-  (concat mail-daemon-temp-dir "/mail-daemon-log"))
+  (concat temporary-file-directory "mail-daemon-log"))
 
 (defvar mail-daemon-current-session nil)
 
@@ -165,7 +162,6 @@
 
 (defun start-mail-daemon ()
   (interactive)
-  (make-directory mail-daemon-temp-dir t)
   (if (is-mail-daemon-started)
       (message "Not starting mail daemon, already started")
     (add-hook 'kill-emacs-hook 'clean-mail-daemon-files)
@@ -188,8 +184,7 @@
     (message "Mail daemon stopped")))
 
 (require 'nsm)
-(setq nsm-settings-file (concat user-emacs-directory
-				"tmp/network-security.data"))
+(setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
 
 (when have-private-key
   (start-mail-daemon))
