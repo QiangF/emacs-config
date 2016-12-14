@@ -43,6 +43,5 @@
 (load "my-notmuch")
 ;(load "html")
 ;(load "w3m")
-;(load "newsticker")
 
 (mapc 'load (file-expand-wildcards (concat user-emacs-directory "load.d/*.el")))
