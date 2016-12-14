@@ -43,3 +43,6 @@
 [submodule "lib/s"]
 	path = lib/s
 	url = https://github.com/magnars/s.el.git
+[submodule "lib/pinentry"]
+	path = lib/pinentry
+	url = git@github.com:10ne1/pinentry.git
