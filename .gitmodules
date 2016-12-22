@@ -49,3 +49,6 @@
 [submodule "lib/libgpg-error"]
 	path = lib/libgpg-error
 	url = git@github.com:10ne1/libgpg-error.git
+[submodule "lib/libassuan"]
+	path = lib/libassuan
+	url = git@github.com:10ne1/libassuan.git
