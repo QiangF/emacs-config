@@ -46,3 +46,6 @@
 [submodule "lib/pinentry"]
 	path = lib/pinentry
 	url = git@github.com:10ne1/pinentry.git
+[submodule "lib/libgpg-error"]
+	path = lib/libgpg-error
+	url = git@github.com:10ne1/libgpg-error.git
