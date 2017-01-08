@@ -4,7 +4,8 @@
       notmuch-always-prompt-for-sender t
       notmuch-hello-thousands-separator ""
       notmuch-show-empty-saved-searches t
-      notmuch-show-all-tags-list t)
+      notmuch-show-all-tags-list t
+      notmuch-crypto-process-mime t)
 
 (setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches notmuch-hello-insert-search notmuch-hello-insert-recent-searches notmuch-hello-insert-alltags))
 
