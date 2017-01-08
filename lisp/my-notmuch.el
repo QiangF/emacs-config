@@ -14,6 +14,7 @@
 (setq message-send-mail-function 'message-smtpmail-send-it
       send-mail-function 'smtpmail-send-it
       message-kill-buffer-on-exit t
+      message-use-idna nil
       message-sendmail-envelope-from 'header
       mail-user-agent 'notmuch-user-agent)
 
