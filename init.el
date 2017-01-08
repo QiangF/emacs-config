@@ -21,7 +21,8 @@
 	    "lib/helm-gtags"
 	    "lib/mmm-mode"
 	    "lib/s"
-	    "lib/notmuch/emacs")))
+	    "lib/notmuch/emacs"
+	    "lib/magit")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
@@ -35,7 +36,7 @@
 (load "my-multi-term")
 (load "my-eshell")
 (load "org-mode")
-;(load "my-magit")
+(load "my-magit")
 ;(load "haskell")
 (load "clang")
 (load "python")
