@@ -1,3 +1,6 @@
+emacs-core:
+  - remove idna (add option not to start it in idna.el api functions)
+
 my-eshell:
   - enable external command arg completion
   - syntax coloring in eshell prompt for git status and others
