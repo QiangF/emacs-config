@@ -52,3 +52,9 @@
 [submodule "lib/libassuan"]
 	path = lib/libassuan
 	url = git@github.com:10ne1/libassuan.git
+[submodule "lib/emacs-pkgbuild"]
+	path = lib/emacs-pkgbuild
+	url = git@github.com:10ne1/emacs-pkgbuild.git
+[submodule "lib/emacs"]
+	path = lib/emacs
+	url = git@github.com:10ne1/emacs.git
