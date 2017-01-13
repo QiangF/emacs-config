@@ -1,3 +1,6 @@
+dired:
+  - poll directories for changes (new dir should apper in buffer)
+
 my-eshell:
   - enable external command arg completion
   - syntax coloring in eshell prompt for git status and others
