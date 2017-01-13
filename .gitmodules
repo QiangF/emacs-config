@@ -58,3 +58,6 @@
 [submodule "lib/emacs"]
 	path = lib/emacs
 	url = git@github.com:10ne1/emacs.git
+[submodule "lib/notmuch-pkgbuild"]
+	path = lib/notmuch-pkgbuild
+	url = git@github.com:10ne1/notmuch-pkgbuild.git
