@@ -113,6 +113,7 @@
   (mail-log-add "Mail sync completed" t))
 
 (defvar notmuch-filter-file "config/notmuch-filters.gpg")
+(defvar notmuch-config-file "config/notmuch-config.gpg")
 (defvar mbsync-config-file "config/mbsyncrc.gpg")
 
 (defun done-index-sentinel (process event)
@@ -124,8 +125,9 @@
 
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
-  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new")
-			'done-index-sentinel))
+  (let ((nm-process (start-process "notmuch" nil "notmuch" "-c" "/dev/stdin" "new")))
+    (process-send-string nm-process (read-gpg-file notmuch-config-file))
+    (process-send-eof nm-process)))
 
 (defun run-mail-sync ()
   (interactive)
