@@ -125,9 +125,8 @@
 
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
-  (let ((nm-process (start-process "notmuch" nil "notmuch" "--config=/dev/stdin" "new")))
-    (process-send-string nm-process (read-gpg-file notmuch-config-file))
-    (process-send-eof nm-process)))
+  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new")
+			'done-index-sentinel))
 
 (defun run-mail-sync ()
   (interactive)
@@ -189,6 +188,12 @@
 
 (require 'nsm)
 (setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
+
+(defvar notmuch-config-plain-file
+  (concat temporary-file-directory "notmuch-config"))
+
+(epa-decrypt-file notmuch-config-file notmuch-config-plain-file)
+(setenv "NOTMUCH_CONFIG" notmuch-config-plain-file)
 
 (when have-private-key
   (start-mail-daemon))
