@@ -69,3 +69,4 @@ If the current buffer is not associated with a file, its a error."
 
 (setq user-emacs-directory (expand-file-name user-emacs-directory))
 (setq temporary-file-directory (concat user-emacs-directory "tmp/"))
+(setq config-file-directory (concat user-emacs-directory "config/"))
