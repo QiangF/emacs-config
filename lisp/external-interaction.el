@@ -67,4 +67,5 @@ If the current buffer is not associated with a file, its a error."
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
+(setq user-emacs-directory (expand-file-name user-emacs-directory))
 (setq temporary-file-directory (concat user-emacs-directory "tmp/"))
