@@ -125,7 +125,7 @@
 
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
-  (let ((nm-process (start-process "notmuch" nil "notmuch" "-c" "/dev/stdin" "new")))
+  (let ((nm-process (start-process "notmuch" nil "notmuch" "--config=/dev/stdin" "new")))
     (process-send-string nm-process (read-gpg-file notmuch-config-file))
     (process-send-eof nm-process)))
 
