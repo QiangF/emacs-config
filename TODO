@@ -14,3 +14,5 @@ notmuch:
   - call redraw-redisplay after creating a new window on notmuch-hello
   - make notmuch-show refresh function keep the value of point, not reset
   beginning of msg
+  - create notmuch-reload-config function to decrypt and replace the
+  existing notmuch config under tmp
