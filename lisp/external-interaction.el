@@ -70,3 +70,8 @@ If the current buffer is not associated with a file, its a error."
 (setq user-emacs-directory (expand-file-name user-emacs-directory))
 (setq temporary-file-directory (concat user-emacs-directory "tmp/"))
 (setq config-file-directory (concat user-emacs-directory "config/"))
+
+(defvar gpg-agent-ssh-sock
+  (concat "/run/user/" (number-to-string (user-uid)) "/gnupg/S.gpg-agent.ssh"))
+
+(setenv "SSH_AUTH_SOCK" gpg-agent-ssh-sock)
