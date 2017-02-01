@@ -61,3 +61,6 @@
 [submodule "lib/notmuch-pkgbuild"]
 	path = lib/notmuch-pkgbuild
 	url = git@github.com:10ne1/notmuch-pkgbuild.git
+[submodule "lib/geiser"]
+	path = lib/geiser
+	url = git://git.sv.gnu.org/geiser.git

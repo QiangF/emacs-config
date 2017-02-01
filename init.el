@@ -22,7 +22,8 @@
 	    "lib/mmm-mode"
 	    "lib/s"
 	    "lib/notmuch/emacs"
-	    "lib/magit")))
+	    "lib/magit"
+	    "lib/geiser/elisp")))
 
 (mapc (apply-partially 'add-to-list 'load-path) my-load-paths)
 
@@ -42,6 +43,7 @@
 (load "python")
 (load "sh")
 (load "my-notmuch")
+(load "geiser")
 ;(load "html")
 ;(load "w3m")
 
