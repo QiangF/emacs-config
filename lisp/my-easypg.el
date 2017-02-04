@@ -19,14 +19,9 @@
 
 (defun gpg-agent-started? ()
   (interactive)
-  (let* ((process-names (mapcar
-			(lambda (x)(cdr (assoc 'comm (process-attributes x))))
-			(list-system-processes)))
-	 (agent-started (not (null (member "gpg-agent" process-names)))))
-    (if agent-started
-	(message "gpg-agent is started")
-      (message "gpg-agent is not started"))
-    agent-started))
+  (if (system-process-running? "gpg-agent")
+      (progn (message "gpg-agent is started") t)
+    (message "gpg-agent is not started") nil))
 
 (defun load-gpg (file)
   (if have-private-key

@@ -64,6 +64,12 @@ If the current buffer is not associated with a file, its a error."
       (message "Deleted file %s" filename)
       (kill-buffer))))
 
+(defun system-process-running? (proc-name)
+  (let* ((process-names (mapcar
+			(lambda (x)(cdr (assoc 'comm (process-attributes x))))
+			(list-system-processes))))
+    (not (null (member proc-name process-names)))))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
