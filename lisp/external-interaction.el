@@ -70,12 +70,23 @@ If the current buffer is not associated with a file, its a error."
 			(list-system-processes))))
     (not (null (member proc-name process-names)))))
 
+(defun gpg-agent-started? ()
+  (interactive)
+  (if (system-process-running? "gpg-agent")
+      (progn (message "gpg-agent is started") t)
+    (message "gpg-agent is not started") nil))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
 (setq user-emacs-directory (expand-file-name user-emacs-directory))
 (setq temporary-file-directory (concat user-emacs-directory "tmp/"))
 (setq config-file-directory (concat user-emacs-directory "config/"))
+
+(if (gpg-agent-started?)
+    (message "GPG-AGENT is already started")
+  (message "Starting GPG-AGENT")
+  (start-process "gpg-agent" nil "gpg-agent" "--daemon"))
 
 (defvar gpg-agent-ssh-sock
   (concat "/run/user/" (number-to-string (user-uid)) "/gnupg/S.gpg-agent.ssh"))

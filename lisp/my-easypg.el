@@ -11,12 +11,6 @@
       (message "Decrypting %s...failed" file-to-decrypt)
       (error "File %s does not exist" file-to-decrypt))))
 
-(defun gpg-agent-started? ()
-  (interactive)
-  (if (system-process-running? "gpg-agent")
-      (progn (message "gpg-agent is started") t)
-    (message "gpg-agent is not started") nil))
-
 (defun load-gpg (file)
   (if have-private-key
       (load file)
