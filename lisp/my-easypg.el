@@ -17,6 +17,17 @@
       (message "Decrypting %s...failed" file-to-decrypt)
       (error "File %s does not exist" file-to-decrypt))))
 
+(defun gpg-agent-started? ()
+  (interactive)
+  (let* ((process-names (mapcar
+			(lambda (x)(cdr (assoc 'comm (process-attributes x))))
+			(list-system-processes)))
+	 (agent-started (not (null (member "gpg-agent" process-names)))))
+    (if agent-started
+	(message "gpg-agent is started")
+      (message "gpg-agent is not started"))
+    agent-started))
+
 (defun load-gpg (file)
   (if have-private-key
       (load file)
