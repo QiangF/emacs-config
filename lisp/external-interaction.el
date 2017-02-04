@@ -73,8 +73,12 @@ If the current buffer is not associated with a file, its a error."
 (defun gpg-agent-started? ()
   (interactive)
   (if (system-process-running? "gpg-agent")
-      (progn (message "gpg-agent is started") t)
-    (message "gpg-agent is not started") nil))
+      (if (called-interactively-p 'interactive)
+	  (message "gpg-agent is started")
+	t)
+    (if (called-interactively-p 'interactive)
+	(message "gpg-agent is not started")
+      nil)))
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
