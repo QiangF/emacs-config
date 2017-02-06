@@ -41,7 +41,6 @@
 (load "clang")
 (load "python")
 (load "sh")
-(load "geiser")
 ;(load "html")
 ;(load "w3m")
 
