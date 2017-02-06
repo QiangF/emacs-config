@@ -1,3 +1,4 @@
+(require 'pinentry)
 (require 'epa)
 
 (defvar have-private-key
@@ -16,8 +17,25 @@
       (load file)
     (message "WARNING: Couldn't load %s (No gpg key found)" file)))
 
-(setq password-cache-expiry nil)
-
-(if have-private-key
+; load this in a post-frame hook because gpg-agent asks for a password on first
+; startup and caches it. Don't want emacs daemon to hang because of gpg-agent.
+(defun load-private-data ()
+  (interactive)
+  (if (not have-private-key)
+      (message "ERROR: Private GPG key not found")
+    (setq password-cache-expiry nil
+	  pinentry--socket-dir temporary-file-directory)
+    (unless (file-exists-p (concat pinentry--socket-dir "pinentry"))
+      (pinentry-start)
+      (add-hook 'kill-emacs-hook 'pinentry-stop))
     (add-to-list 'load-suffixes ".el.gpg")
-  (message "ERROR: Private GPG key not found"))
+    (load-gpg "private-config")
+    (epa-decrypt-file notmuch-config-file notmuch-config-plain-file)
+    (setenv "NOTMUCH_CONFIG" notmuch-config-plain-file)
+    (start-mail-daemon)))
+
+(defun first-frame-hook (frame)
+  (remove-hook 'after-make-frame-functions 'first-frame-hook)
+  (run-at-time nil nil 'load-private-data))
+
+(add-hook 'after-make-frame-functions 'first-frame-hook)

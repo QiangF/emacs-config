@@ -192,9 +192,3 @@
 
 (defvar notmuch-config-plain-file
   (concat temporary-file-directory "notmuch-config"))
-
-(epa-decrypt-file notmuch-config-file notmuch-config-plain-file)
-(setenv "NOTMUCH_CONFIG" notmuch-config-plain-file)
-
-(when have-private-key
-  (start-mail-daemon))
