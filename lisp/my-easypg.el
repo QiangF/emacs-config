@@ -4,6 +4,9 @@
 (defvar have-private-key
   (string= (shell-command-to-string "gpg --list-secret-keys | grep 720FD288FB5BBF5DE3A4BEBA92C6AB6D6C229F93 | wc -l") "1\n"))
 
+(defvar gpg-agent-ssh-sock
+  (concat "/run/user/" (number-to-string (user-uid)) "/gnupg/S.gpg-agent.ssh"))
+
 (defun read-gpg-file (file)
   (let ((file-to-decrypt (expand-file-name file user-emacs-directory))
 	(ctx (epg-make-context epa-protocol)))
@@ -23,6 +26,8 @@
   (interactive)
   (if (not have-private-key)
       (message "ERROR: Private GPG key not found")
+    (start-process "gpg-agent" nil "gpg-agent" "--daemon")
+    (setenv "SSH_AUTH_SOCK" gpg-agent-ssh-sock)
     (setq password-cache-expiry nil
 	  pinentry--socket-dir temporary-file-directory)
     (unless (file-exists-p (concat pinentry--socket-dir "pinentry"))

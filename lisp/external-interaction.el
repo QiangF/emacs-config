@@ -64,35 +64,9 @@ If the current buffer is not associated with a file, its a error."
       (message "Deleted file %s" filename)
       (kill-buffer))))
 
-(defun system-process-running? (proc-name)
-  (let* ((process-names (mapcar
-			(lambda (x)(cdr (assoc 'comm (process-attributes x))))
-			(list-system-processes))))
-    (not (null (member proc-name process-names)))))
-
-(defun gpg-agent-started? ()
-  (interactive)
-  (if (system-process-running? "gpg-agent")
-      (if (called-interactively-p 'interactive)
-	  (message "gpg-agent is started")
-	t)
-    (if (called-interactively-p 'interactive)
-	(message "gpg-agent is not started")
-      nil)))
-
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
 (setq user-emacs-directory (expand-file-name user-emacs-directory))
 (setq temporary-file-directory (concat user-emacs-directory "tmp/"))
 (setq config-file-directory (concat user-emacs-directory "config/"))
-
-(if (gpg-agent-started?)
-    (message "GPG-AGENT is already started")
-  (message "Starting GPG-AGENT")
-  (start-process "gpg-agent" nil "gpg-agent" "--daemon"))
-
-(defvar gpg-agent-ssh-sock
-  (concat "/run/user/" (number-to-string (user-uid)) "/gnupg/S.gpg-agent.ssh"))
-
-(setenv "SSH_AUTH_SOCK" gpg-agent-ssh-sock)
