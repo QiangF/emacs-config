@@ -84,6 +84,8 @@
 
 (global-set-key (kbd "C-z") nil)
 
+(setq global-auto-revert-non-file-buffers t)
+
 (blink-cursor-mode 0)
 (global-font-lock-mode 1) ; syntax coloring on
 (global-auto-revert-mode 1)
