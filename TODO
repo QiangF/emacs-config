@@ -2,10 +2,6 @@ my-eshell:
   - enable external command arg completion
   - syntax coloring in eshell prompt for git status and others
 
-my-easypg:
-  - make emacs pop-up a frame or window when gpg-agent requests a passw
-  (this may be solved by using emacs-daemon)
-
 notmuch:
   - use saved searches instead of tags
   - call redraw-redisplay after creating a new window on notmuch-hello
