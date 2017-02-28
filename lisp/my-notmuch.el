@@ -8,7 +8,10 @@
       notmuch-crypto-process-mime t
       notmuch-address-internal-completion '(received nil))
 
-(setq notmuch-hello-sections '(notmuch-hello-insert-saved-searches notmuch-hello-insert-search notmuch-hello-insert-recent-searches notmuch-hello-insert-alltags))
+(setq notmuch-hello-sections
+      '(notmuch-hello-insert-saved-searches
+	notmuch-hello-insert-search
+	notmuch-hello-insert-recent-searches))
 
 (global-set-key (kbd "C-x m") 'notmuch-mua-new-mail)
 
