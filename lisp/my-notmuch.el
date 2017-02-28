@@ -82,11 +82,6 @@
             (notmuch-search-tag (list "-inbox") beg end)
           (notmuch-search-tag (list "+inbox") beg end))))
 
-(setq notmuch-saved-searches
-      '((:name "inbox" :query "tag:inbox" :key "i")
-	(:name "sent"  :query "tag:sent" :key "s")
-	(:name "all"   :query "*" :key "a")))
-
 (defun notmuch-hello-insert-saved-searches ()
   "Insert the saved-searches section."
   (let ((searches (notmuch-hello-query-counts
@@ -113,21 +108,12 @@
   (notmuch-refresh-all-buffers)
   (mail-log-add "Mail sync completed" t))
 
-(defvar notmuch-filter-file (concat config-file-directory "notmuch-filters.gpg"))
 (defvar notmuch-config-file (concat config-file-directory "notmuch-config.gpg"))
 (defvar mbsync-config-file (concat config-file-directory "mbsyncrc.gpg"))
 
-(defun done-index-sentinel (process event)
-  (mail-log-add "Applying filters" t)
-  (let ((nm-process (start-process "notmuch" nil "notmuch" "tag" "--batch")))
-    (set-process-sentinel nm-process 'done-all-sentinel)
-    (process-send-string nm-process (read-gpg-file notmuch-filter-file))
-    (process-send-eof nm-process)))
-
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
-  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new")
-			'done-index-sentinel))
+  (start-process "notmuch" nil "notmuch" "new"))
 
 (defun run-mail-sync ()
   (interactive)
