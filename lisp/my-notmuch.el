@@ -120,7 +120,7 @@
 
 (defun done-sync-sentinel (process event)
   (mail-log-add "Indexing mail" t)
-  (start-process "notmuch" nil "notmuch" "new"))
+  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new") 'done-all-sentinel))
 
 (defun run-mail-sync ()
   (interactive)
