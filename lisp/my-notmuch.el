@@ -85,12 +85,16 @@
 (defun notmuch-hello-insert-saved-searches ()
   "Insert the saved-searches section."
   (let ((searches (notmuch-hello-query-counts
-		   notmuch-saved-searches
+		   (if notmuch-saved-search-sort-function
+		       (funcall notmuch-saved-search-sort-function
+				notmuch-saved-searches)
+		     notmuch-saved-searches)
 		   :show-empty-searches notmuch-show-empty-saved-searches)))
     (when searches
-      (widget-insert "Defaults")
+      (widget-insert "\n")
       (let ((start (point)))
-	(notmuch-hello-insert-buttons searches)))))
+	(notmuch-hello-insert-buttons searches)
+	(indent-rigidly start (point) notmuch-hello-indent)))))
 
 ; use helm for notmuch address completion
 (setq notmuch-address-selection-function
