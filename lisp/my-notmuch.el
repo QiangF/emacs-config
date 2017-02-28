@@ -118,9 +118,17 @@
 (defvar notmuch-config-file (concat config-file-directory "notmuch-config.gpg"))
 (defvar mbsync-config-file (concat config-file-directory "mbsyncrc.gpg"))
 
-(defun done-sync-sentinel (process event)
+(defun done-delete-sentinel (process event)
   (mail-log-add "Indexing mail" t)
   (set-process-sentinel (start-process "notmuch" nil "notmuch" "new") 'done-all-sentinel))
+
+(defvar notmuch-expunge-cmd
+  "notmuch search --format=text0 --output=files tag:deleted | xargs -0 --no-run-if-empty rm")
+
+(defun done-sync-sentinel (process event)
+  (mail-log-add "Expunging mail" t)
+  (let ((expunge-proc (start-process-shell-command "notmuch-expunge" nil notmuch-expunge-cmd)))
+    (set-process-sentinel expunge-proc 'done-delete-sentinel)))
 
 (defun run-mail-sync ()
   (interactive)
