@@ -69,22 +69,6 @@
             (notmuch-search-tag (list "-deleted") beg end)
           (notmuch-search-tag (list "+deleted") beg end))))
 
-(define-key notmuch-show-mode-map "i"
-      (lambda ()
-        "toggle inbox tag for message"
-        (interactive)
-        (if (member "inbox" (notmuch-show-get-tags))
-            (notmuch-show-tag (list "-inbox"))
-          (notmuch-show-tag (list "+inbox")))))
-
-(define-key notmuch-search-mode-map "i"
-  (lambda (&optional beg end)
-        "toggle deleted tag for message"
-        (interactive (notmuch-search-interactive-region))
-        (if (member "inbox" (notmuch-search-get-tags))
-            (notmuch-search-tag (list "-inbox") beg end)
-          (notmuch-search-tag (list "+inbox") beg end))))
-
 (defun notmuch-hello-insert-saved-searches ()
   "Insert the saved-searches section."
   (let ((searches (notmuch-hello-query-counts
