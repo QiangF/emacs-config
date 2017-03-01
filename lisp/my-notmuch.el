@@ -1,3 +1,4 @@
+; -*- lexical-binding: t -*-
 (require 'notmuch)
 
 (setq notmuch-show-logo nil
@@ -52,8 +53,6 @@
 
 (setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
-
-(setq lexical-binding t)
 
 (defun nm-add-show-key-toggle (key tag)
   "add toggle tag for notmuch-show selected message"
