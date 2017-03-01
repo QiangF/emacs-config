@@ -21,7 +21,8 @@
       message-kill-buffer-on-exit t
       message-use-idna nil
       message-sendmail-envelope-from 'header
-      mail-user-agent 'notmuch-user-agent)
+      mail-user-agent 'notmuch-user-agent
+      notmuch-message-replied-tags nil)
 
 (defun setTlsConfig ()
   (interactive)
