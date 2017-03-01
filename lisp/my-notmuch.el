@@ -53,21 +53,28 @@
 (setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
 
-(define-key notmuch-show-mode-map "d"
-      (lambda ()
-        "toggle deleted tag for message"
-        (interactive)
-        (if (member "deleted" (notmuch-show-get-tags))
-            (notmuch-show-tag (list "-deleted"))
-          (notmuch-show-tag (list "+deleted")))))
+(setq lexical-binding t)
 
-(define-key notmuch-search-mode-map "d"
-  (lambda (&optional beg end)
-        "toggle deleted tag for message"
-        (interactive (notmuch-search-interactive-region))
-        (if (member "deleted" (notmuch-search-get-tags))
-            (notmuch-search-tag (list "-deleted") beg end)
-          (notmuch-search-tag (list "+deleted") beg end))))
+(defun nm-add-show-key-toggle (key tag)
+  "add toggle tag for notmuch-show selected message"
+  (define-key notmuch-show-mode-map key
+    (lambda ()
+      (interactive)
+      (if (member tag (notmuch-show-get-tags))
+	  (notmuch-show-tag (list (concat "-" tag)))
+	(notmuch-show-tag (list (concat "+" tag)))))))
+
+(defun nm-add-search-key-toggle (key tag)
+  "add toggle tag for notmuch-search messages"
+  (define-key notmuch-search-mode-map key
+    (lambda (&optional beg end)
+      (interactive (notmuch-search-interactive-region))
+      (if (member tag (notmuch-search-get-tags))
+	  (notmuch-search-tag (list (concat "-" tag)) beg end)
+	(notmuch-search-tag (list (concat "+" tag)) beg end)))))
+
+(nm-add-show-key-toggle "d" "deleted")
+(nm-add-search-key-toggle "d" "deleted")
 
 (defun notmuch-hello-insert-saved-searches ()
   "Insert the saved-searches section."
