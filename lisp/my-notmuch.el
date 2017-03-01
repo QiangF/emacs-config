@@ -75,6 +75,8 @@
 
 (nm-add-show-key-toggle "d" "deleted")
 (nm-add-search-key-toggle "d" "deleted")
+(nm-add-show-key-toggle "u" "unread")
+(nm-add-search-key-toggle "u" "unread")
 
 (defun notmuch-hello-insert-saved-searches ()
   "Insert the saved-searches section."
