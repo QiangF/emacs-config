@@ -36,7 +36,8 @@
     (add-to-list 'load-suffixes ".el.gpg")
     (load-gpg "private-config")
     (epa-decrypt-file notmuch-config-file notmuch-config-plain-file)
-    (kill-buffer "*Pinentry*")
+    (when (get-buffer "*Pinentry*")
+      (kill-buffer "*Pinentry*"))
     (setenv "NOTMUCH_CONFIG" notmuch-config-plain-file)
     (start-mail-daemon)))
 
