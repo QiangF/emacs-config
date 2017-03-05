@@ -100,3 +100,12 @@
 (setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
 
 (setq notmuch-command "notmuch-remote")
+
+(defun done-sync-sentinel (process event)
+  (notmuch-refresh-all-buffers)
+  (message "Mail sync complete"))
+
+(defun run-mail-sync ()
+  (interactive)
+  (set-process-sentinel (start-process "trigger-mail-sync" nil "trigger-mail-sync")
+			'done-sync-sentinel))
