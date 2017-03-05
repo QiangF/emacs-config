@@ -96,9 +96,6 @@
       (lambda (prompt collection initial-input)
         (completing-read prompt (cons initial-input collection) nil t nil 'notmuch-address-history)))
 
-(defvar notmuch-expunge-cmd
-  "notmuch search --format=text0 --output=files tag:deleted | xargs -0 --no-run-if-empty rm")
-
 (require 'nsm)
 (setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
 
