@@ -1,0 +1,2 @@
+#!/bin/bash
+exec ssh notmuch systemctl --user --wait start mail-sync.service
