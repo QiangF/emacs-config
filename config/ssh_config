@@ -1,4 +1,4 @@
-Host notmuch
+Host mailstore-server
     HostName mailstore.adirat.com
     User adi
     ControlMaster auto
