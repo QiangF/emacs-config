@@ -96,81 +96,10 @@
       (lambda (prompt collection initial-input)
         (completing-read prompt (cons initial-input collection) nil t nil 'notmuch-address-history)))
 
-(setq process-connection-type nil)
-
-(defun mail-log-add (strmsg &optional append)
-  (write-region (concat (current-time-string) ": " strmsg "\n")
-		nil mail-daemon-log-file append 'nomessage))
-
-(defun done-all-sentinel (process event)
-  (mail-log-add "Updating emacs buffers" t)
-  (notmuch-refresh-all-buffers)
-  (mail-log-add "Mail sync completed" t))
-
-(defvar notmuch-config-file (concat config-file-directory "notmuch-config.gpg"))
-(defvar mbsync-config-file (concat config-file-directory "mbsyncrc.gpg"))
-
-(defun done-delete-sentinel (process event)
-  (mail-log-add "Indexing mail" t)
-  (set-process-sentinel (start-process "notmuch" nil "notmuch" "new") 'done-all-sentinel))
-
 (defvar notmuch-expunge-cmd
   "notmuch search --format=text0 --output=files tag:deleted | xargs -0 --no-run-if-empty rm")
-
-(defun done-sync-sentinel (process event)
-  (mail-log-add "Expunging mail" t)
-  (let ((expunge-proc (start-process-shell-command "notmuch-expunge" nil notmuch-expunge-cmd)))
-    (set-process-sentinel expunge-proc 'done-delete-sentinel)))
-
-(defun run-mail-sync ()
-  (interactive)
-  (mail-log-add "Fetching mail" t)
-  (let ((mbsc-process (start-process "mbsync" nil "mbsync" "-c" "/dev/stdin" "-a")))
-    (set-process-sentinel mbsc-process 'done-sync-sentinel)
-    (process-send-string mbsc-process (read-gpg-file mbsync-config-file))
-    (process-send-eof mbsc-process)))
-
-(defvar mail-daemon-log-file
-  (concat temporary-file-directory "mail-daemon-log"))
-
-(defvar mail-daemon-current-session nil)
-
-(defvar mail-daemon-timer nil)
-
-(defun is-mail-daemon-started ()
-  (interactive)
-    (if (not (called-interactively-p 'any))
-	mail-daemon-current-session
-      (if mail-daemon-current-session
-	  (message "Mail daemon started in current session")
-	(if (and (server-running-p) (not server-process))
-	    (message "Mail daemon started in another session (emacs daemon)")
-	  (message "Mail daemon stopped")))))
-
-(defun start-mail-daemon ()
-  (interactive)
-  (if (is-mail-daemon-started)
-      (message "Mail daemon already started in current session")
-    (if (and (server-running-p) (not server-process))
-	; always assume emacs daemon has priority in running mail daemon
-	(message "Not starting mail daemon: emacs daemon running in another process")
-      (setq mail-daemon-timer (run-at-time "0 sec" 600 'run-mail-sync)
-	    mail-daemon-current-session t)
-      (mail-log-add "Mail daemon started")
-      (message "Mail daemon started"))))
-
-(defun stop-mail-daemon ()
-  (interactive)
-  (if (not (is-mail-daemon-started))
-      (message "WARNING (stop-mail-daemon): Mail deamon is not started")
-    (cancel-timer mail-daemon-timer)
-    (setq mail-daemon-current-session nil
-	  mail-daemon-timer nil)
-    (mail-log-add "Mail daemon stopped")
-    (message "Mail daemon stopped")))
 
 (require 'nsm)
 (setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
 
-(defvar notmuch-config-plain-file
-  (concat temporary-file-directory "notmuch-config"))
+(setq notmuch-command "notmuch-remote")

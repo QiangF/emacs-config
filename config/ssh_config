@@ -1,0 +1,6 @@
+Host notmuch
+    HostName mailstore.adirat.com
+    User adi
+    ControlMaster auto
+    ControlPath ~/.ssh/master-%h@%p:%r
+    ControlPersist 15m
