@@ -9,7 +9,8 @@
 
 (setq eshell-prompt-function
       (lambda ()
-	(concat (pretty-print-dir (eshell/pwd))
+	(concat "[" (getenv "USER") "@" system-name " "
+		(pretty-print-dir (eshell/pwd)) "]"
 		(if (= (user-uid) 0) "# " "$ "))))
 
 (setq eshell-prompt-regexp "^.+[#$] ")
