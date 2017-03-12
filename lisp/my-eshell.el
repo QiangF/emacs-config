@@ -58,6 +58,13 @@ directory to make multiple eshell windows easier."
 
 (global-set-key (kbd "C-!") 'eshell-here)
 
+(defun eshell/clear ()
+  "Clears the shell buffer ala Unix's clear or DOS' cls"
+  ;; the shell prompts are read-only, so clear that for the duration
+  (let ((inhibit-read-only t))
+    ;; simply delete the region
+    (delete-region (point-min) (point-max))))
+
 (setq eshell-prefer-lisp-functions t
       eshell-prefer-lisp-variables t
       eshell-scroll-show-maximum-output nil
