@@ -1,1 +1,2 @@
 alias sudo eshell/sudo $*
+alias clear recenter 0
