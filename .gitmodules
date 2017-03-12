@@ -64,3 +64,6 @@
 [submodule "lib/geiser"]
 	path = lib/geiser
 	url = git://git.sv.gnu.org/geiser.git
+[submodule "lib/rust-mode"]
+	path = lib/rust-mode
+	url = https://github.com/rust-lang/rust-mode.git

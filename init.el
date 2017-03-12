@@ -20,6 +20,7 @@
 	    "lib/helm-mt"
 	    "lib/helm-gtags"
 	    "lib/mmm-mode"
+	    "lib/rust-mode"
 	    "lib/s"
 	    "lib/notmuch/emacs"
 	    "lib/magit"
@@ -41,6 +42,7 @@
 (load "clang")
 (load "python")
 (load "sh")
+(load "my-rust")
 ;(load "html")
 ;(load "w3m")
 
