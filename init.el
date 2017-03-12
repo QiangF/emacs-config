@@ -3,7 +3,7 @@
 (setq inhibit-default-init 1
       load-prefer-newer t)
 
-(defvar my-load-paths
+(setq my-load-paths
   (mapcar (lambda (p) (concat user-emacs-directory p))
 	  '("config"
 	    "lisp"
