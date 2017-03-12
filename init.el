@@ -1,10 +1,9 @@
 ;(package-initialize)
 
 (setq inhibit-default-init 1
-      load-prefer-newer t
-      old-load-path load-path)
+      load-prefer-newer t)
 
-(mapc (apply-partially 'add-to-list 'old-load-path)
+(mapc (apply-partially 'add-to-list 'load-path)
       (mapcar (lambda (p) (concat user-emacs-directory p))
 	      '("config"
 		"lisp"
@@ -40,7 +39,6 @@
 ;(load "haskell")
 (load "clang")
 (load "python")
-(load "sh")
 (load "my-rust")
 ;(load "html")
 ;(load "w3m")
