@@ -24,7 +24,8 @@
 		"lib/s"
 		"lib/notmuch/emacs"
 		"lib/magit"
-		"lib/geiser/elisp")))
+		"lib/geiser/elisp"
+		"lib/bb-mode")))
 
 (load "external-interaction")
 (load "ui")
@@ -36,6 +37,7 @@
 (load "my-eshell")
 (load "org-mode")
 (load "my-magit")
+(load "my-bb-mode")
 ;(load "haskell")
 (load "clang")
 (load "python")
