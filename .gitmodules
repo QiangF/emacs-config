@@ -64,3 +64,6 @@
 [submodule "lib/bb-mode"]
 	path = lib/bb-mode
 	url = https://github.com/mferland/bb-mode.git
+[submodule "lib/disable-mouse"]
+	path = lib/disable-mouse
+	url = https://github.com/purcell/disable-mouse.git

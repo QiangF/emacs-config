@@ -3,6 +3,7 @@
 (require 'windmove)
 (require 'anzu)
 (require 'dired-x)
+(require 'disable-mouse)
 
 ;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
 
@@ -22,6 +23,8 @@
 
 (global-set-key (kbd "C-x F") 'find-file-as-root)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
+
+(global-disable-mouse-mode)
 
 ; shut up 'got redefined' startup msgs
 (setq ad-redefinition-action 'accept)

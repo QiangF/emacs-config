@@ -25,7 +25,8 @@
 		"lib/notmuch/emacs"
 		"lib/magit"
 		"lib/geiser/elisp"
-		"lib/bb-mode")))
+		"lib/bb-mode"
+		"lib/disable-mouse")))
 
 (load "external-interaction")
 (load "ui")
