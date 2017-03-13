@@ -87,3 +87,5 @@ directory to make multiple eshell windows easier."
 
 (setq comint-scroll-show-maximum-output nil
       comint-input-ignoredups t)
+
+(setq eshell-command-aliases-list '(("sudo" "eshell/sudo $*")))
