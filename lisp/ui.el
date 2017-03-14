@@ -136,6 +136,6 @@
 
 (winum-mode)
 
-;(global-hl-line-mode 1)
+(global-unset-key "\C-x\o")
 
 (setq font-lock-maximum-decoration nil)
