@@ -26,6 +26,7 @@
 		"lib/magit"
 		"lib/geiser/elisp"
 		"lib/bb-mode"
+		"lib/emacs-winum"
 		"lib/disable-mouse")))
 
 (load "external-interaction")
