@@ -20,4 +20,10 @@
      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)))
 
+(setq-default c-basic-offset 8)
+
+(add-hook 'initialization-hook
+          (lambda ()
+            (c-set-style "linux")))
+
 (which-function-mode 1)
