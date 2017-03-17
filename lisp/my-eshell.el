@@ -56,7 +56,11 @@ directory to make multiple eshell windows easier."
     (eshell "new")
     (rename-buffer (concat "*eshell: " name "*"))))
 
-(global-set-key (kbd "C-!") 'eshell-here)
+;(global-set-key (kbd "C-!") 'eshell-here)
+
+(global-set-key (kbd "C-x e") '(lambda () (interactive) (eshell t)))
+; I usually mistype C-x e to C-x C-e
+(global-unset-key (kbd "C-x C-e"))
 
 (defun eshell/clear ()
   "Clears the shell buffer ala Unix's clear or DOS' cls"
