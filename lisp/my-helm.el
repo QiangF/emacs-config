@@ -10,7 +10,6 @@
 (setq helm-ff-transformer-show-only-basename nil
       helm-yank-symbol-first                 t
       helm-move-to-line-cycle-in-source      t
-      helm-buffers-fuzzy-matching            t
       helm-move-to-line-cycle-in-source      t
       helm-ff-auto-update-initial-value      t
       helm-quick-update                      t
@@ -35,10 +34,11 @@
 (global-set-key (kbd "M-s /")   'helm-multi-swoop)
 (global-set-key (kbd "M-x")     'helm-M-x)
 
-(setq helm-M-x-fuzzy-match t)
-
-(setq helm-semantic-fuzzy-match t
-      helm-imenu-fuzzy-match    t)
+(setq helm-M-x-fuzzy-match		t
+      helm-buffers-fuzzy-matching	t
+      helm-semantic-fuzzy-match		t
+      helm-imenu-fuzzy-match		t
+      helm-recentf-fuzzy-match		t)
 
 (helm-mode t)
 
