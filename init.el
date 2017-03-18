@@ -27,6 +27,7 @@
 		"lib/geiser/elisp"
 		"lib/bb-mode"
 		"lib/emacs-winum"
+		"lib/emacs-noflet"
 		"lib/disable-mouse")))
 
 (load "external-interaction")

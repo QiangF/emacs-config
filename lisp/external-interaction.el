@@ -72,6 +72,11 @@ If the current buffer is not associated with a file, its a error."
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 
+(require 'noflet)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (noflet ((process-list ())) ad-do-it))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
