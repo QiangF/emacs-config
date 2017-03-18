@@ -117,3 +117,6 @@
 (global-unset-key "\C-x\o")
 
 (setq font-lock-maximum-decoration nil)
+
+(setq enable-recursive-minibuffers t)
+
