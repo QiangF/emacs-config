@@ -52,10 +52,6 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq frame-title-format
-      '(:eval (if (buffer-file-name)
-                  (abbreviate-file-name (buffer-file-name)) "%b")))
-
 (setq search-highlight 1
       query-replace-highlight 1
       case-fold-search 1)
