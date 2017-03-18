@@ -68,10 +68,6 @@ If the current buffer is not associated with a file, its a error."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
-(setq kill-buffer-query-functions
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
-
 (require 'noflet)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
