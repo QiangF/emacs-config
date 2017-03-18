@@ -3,15 +3,11 @@
 (require 'anzu)
 (require 'disable-mouse)
 
-;(add-to-list 'default-frame-alist '(background-color . "#E2E2E2E2"))
-
 (add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
 (load-theme 'zenburn t)
 
 (set-frame-font "DejaVu Sans Mono-11" t t)
 
-;(add-to-list 'default-frame-alist '(height . 42))
-;(add-to-list 'default-frame-alist '(width . 80))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq make-backup-files nil) ;don't create backup~
@@ -42,10 +38,6 @@
       inhibit-startup-buffer-menu t)
 
 (setq initial-scratch-message "")
-
-;; (setq-default major-mode 'org-mode)
-;; (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
-;; (setq initial-buffer-choice "~/workspace/journal/TODO")
 
 (setq show-paren-style 'parenthesis)
 
