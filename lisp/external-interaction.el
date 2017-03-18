@@ -64,6 +64,10 @@ If the current buffer is not associated with a file, its a error."
       (message "Deleted file %s" filename)
       (kill-buffer))))
 
+;; make a shell script executable automatically on save
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 

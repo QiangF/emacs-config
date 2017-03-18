@@ -55,10 +55,6 @@
       backup-by-copying-when-mismatch 1
       make-backup-files nil)
 
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-
 (setq recenter-positions '(top middle bottom))
 
 (global-set-key (kbd "C-z") nil)
