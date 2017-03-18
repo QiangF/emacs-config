@@ -20,6 +20,9 @@
       (load file)
     (message "WARNING: Couldn't load %s (No gpg key found)" file)))
 
+
+(defun epa-progress-callback-function (_context what _char current total handback) nil)
+
 ; load this in a post-frame hook because gpg-agent asks for a password on first
 ; startup and caches it. Don't want emacs daemon to hang because of gpg-agent.
 (defun load-private-data ()
