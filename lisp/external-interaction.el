@@ -68,6 +68,10 @@ If the current buffer is not associated with a file, its a error."
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
+(setq kill-buffer-query-functions
+      (remq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
+
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium")
 
