@@ -109,3 +109,36 @@
   (interactive)
   (set-process-sentinel (start-process "trigger-mail-sync" nil "trigger-mail-sync")
 			'done-sync-sentinel))
+
+(defun my-message-current-line-cited-p ()
+  "Indicate whether the line at point is a cited line."
+  (save-match-data
+    (string-match (concat "^" message-cite-prefix-regexp)
+                  (buffer-substring (line-beginning-position) (line-end-position)))))
+
+(defun my-message-says-attachment-p ()
+  "Return t if the message suggests there can be an attachment."
+  (save-excursion
+    (goto-char (point-min))
+    (save-match-data
+      (let (search-result)
+        (while
+            (and (setq search-result (re-search-forward "\\(attach\\|pdf\\|file\\)" nil t))
+                 (my-message-current-line-cited-p)))
+        search-result))))
+
+(defun my-message-has-attachment-p ()
+  "Return t if the message has an attachment."
+  (save-excursion
+    (goto-char (point-min))
+    (save-match-data
+      (re-search-forward "<#part" nil t))))
+
+(defun my-message-pre-send-check-attachment ()
+  (when (and (my-message-says-attachment-p)
+             (not (my-message-has-attachment-p)))
+    (unless
+        (y-or-n-p "Message suggests you want to attach something but no attach is found. Send anyway?")
+      (error "Sending aborted."))))
+
+(add-hook 'message-send-hook 'my-message-pre-send-check-attachment)
