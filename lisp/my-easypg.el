@@ -42,6 +42,6 @@
 
 (defun first-frame-hook (frame)
   (remove-hook 'after-make-frame-functions 'first-frame-hook)
-  (run-at-time "50 millisec" nil 'load-private-data))
+  (run-at-time "80 millisec" nil 'load-private-data))
 
 (add-hook 'after-make-frame-functions 'first-frame-hook)
