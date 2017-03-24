@@ -100,7 +100,7 @@
 
 (require 'winum)
 
-(setq window-numbering-scope            'global
+(setq window-numbering-scope            'frame-local
       winum-auto-assign-0-to-minibuffer t
       winum-auto-setup-mode-line        t
       winum-mode-line-position          1)
