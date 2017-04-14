@@ -45,6 +45,7 @@
 (load "clang")
 (load "python")
 (load "my-rust")
+(load "my-lilypond")
 ;(load "html")
 ;(load "w3m")
 
