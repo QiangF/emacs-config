@@ -43,7 +43,7 @@
 
 (add-hook 'message-send-mail-hook 'set-smtp-server)
 
-(setq notmuch-search-oldest-first nil)
+(setq notmuch-search-default-sort-order 'newest-first)
 
 (define-key notmuch-hello-mode-map "g" #'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "g" #'notmuch-refresh-this-buffer)
