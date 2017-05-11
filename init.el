@@ -1,7 +1,10 @@
 ;(package-initialize)
 
 (setq inhibit-default-init 1
-      load-prefer-newer t)
+      load-prefer-newer t
+      gc-cons-threshold most-positive-fixnum)
+
+(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
 
 (mapc (apply-partially 'add-to-list 'load-path)
       (mapcar (lambda (p) (concat user-emacs-directory p))
