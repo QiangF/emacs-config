@@ -91,7 +91,7 @@
 	(notmuch-hello-insert-buttons searches)
 	(indent-rigidly start (point) notmuch-hello-indent)))))
 
-; use helm for notmuch address completion
+; enable address auto-complation
 (setq notmuch-address-selection-function
       (lambda (prompt collection initial-input)
         (completing-read prompt (cons initial-input collection) nil t nil 'notmuch-address-history)))
