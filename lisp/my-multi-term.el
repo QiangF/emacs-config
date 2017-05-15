@@ -1,11 +1,8 @@
 (require 'multi-term)
-;(require 'helm-mt)
 (require 'term)
 
 (setq multi-term-program "/bin/bash")
 (setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-t" "C-h" "C-y" "C-v" "<ESC>"))
-
-;(helm-mt/wrap-shells t)
 
 (defun term-toggle-mode ()
   "Toggles term between line mode and char mode"

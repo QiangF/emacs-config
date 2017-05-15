@@ -20,7 +20,6 @@
 		"lib/anzu"
 		"lib/notmuch"
 		"lib/helm"
-		"lib/helm-mt"
 		"lib/helm-gtags"
 		"lib/mmm-mode"
 		"lib/rust-mode"
