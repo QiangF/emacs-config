@@ -1,2 +1,2 @@
 #!/bin/bash
-exec ssh mailstore-server ~/mail-sync.sh
+exec ssh mailstore-server ~/sources/mail-sync.sh
