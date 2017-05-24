@@ -30,7 +30,8 @@
 		"lib/bb-mode"
 		"lib/emacs-winum"
 		"lib/emacs-noflet"
-		"lib/disable-mouse")))
+		"lib/disable-mouse"
+		"lib/groovy-emacs-mode")))
 
 (load "external-interaction")
 (load "ui")
@@ -48,6 +49,7 @@
 (load "python")
 (load "my-rust")
 (load "my-lilypond")
+(load "my-groovy")
 ;(load "html")
 ;(load "w3m")
 
