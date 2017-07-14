@@ -15,7 +15,6 @@
 
 (put 'erase-buffer 'disabled nil) ;allow (erase-buffer)
 
-(global-set-key (kbd "C-x F") 'find-file-as-root)
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
 (global-disable-mouse-mode)
