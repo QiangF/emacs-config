@@ -7,10 +7,6 @@
       (message "Deleted file %s" filename)
       (kill-buffer))))
 
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-
 (require 'noflet)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."

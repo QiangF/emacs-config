@@ -44,6 +44,7 @@
 (load "org-mode")
 (load "my-magit")
 (load "my-bb-mode")
+(load "my-sh")
 ;(load "haskell")
 (load "clang")
 (load "python")
