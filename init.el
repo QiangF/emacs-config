@@ -6,6 +6,12 @@
 
 (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
 
+(setq user-emacs-directory (expand-file-name user-emacs-directory))
+(setq temporary-file-directory (concat user-emacs-directory "tmp/"))
+(setq config-file-directory (concat user-emacs-directory "config/"))
+(setq exec-path (cons (concat user-emacs-directory "bin") exec-path))
+(setenv "PATH" (concat (getenv "PATH") ":" user-emacs-directory "bin"))
+
 (mapc (apply-partially 'add-to-list 'load-path)
       (mapcar (lambda (p) (concat user-emacs-directory p))
 	      '("config"
@@ -33,7 +39,6 @@
 		"lib/emacs-async"
 		"lib/groovy-emacs-mode")))
 
-(load "external-interaction")
 (load "ui")
 (load "my-helm")
 (load "my-notmuch")
