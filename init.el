@@ -18,7 +18,6 @@
 		"lib/undo-tree"
 		"lib/haskell-mode"
 		"lib/anzu"
-		"lib/notmuch"
 		"lib/helm"
 		"lib/helm-gtags"
 		"lib/mmm-mode"
