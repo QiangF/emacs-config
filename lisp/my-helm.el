@@ -34,11 +34,8 @@
 (global-set-key (kbd "M-s /")   'helm-multi-swoop)
 (global-set-key (kbd "M-x")     'helm-M-x)
 
-(setq helm-M-x-fuzzy-match		t
-      helm-buffers-fuzzy-matching	t
-      helm-semantic-fuzzy-match		t
-      helm-imenu-fuzzy-match		t
-      helm-recentf-fuzzy-match		t)
+(setq helm-mode-fuzzy-match t)
+(setq helm-completion-in-region-fuzzy-match t)
 
 (helm-mode t)
 
