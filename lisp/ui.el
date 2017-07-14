@@ -119,3 +119,27 @@
 
 (setq enable-recursive-minibuffers t)
 
+(require 'noflet)
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when Emacs exits."
+  (noflet ((process-list ())) ad-do-it))
+
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "chromium")
+
+(defun xah-delete-current-file-copy-to-kill-ring ()
+  "Delete current buffer/file and close the buffer, push content to `kill-ring'.
+URL `http://ergoemacs.org/emacs/elisp_delete-current-file.html'
+Version 2016-07-20"
+  (interactive)
+  (progn
+    (kill-new (buffer-string))
+    (message "Buffer content copied to kill-ring.")
+    (when (buffer-file-name)
+      (when (file-exists-p (buffer-file-name))
+        (progn
+          (delete-file (buffer-file-name))
+          (message "Deleted file: 「%s」." (buffer-file-name)))))
+    (let ((buffer-offer-save nil))
+      (set-buffer-modified-p nil)
+      (kill-buffer (current-buffer)))))
