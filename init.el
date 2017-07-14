@@ -31,6 +31,7 @@
 		"lib/emacs-winum"
 		"lib/emacs-noflet"
 		"lib/disable-mouse"
+		"lib/emacs-async"
 		"lib/groovy-emacs-mode")))
 
 (load "external-interaction")
