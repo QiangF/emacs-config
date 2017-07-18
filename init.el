@@ -37,6 +37,8 @@
 		"lib/emacs-noflet"
 		"lib/disable-mouse"
 		"lib/emacs-async"
+		"lib/emacs-websocket"
+		"lib/atomic-chrome"
 		"lib/groovy-emacs-mode")))
 
 (load "ui")
@@ -50,6 +52,7 @@
 (load "my-magit")
 (load "my-bb-mode")
 (load "my-sh")
+(load "my-browser")
 ;(load "haskell")
 (load "clang")
 (load "python")
