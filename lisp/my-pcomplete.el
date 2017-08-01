@@ -92,15 +92,15 @@
                                    (pcomplete-arg 'last) t))))
     (while (pcomplete-here (pcomplete-dirs) nil 'identity))))
 
-;; (defvar pcomplete-man-user-commands
-;;   (split-string
-;;    (shell-command-to-string
-;;     "apropos -s 1 .|while read -r a b; do echo \" $a\";done;"))
-;;   "p-completion candidates for `man' command")
+(defvar pcomplete-man-user-commands
+  (split-string
+   (shell-command-to-string
+    "apropos -s 1 .|while read -r a b; do echo \" $a\";done;"))
+  "p-completion candidates for `man' command")
 
-;; (defun pcomplete/man ()
-;;     "Completion rules for the `man' command."
-;;     (pcomplete-here pcomplete-man-user-commands))
+(defun pcomplete/man ()
+    "Completion rules for the `man' command."
+    (pcomplete-here pcomplete-man-user-commands))
 
 (defun pcomplete/ls ()
   (while (pcomplete-match "^-" 'last)
