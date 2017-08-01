@@ -18,9 +18,11 @@
 
 (setq message-send-mail-function 'message-smtpmail-send-it
       send-mail-function 'smtpmail-send-it
+      smtpmail-debug-info t
       message-kill-buffer-on-exit t
       message-use-idna nil
       message-sendmail-envelope-from 'header
+      message-default-mail-headers "Cc: \n"
       mail-user-agent 'notmuch-user-agent
       notmuch-message-replied-tags nil)
 
