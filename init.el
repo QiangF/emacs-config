@@ -47,6 +47,7 @@
 (load "my-easypg")
 (load "my-tramp")
 (load "my-multi-term")
+(load "my-pcomplete")
 (load "my-eshell")
 (load "org-mode")
 (load "my-magit")
