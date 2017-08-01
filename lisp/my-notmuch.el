@@ -23,6 +23,7 @@
       message-use-idna nil
       message-sendmail-envelope-from 'header
       message-default-mail-headers "Cc: \n"
+      message-auto-save-directory nil
       mail-user-agent 'notmuch-user-agent
       notmuch-message-replied-tags nil)
 
