@@ -13,33 +13,13 @@
 (setenv "PATH" (concat (getenv "PATH") ":" user-emacs-directory "bin"))
 
 (mapc (apply-partially 'add-to-list 'load-path)
-      (mapcar (lambda (p) (concat user-emacs-directory p))
-	      '("config"
-		"lisp"
-		"lib/dash"
-		"lib/with-editor"
-		"lib/magit/lisp"
-		"lib/volatile-highlights"
-		"lib/multi-term"
-		"lib/undo-tree"
-		"lib/haskell-mode"
-		"lib/anzu"
-		"lib/helm"
-		"lib/helm-gtags"
-		"lib/mmm-mode"
-		"lib/rust-mode"
-		"lib/s"
-		"lib/notmuch/emacs"
-		"lib/magit"
-		"lib/geiser/elisp"
-		"lib/bb-mode"
-		"lib/emacs-winum"
-		"lib/emacs-noflet"
-		"lib/disable-mouse"
-		"lib/emacs-async"
-		"lib/emacs-websocket"
-		"lib/atomic-chrome"
-		"lib/groovy-emacs-mode")))
+      (append (directory-files (concat user-emacs-directory "lib") t directory-files-no-dot-files-regexp)
+	      (mapcar (apply-partially 'concat user-emacs-directory)
+		      '("config"
+			"lisp"
+			"lib/magit/lisp"
+			"lib/notmuch/emacs"
+			"lib/geiser/elisp"))))
 
 (load "ui")
 (load "my-helm")
