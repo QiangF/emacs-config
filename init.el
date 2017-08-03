@@ -21,6 +21,5 @@
 			"lib/notmuch/emacs"
 			"lib/geiser/elisp"))))
 
-(mapc 'load (file-expand-wildcards (concat user-emacs-directory "lisp/*.el")))
-
-(mapc 'load (file-expand-wildcards (concat user-emacs-directory "load.d/*.el")))
+(require 'find-lisp)
+(mapc 'load (find-lisp-find-files (concat user-emacs-directory "lisp") "\\.el$"))
