@@ -15,11 +15,10 @@
 (mapc (apply-partially 'add-to-list 'load-path)
       (append (directory-files (concat user-emacs-directory "lib") t directory-files-no-dot-files-regexp)
 	      (mapcar (apply-partially 'concat user-emacs-directory)
-		      '("config"
-			"lisp"
-			"lib/magit/lisp"
+		      '("lib/magit/lisp"
 			"lib/notmuch/emacs"
-			"lib/geiser/elisp"))))
+			"lib/geiser/elisp"
+			"lisp"))))
 
 (require 'find-lisp)
 (mapc 'load (find-lisp-find-files (concat user-emacs-directory "lisp") "\\.el$"))

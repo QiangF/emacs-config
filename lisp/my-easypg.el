@@ -15,11 +15,6 @@
       (message "Decrypting %s...failed" file-to-decrypt)
       (error "File %s does not exist" file-to-decrypt))))
 
-(defun load-gpg (file)
-  (if have-private-key
-      (load file)
-    (message "WARNING: Couldn't load %s (No gpg key found)" file)))
-
 (defun epa-progress-callback-function (_context what _char current total handback) nil)
 
 ; load this in a post-frame hook because gpg-agent asks for a password on first
@@ -36,7 +31,7 @@
       (pinentry-start)
       (add-hook 'kill-emacs-hook 'pinentry-stop))
     (add-to-list 'load-suffixes ".el.gpg")
-    (load-gpg "private-config")
+    (load "private-config")
     (when (get-buffer "*Pinentry*")
       (kill-buffer "*Pinentry*"))))
 
