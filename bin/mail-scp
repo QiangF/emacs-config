@@ -1,0 +1,3 @@
+#!/bin/bash
+printf -v ARGS "%q " "$1"
+exec scp mailstore-server:${ARGS} "$2"
