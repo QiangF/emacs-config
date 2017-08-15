@@ -1,7 +1,6 @@
 ;(package-initialize)
 
-(setq inhibit-default-init 1
-      load-prefer-newer t)
+(setq inhibit-default-init 1)
 
 (let ((libdir (concat user-emacs-directory "lib")))
   (mapc (apply-partially 'add-to-list 'load-path)
