@@ -1,10 +1,7 @@
 ;(package-initialize)
 
 (setq inhibit-default-init 1
-      load-prefer-newer t
-      gc-cons-threshold most-positive-fixnum)
-
-(add-hook 'after-init-hook (lambda () (setq gc-cons-threshold 800000)))
+      load-prefer-newer t)
 
 (let ((libdir (concat user-emacs-directory "lib")))
   (mapc (apply-partially 'add-to-list 'load-path)
