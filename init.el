@@ -1,13 +1,13 @@
 ;(package-initialize)
 
-(let ((libdir (concat user-emacs-directory "lib")))
-  (mapc (apply-partially 'add-to-list 'load-path)
-	(append (directory-files libdir t directory-files-no-dot-files-regexp)
-		(mapcar (apply-partially 'concat user-emacs-directory)
-			'("lib/magit/lisp"
-			  "lib/notmuch/emacs"
-			  "lib/geiser/elisp"
-			  "lisp")))))
+(let* ((libdir (concat user-emacs-directory "lib"))
+       (lib-paths (directory-files libdir t directory-files-no-dot-files-regexp))
+       (non-std-lib-paths (mapcar (apply-partially 'concat user-emacs-directory)
+			      '("lib/magit/lisp"
+				"lib/notmuch/emacs"
+				"lib/geiser/elisp"
+				"lisp"))))
+  (setq load-path (append load-path non-std-lib-paths lib-paths)))
 
 (require 'my-env)
 (require 'find-lisp)
