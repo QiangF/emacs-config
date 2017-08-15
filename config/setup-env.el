@@ -5,7 +5,7 @@
       lisp-file-directory (concat user-emacs-directory "lisp")
       binary-file-directory (concat user-emacs-directory "bin"))
 
-(setq exec-path (cons binary-file-directory exec-path))
+(add-to-list 'exec-path binary-file-directory)
 
 (unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
   (setenv "PATH" (concat (getenv "PATH") ":" binary-file-directory)))
@@ -16,4 +16,4 @@
 				"lib/notmuch/emacs"
 				"lib/geiser/elisp"
 				"lisp"))))
-  (setq load-path (append load-path non-std-lib-paths lib-paths)))
+  (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
