@@ -2,6 +2,7 @@
       temporary-file-directory (concat user-emacs-directory "tmp/")
       config-file-directory (concat user-emacs-directory "config/")
       lib-file-directory (concat user-emacs-directory "lib")
+      lisp-file-directory (concat user-emacs-directory "lisp")
       binary-file-directory (concat user-emacs-directory "bin"))
 
 (setq exec-path (cons binary-file-directory exec-path))
