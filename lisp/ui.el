@@ -6,6 +6,8 @@
 (add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
 (load-theme 'zenburn t)
 
+(setq inhibit-default-init 1)
+
 (set-frame-font "DejaVu Sans Mono-11" t t)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))

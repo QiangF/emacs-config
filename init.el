@@ -1,7 +1,5 @@
 ;(package-initialize)
 
-(setq inhibit-default-init 1)
-
 (let ((libdir (concat user-emacs-directory "lib")))
   (mapc (apply-partially 'add-to-list 'load-path)
 	(append (directory-files libdir t directory-files-no-dot-files-regexp)
