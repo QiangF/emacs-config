@@ -1,11 +1,9 @@
-(setq user-emacs-directory (expand-file-name user-emacs-directory))
-(setq temporary-file-directory (concat user-emacs-directory "tmp/"))
-(setq config-file-directory (concat user-emacs-directory "config/"))
-(setq exec-path (cons (concat user-emacs-directory "bin") exec-path))
+(setq user-emacs-directory (expand-file-name user-emacs-directory)
+      temporary-file-directory (concat user-emacs-directory "tmp/")
+      config-file-directory (concat user-emacs-directory "config/")
+      binary-file-directory (concat user-emacs-directory "bin"))
 
-(let ((bindir (concat user-emacs-directory "bin"))
-      (path (getenv "PATH")))
-  (unless (string-match-p (regexp-quote bindir) path)
-    (setenv "PATH" (concat path ":" bindir))))
+(setq exec-path (cons binary-file-directory exec-path))
 
-(provide 'my-env)
+(unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
+  (setenv "PATH" (concat (getenv "PATH") ":" binary-file-directory)))
