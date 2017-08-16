@@ -1,3 +1,3 @@
 (require 'find-lisp)
 (let ((lisp-dir (concat user-emacs-directory "lisp")))
-  (mapc 'load (sort (find-lisp-find-files lisp-dir "\\.el$") 'string<))
+  (mapc 'load (sort (find-lisp-find-files lisp-dir "\\.el$") 'string<)))
