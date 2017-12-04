@@ -1,5 +1,6 @@
 Host mailstore-server
-    HostName mailstore.adirat.com
+    HostName scw1.adirat.com
+    Port 55777
     User adi
     ControlMaster auto
     ControlPath ~/.ssh/master-%h@%p:%r
