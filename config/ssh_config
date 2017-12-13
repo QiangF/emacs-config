@@ -8,3 +8,4 @@ Host mailstore-server
 
 Host *
      ServerAliveInterval 120
+     ServerAliveCountMax 1000
