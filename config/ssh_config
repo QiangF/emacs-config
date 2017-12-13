@@ -5,3 +5,6 @@ Host mailstore-server
     ControlMaster auto
     ControlPath ~/.ssh/master-%h@%p:%r
     ControlPersist 15m
+
+Host *
+     ServerAliveInterval 120
