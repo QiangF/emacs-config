@@ -5,6 +5,8 @@ Host mailstore-server
     ControlMaster auto
     ControlPath ~/.ssh/master-%h@%p:%r
     ControlPersist 15m
+    StrictHostKeyChecking=no
+    UserKnownHostsFile=/dev/null
 
 Host *
      ServerAliveInterval 120
