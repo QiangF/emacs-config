@@ -138,3 +138,5 @@
 		 "search" "--output=files" (notmuch-show-get-message-id))
   (set-process-filter (get-process "notmuch-download-message")
 		      'notmuch-download-message-filter))
+
+(setq notmuch-hello-auto-refresh nil)
