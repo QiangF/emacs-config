@@ -82,3 +82,6 @@
 [submodule "lib/magit-popup"]
 	path = lib/magit-popup
 	url = https://github.com/magit/magit-popup.git
+[submodule "lib/ghub"]
+	path = lib/ghub
+	url = https://github.com/magit/ghub.git
