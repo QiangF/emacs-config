@@ -85,3 +85,6 @@
 [submodule "lib/ghub"]
 	path = lib/ghub
 	url = https://github.com/magit/ghub.git
+[submodule "lib/magit-imerge"]
+	path = lib/magit-imerge
+	url = https://github.com/magit/magit-imerge.git

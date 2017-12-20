@@ -1,4 +1,5 @@
 (require 'magit)
+(require 'magit-imerge)
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
