@@ -2,9 +2,6 @@ Host mailstore-server
     HostName scw1.adirat.com
     Port 55777
     User adi
-    ControlMaster auto
-    ControlPath ~/.ssh/master-%h@%p:%r
-    ControlPersist 15m
     StrictHostKeyChecking=no
     UserKnownHostsFile=/dev/null
 
