@@ -140,3 +140,10 @@
 		      'notmuch-download-message-filter))
 
 (setq notmuch-hello-auto-refresh nil)
+
+(setq notmuch-search-result-format '(("date" . "%12s ")
+				     ("filesize" . "%6s ")
+				     ("count" . "%-7s ")
+				     ("authors" . "%-20s ")
+				     ("subject" . "%s ")
+				     ("tags" . "(%s)")))
