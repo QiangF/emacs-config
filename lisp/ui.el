@@ -1,3 +1,5 @@
+(setq load-prefer-newer t)
+
 (require 'volatile-highlights)
 (require 'undo-tree)
 (require 'anzu)
