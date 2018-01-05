@@ -5,11 +5,6 @@
       lisp-file-directory (concat user-emacs-directory "lisp")
       binary-file-directory (concat user-emacs-directory "bin"))
 
-(add-to-list 'exec-path binary-file-directory)
-
-(unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
-  (setenv "PATH" (concat (getenv "PATH") ":" binary-file-directory)))
-
 (let ((lib-paths (directory-files lib-file-directory t directory-files-no-dot-files-regexp))
       (non-std-lib-paths (mapcar (apply-partially 'concat user-emacs-directory)
 			      '("lib/magit/lisp"
@@ -17,3 +12,10 @@
 				"lib/geiser/elisp"
 				"lisp"))))
   (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
+
+(add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
+
+(add-to-list 'exec-path binary-file-directory)
+
+(unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
+  (setenv "PATH" (concat (getenv "PATH") ":" binary-file-directory)))
