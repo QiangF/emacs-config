@@ -70,9 +70,6 @@
 [submodule "lib/emacs-async"]
 	path = lib/emacs-async
 	url = https://github.com/jwiegley/emacs-async.git
-[submodule "lib/atomic-chrome"]
-	path = lib/atomic-chrome
-	url = https://github.com/alpha22jp/atomic-chrome.git
 [submodule "lib/emacs-websocket"]
 	path = lib/emacs-websocket
 	url = https://github.com/ahyatt/emacs-websocket.git
