@@ -22,7 +22,6 @@
 
 (global-set-key (kbd "C-h a")   'helm-apropos)
 (global-set-key (kbd "C-h i")   'helm-info-emacs)
-(global-set-key (kbd "C-h b")   'helm-descbinds)
 
 (global-set-key (kbd "C-x b")   'helm-mini)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
