@@ -40,12 +40,6 @@
 [submodule "lib/s"]
 	path = lib/s
 	url = https://github.com/magnars/s.el.git
-[submodule "lib/libgpg-error"]
-	path = lib/libgpg-error
-	url = git@github.com:10ne1/libgpg-error.git
-[submodule "lib/libassuan"]
-	path = lib/libassuan
-	url = git@github.com:10ne1/libassuan.git
 [submodule "lib/geiser"]
 	path = lib/geiser
 	url = git://git.sv.gnu.org/geiser.git
