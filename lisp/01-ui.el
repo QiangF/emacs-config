@@ -146,3 +146,6 @@ Version 2016-07-20"
     (let ((buffer-offer-save nil))
       (set-buffer-modified-p nil)
       (kill-buffer (current-buffer)))))
+
+(require 'shr)
+(setq shr-use-colors nil)
