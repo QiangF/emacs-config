@@ -9,8 +9,6 @@
 
 (setq inhibit-default-init 1)
 
-(set-frame-font "DejaVu Sans Mono-11" t t)
-
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq make-backup-files nil) ;don't create backup~
