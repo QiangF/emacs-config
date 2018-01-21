@@ -16,9 +16,6 @@
 (require 'disable-mouse)
 (global-disable-mouse-mode)
 
-; shut up 'got redefined' startup msgs
-(setq ad-redefinition-action 'accept)
-
 ; use system clipboard
 (setq select-enable-primary nil
       select-enable-clipboard t
