@@ -19,8 +19,7 @@
 
 ; use system clipboard
 (setq select-enable-primary nil
-      select-enable-clipboard t
-      mouse-drag-copy-region t)
+      select-enable-clipboard t)
 
 (setq-default bidi-display-reordering nil)
 
