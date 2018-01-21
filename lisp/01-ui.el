@@ -1,3 +1,4 @@
+(add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
 (load-theme 'zenburn t)
 
 (setq inhibit-default-init t

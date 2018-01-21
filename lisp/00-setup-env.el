@@ -13,8 +13,6 @@
 				"lisp"))))
   (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
 
-(add-to-list 'custom-theme-load-path (expand-file-name "lib/zenburn" user-emacs-directory))
-
 (add-to-list 'exec-path binary-file-directory)
 
 (unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
