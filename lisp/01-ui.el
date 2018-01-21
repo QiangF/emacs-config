@@ -1,11 +1,8 @@
-(require 'volatile-highlights)
-(require 'undo-tree)
-(require 'anzu)
-(require 'disable-mouse)
-
 (load-theme 'zenburn t)
 
-(setq inhibit-default-init 1)
+(setq inhibit-default-init t
+      inhibit-startup-screen t
+      inhibit-startup-buffer-menu t)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -16,6 +13,7 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
+(require 'disable-mouse)
 (global-disable-mouse-mode)
 
 ; shut up 'got redefined' startup msgs
@@ -30,10 +28,13 @@
 
 (setq-default tab-width 8)
 
-(set-face-attribute 'default nil :height 120)
+; set font on frames created with 'emacsclient'
+(defun my-frame-set-font-hook (frame)
+  (set-frame-font "DejaVu Sans Mono-12" t t))
+(add-hook 'after-make-frame-functions 'my-frame-set-font-hook)
 
-(setq inhibit-startup-screen 1
-      inhibit-startup-buffer-menu t)
+; set font in normal 'emacs' frames
+(my-frame-set-font-hook (selected-frame))
 
 (setq initial-scratch-message "")
 
@@ -62,8 +63,14 @@
 (blink-cursor-mode 0)
 (global-font-lock-mode 1) ; syntax coloring on
 (global-auto-revert-mode 1)
+
+(require 'volatile-highlights)
 (volatile-highlights-mode 1)
+
+(require 'undo-tree)
 (global-undo-tree-mode 1)
+
+(require 'anzu)
 (global-anzu-mode 1)
 
 (menu-bar-mode 0)
