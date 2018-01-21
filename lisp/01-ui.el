@@ -82,7 +82,8 @@
 (electric-pair-mode 1)
 (show-paren-mode 1)
 
-(fringe-mode 4)
+(set-face-attribute 'fringe nil :background nil)
+(fringe-mode 3)
 
 (delete-selection-mode 1)
 
