@@ -8,7 +8,9 @@
 
 (defun epa-progress-callback-function (_context what _char current total handback) nil)
 
-(defun load-private-data ()
+(advice-remove 'notmuch-hello #'load-private-data)
+
+(defun load-private-data (&rest args)
   (when (= 0 (call-process "ssh" nil nil nil "-q" "mailstore-server" ":"))
     (load "99-mail-config")
     (advice-remove 'notmuch-hello #'load-private-data)))
