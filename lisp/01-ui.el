@@ -9,6 +9,7 @@
 
 (setq make-backup-files nil) ;don't create backup~
 (setq auto-save-default nil) ;don't create #autosave#
+(setq auto-save-list-file-prefix nil) ;don't create a list of auto-saved files
 
 (put 'erase-buffer 'disabled nil) ;allow (erase-buffer)
 
