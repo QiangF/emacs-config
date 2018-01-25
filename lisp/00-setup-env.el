@@ -13,6 +13,7 @@
 				"lisp"))))
   (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
 
+(add-to-list 'load-suffixes ".el.gpg")
 (add-to-list 'exec-path binary-file-directory)
 
 (unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
