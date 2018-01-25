@@ -29,7 +29,7 @@
   (if (not have-private-key)
       (message "ERROR: Private GPG key not found")
     (add-to-list 'load-suffixes ".el.gpg")
-    (load "private-config")))
+    (load "99-private-config")))
 
 (defun first-frame-hook (frame)
   (remove-hook 'after-make-frame-functions 'first-frame-hook)
