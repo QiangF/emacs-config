@@ -152,3 +152,7 @@ Version 2016-07-20"
 
 (require 'shr)
 (setq shr-use-colors nil)
+
+(require 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
