@@ -131,7 +131,7 @@
   (noflet ((process-list ())) ad-do-it))
 
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium")
+      browse-url-generic-program "firefox-beta")
 
 (defun xah-delete-current-file-copy-to-kill-ring ()
   "Delete current buffer/file and close the buffer, push content to `kill-ring'.
