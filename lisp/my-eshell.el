@@ -1,5 +1,4 @@
 (require 'eshell)
-(require 'helm-eshell)
 (require 'em-tramp)
 (require 'em-term)
 

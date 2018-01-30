@@ -25,12 +25,6 @@
 [submodule "lib/notmuch"]
 	path = lib/notmuch
 	url = git://git.notmuchmail.org/git/notmuch
-[submodule "lib/helm"]
-	path = lib/helm
-	url = https://github.com/emacs-helm/helm.git
-[submodule "lib/helm-gtags"]
-	path = lib/helm-gtags
-	url = https://github.com/syohex/emacs-helm-gtags.git
 [submodule "lib/mmm-mode"]
 	path = lib/mmm-mode
 	url = https://github.com/purcell/mmm-mode.git
