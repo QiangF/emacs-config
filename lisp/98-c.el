@@ -1,5 +1,3 @@
-(global-unset-key "\C-t")
-
 (setq-default c-basic-offset 8)
 
 (add-hook 'initialization-hook
