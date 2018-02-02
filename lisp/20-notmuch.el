@@ -1,3 +1,4 @@
+; -*- lexical-binding: t -*-
 (require 'notmuch)
 
 (setq notmuch-show-logo nil
@@ -118,18 +119,18 @@
     (string-match (concat "^" message-cite-prefix-regexp)
                   (buffer-substring (line-beginning-position) (line-end-position)))))
 
-;; (defun notmuch-download-message-filter (proc string)
-;;   (let* ((full-remote-name (replace-regexp-in-string "\n\\'" "" string))
-;; 	 (mail-name (file-name-nondirectory full-remote-name))
-;; 	 (local-dir (read-from-minibuffer "Destination directory: "))
-;; 	 (local-name (read-from-minibuffer "File name: "))
-;; 	 (full-dir (if (eq (substring local-dir -1) "/") local-dir (concat local-dir "/")))
-;; 	 (full-local-name (concat full-dir local-name)))
-;;     (when (and local-dir (not (file-exists-p local-dir)))
-;;       (helm-ff--mkdir local-dir))
-;;     (start-process "mail-scp" nil "mail-scp" full-remote-name full-local-name)
-;;     ; TODO: print next message in a mail-scp sentinel to indicate actual completion time
-;;     (message "Succesfully saved %s" full-local-name)))
+(defun notmuch-download-message-filter (proc string)
+  (let* ((full-remote-name (replace-regexp-in-string "\n\\'" "" string))
+	 (mail-name (file-name-nondirectory full-remote-name))
+	 (local-dir (read-from-minibuffer "Destination directory: "))
+	 (local-name (read-from-minibuffer "File name: "))
+	 (full-dir (if (eq (substring local-dir -1) "/") local-dir (concat local-dir "/")))
+	 (full-local-name (concat full-dir local-name)))
+;    TODO: Fix case when directory doesn't exist because I removed helm entirely
+;    (when (and local-dir (not (file-exists-p local-dir)))
+;      (helm-ff--mkdir local-dir))
+    (start-process "mail-scp" nil "mail-scp" full-remote-name full-local-name)
+    (message "Succesfully saved %s" full-local-name)))
 
 (defun notmuch-download-message ()
   (interactive)
