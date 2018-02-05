@@ -48,13 +48,13 @@
 
 (setq notmuch-search-default-sort-order 'newest-first)
 
-(define-key notmuch-hello-mode-map "g" #'notmuch-refresh-this-buffer)
-(define-key notmuch-search-mode-map "g" #'notmuch-refresh-this-buffer)
+(define-key notmuch-hello-mode-map "g" 'notmuch-refresh-this-buffer)
+(define-key notmuch-search-mode-map "g" 'notmuch-refresh-this-buffer)
 
 (define-key notmuch-show-mode-map "r" 'notmuch-show-reply)
 (define-key notmuch-show-mode-map "R" 'notmuch-show-reply-sender)
 
-(define-key notmuch-hello-mode-map "a" #'widget-button-press)
+(define-key notmuch-hello-mode-map "a" 'widget-button-press)
 
 (setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)

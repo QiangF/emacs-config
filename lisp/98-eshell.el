@@ -83,7 +83,7 @@ directory to make multiple eshell windows easier."
     ;; We have to expand the file names or else naming a directory in an
     ;; argument causes later arguments to be looked for in that directory,
     ;; not the starting directory
-    (mapc #'find-file (mapcar #'expand-file-name (eshell-flatten-list (reverse args))))))
+    (mapc 'find-file (mapcar 'expand-file-name (eshell-flatten-list (reverse args))))))
 
 (defalias 'eshell/e 'eshell/emacs)
 
