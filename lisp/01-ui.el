@@ -125,6 +125,8 @@
 
 (setq enable-recursive-minibuffers t)
 
+(setq help-window-select t)
+
 (require 'noflet)
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when Emacs exits."
