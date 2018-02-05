@@ -67,3 +67,6 @@
 [submodule "lib/magit-imerge"]
 	path = lib/magit-imerge
 	url = https://github.com/magit/magit-imerge.git
+[submodule "lib/swiper"]
+	path = lib/swiper
+	url = https://github.com/abo-abo/swiper.git
