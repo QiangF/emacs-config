@@ -159,67 +159,11 @@ Version 2016-07-20"
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
 
-(setq mode-line-format
+(setq-default mode-line-format
       '("%e" (:eval (winum-get-number-string))
 	mode-line-front-space
 	mode-line-mule-info mode-line-client
-	mode-line-modified mode-line-remote
-	mode-line-frame-identification
-	mode-line-buffer-identification "   "
-	mode-line-position "  "
-	major-mode
-	mode-line-misc-info
-	mode-line-end-spaces))
-
-(setq mode-line-format
-  (list
-   '(:eval (winum-get-number-string))
-   mode-line-front-space
-   mode-line-mule-info
-   mode-line-client
-   mode-line-remote
-   "  "
-   mode-line-buffer-identification
-   "   "
-   "(" ;; line and column; '%02' to set to 2 chars at least
-   (propertize "%02l" 'face 'font-lock-type-face) ","
-   (propertize "%02c" 'face 'font-lock-type-face) 
-   ")"
-   "    "
-   ;; insert vs overwrite mode, input-method in a tooltip
-   '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-		       'face 'font-lock-preprocessor-face
-		       'help-echo (concat "Buffer is in "
-					  (if overwrite-mode "overwrite" "insert") " mode")))
-
-    ;; was this buffer modified since the last save?
-    '(:eval (if (buffer-modified-p)
-		(concat " "  (propertize "Mod"
-					 'face 'font-lock-warning-face
-					 'help-echo "Buffer has been modified"))
-	      "    "
-	      ))
-
-    ;; is this buffer read-only?
-    '(:eval (when buffer-read-only
-              (concat ","  (propertize "RO"
-                             'face 'font-lock-type-face
-                             'help-echo "Buffer is read-only"))))  
-    " "
-
-    ;; the current major mode for the buffer.
-    "%m "
-    ;; relative position, size of file
-    "%p/%I"
-;    (mode-line-fill 14)
-
-    ))
-
-(defun mode-line-fill (reserve)
-  "Return empty space using FACE and leaving RESERVE space on the right."
-  (unless reserve
-    (setq reserve 20))
-  (when (and window-system (eq 'right (get-scroll-bar-mode)))
-    (setq reserve (- reserve 3)))
-  (propertize " "
-              'display `((space :align-to (- (+ right right-fringe right-margin) ,reserve)))))
+	mode-line-modified mode-line-remote "  "
+	mode-line-buffer-identification
+	" (%l,%c)  %p/%I  %m "
+	(vc-mode vc-mode)))
