@@ -56,6 +56,7 @@
 
 (define-key notmuch-hello-mode-map "a" 'widget-button-press)
 (define-key notmuch-search-mode-map "a" 'notmuch-search-show-thread)
+(define-key notmuch-show-mode-map "a" nil)
 
 (setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
