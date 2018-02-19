@@ -167,3 +167,19 @@ Version 2016-07-20"
 	mode-line-buffer-identification
 	" (%l,%c)  %p/%I  %m "
 	(vc-mode vc-mode)))
+
+(setq ido-enable-flex-matching t)
+(setq ido-create-new-buffer 'always)
+(ido-mode 1)
+(ido-everywhere 1)
+(setq magit-completing-read-function 'magit-ido-completing-read)
+
+(require 'ido-completing-read+)
+(ido-ubiquitous-mode 1)
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; old M-x
+(setq smex-save-file (concat temporary-file-directory "smex-data"))
