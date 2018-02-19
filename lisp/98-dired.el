@@ -7,4 +7,3 @@
 
 (global-set-key (kbd "C-l") 'dired-jump)
 (global-set-key (kbd "C-x C-l") 'dired-jump)
-(global-set-key (kbd "C-x C-f") nil)
