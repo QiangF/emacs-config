@@ -1,10 +1,6 @@
 Host mailstore-server
     HostName scw1.adirat.com
-    Port 55777
     User adi
     StrictHostKeyChecking=no
     UserKnownHostsFile=/dev/null
 
-Host *
-     ServerAliveInterval 120
-     ServerAliveCountMax 1000
