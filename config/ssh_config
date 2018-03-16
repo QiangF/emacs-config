@@ -4,3 +4,6 @@ Host mailstore-server
     StrictHostKeyChecking=no
     UserKnownHostsFile=/dev/null
 
+Host *
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
