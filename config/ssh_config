@@ -1,9 +1,6 @@
 Host mailstore-server
     HostName scw1.adirat.com
     User adi
-    StrictHostKeyChecking=no
-    UserKnownHostsFile=/dev/null
 
 Host *
     StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
