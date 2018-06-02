@@ -172,7 +172,6 @@ Version 2016-07-20"
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 (ido-everywhere 1)
-(setq magit-completing-read-function 'magit-ido-completing-read)
 
 (require 'ido-completing-read+)
 (ido-ubiquitous-mode 1)
