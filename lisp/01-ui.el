@@ -15,15 +15,6 @@
 
 (global-set-key (kbd "C-x k") 'kill-this-buffer)
 
-(require 'disable-mouse)
-(global-disable-mouse-mode)
-
-; use system clipboard
-(setq select-enable-primary nil
-      select-enable-clipboard t)
-
-(setq-default bidi-display-reordering nil)
-
 (setq-default tab-width 8)
 
 ; set font on frames created with 'emacsclient'

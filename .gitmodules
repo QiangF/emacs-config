@@ -40,9 +40,6 @@
 [submodule "lib/bb-mode"]
 	path = lib/bb-mode
 	url = https://github.com/mferland/bb-mode.git
-[submodule "lib/disable-mouse"]
-	path = lib/disable-mouse
-	url = https://github.com/purcell/disable-mouse.git
 [submodule "lib/emacs-winum"]
 	path = lib/emacs-winum
 	url = https://github.com/deb0ch/emacs-winum.git
