@@ -168,8 +168,10 @@ Version 2016-07-20"
 	" (%l,%c)  %p/%I  %m "
 	(vc-mode vc-mode)))
 
-(setq ido-enable-flex-matching t)
-(setq ido-create-new-buffer 'always)
+(setq ido-save-directory-list-file (concat temporary-file-directory "ido.last")
+      ido-enable-flex-matching t
+      ido-create-new-buffer 'always)
+
 (ido-mode 1)
 (ido-everywhere 1)
 
