@@ -151,3 +151,11 @@
 				     ("authors" . "%-20s ")
 				     ("subject" . "%s ")
 				     ("tags" . "(%s)")))
+
+(defun load-mail-config (&rest args)
+  (unless (boundp 'iden-smtp-servers)
+    (load "99-mail-config")
+    (advice-remove 'notmuch-hello 'load-mail-config)))
+
+(advice-add 'notmuch-hello :before 'load-mail-config)
+(advice-add 'notmuch-mua-new-mail :before 'load-mail-config)
