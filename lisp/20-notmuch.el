@@ -159,3 +159,7 @@
 
 (advice-add 'notmuch-hello :before 'load-mail-config)
 (advice-add 'notmuch-mua-new-mail :before 'load-mail-config)
+
+(set-face-attribute 'notmuch-tag-deleted nil
+		    :foreground "#ffe6e6"
+		    :inverse-video nil)
