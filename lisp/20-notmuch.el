@@ -157,3 +157,6 @@
 (set-face-attribute 'notmuch-tag-deleted nil
 		    :foreground "#ffe6e6"
 		    :inverse-video nil)
+
+(set-face-attribute 'notmuch-tag-unread nil
+		    :foreground "#ff0000")
