@@ -73,3 +73,6 @@
 [submodule "lib/xterm-color"]
 	path = lib/xterm-color
 	url = https://github.com/atomontage/xterm-color.git
+[submodule "lib/dircolors-zenburn"]
+	path = lib/dircolors-zenburn
+	url = https://github.com/ivoarch/dircolors-zenburn.git
