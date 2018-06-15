@@ -160,9 +160,6 @@ Version 2016-07-20"
       ido-enable-flex-matching t
       ido-create-new-buffer 'always)
 
-(add-hook 'ido-make-file-list-hook 'ido-sort-mtime)
-(add-hook 'ido-make-dir-list-hook 'ido-sort-mtime)
-
 (ido-mode 1)
 (ido-everywhere 1)
 
