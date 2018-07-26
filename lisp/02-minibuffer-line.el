@@ -43,16 +43,18 @@
     mode-line-modified mode-line-remote "  "
     mode-line-buffer-identification
     " (%l,%c)  %p/%I  %m "
-    (vc-mode vc-mode))
+    (vc-mode vc-mode)
+    "                                                                                        "
+    "                                                                                        ")
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
 
 (defface minibuffer-line
-  '((t :inherit mode-line-inactive))
+  '((t :inherit mode-line))
   "Face to use for the minibuffer-line.")
 
-(defcustom minibuffer-line-refresh-interval 5
+(defcustom minibuffer-line-refresh-interval 1
   "The frequency at which the minibuffer-line is updated, in seconds."
   :type 'integer)
 
