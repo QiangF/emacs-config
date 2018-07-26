@@ -167,3 +167,13 @@ Version 2016-07-20"
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; old M-x
 (setq smex-save-file (concat temporary-file-directory "smex-data"))
+
+(defun my-command-error-function (data context caller)
+  "Ignore the buffer-read-only, beginning-of-buffer,
+end-of-buffer signals; pass the rest to the default handler."
+  (when (not (memq (car data) '(buffer-read-only
+				beginning-of-buffer
+				end-of-buffer)))
+    (command-error-default-function data context caller)))
+
+(setq command-error-function #'my-command-error-function)
