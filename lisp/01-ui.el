@@ -102,6 +102,8 @@
 
 (winum-mode)
 
+(require 'hide-mode-line)
+
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<up>") 'shrink-window)

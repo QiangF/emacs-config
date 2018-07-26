@@ -76,3 +76,6 @@
 [submodule "lib/dircolors-zenburn"]
 	path = lib/dircolors-zenburn
 	url = https://github.com/ivoarch/dircolors-zenburn.git
+[submodule "lib/emacs-hide-mode-line"]
+	path = lib/emacs-hide-mode-line
+	url = https://github.com/hlissner/emacs-hide-mode-line.git
