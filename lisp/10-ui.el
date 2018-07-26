@@ -102,7 +102,7 @@
 
 (winum-mode)
 
-(require 'hide-mode-line)
+(minibuffer-line-mode)
 
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
@@ -149,14 +149,7 @@ Version 2016-07-20"
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
 
-(setq-default mode-line-format
-      '("%e" (:eval (winum-get-number-string))
-	mode-line-front-space
-	mode-line-mule-info mode-line-client
-	mode-line-modified mode-line-remote "  "
-	mode-line-buffer-identification
-	" (%l,%c)  %p/%I  %m "
-	(vc-mode vc-mode)))
+(setq-default mode-line-format nil)
 
 (setq ido-save-directory-list-file (concat temporary-file-directory "ido.last")
       ido-enable-flex-matching t
