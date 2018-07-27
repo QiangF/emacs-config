@@ -153,16 +153,6 @@ Version 2016-07-20"
 
 (setq-default mode-line-format nil)
 
-(setq ido-save-directory-list-file (concat temporary-file-directory "ido.last")
-      ido-enable-flex-matching t
-      ido-create-new-buffer 'always)
-
-(ido-mode 1)
-(ido-everywhere 1)
-
-(require 'ido-completing-read+)
-(ido-ubiquitous-mode 1)
-
 (defun my-command-error-function (data context caller)
   "Ignore the buffer-read-only, beginning-of-buffer,
 end-of-buffer signals; pass the rest to the default handler."

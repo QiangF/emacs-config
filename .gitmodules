@@ -61,9 +61,6 @@
 [submodule "lib/ghub"]
 	path = lib/ghub
 	url = https://github.com/magit/ghub.git
-[submodule "lib/ido-completing-read-plus"]
-	path = lib/ido-completing-read-plus
-	url = https://github.com/DarwinAwardWinner/ido-completing-read-plus.git
 [submodule "lib/emacs-memoize"]
 	path = lib/emacs-memoize
 	url = https://github.com/skeeto/emacs-memoize.git
