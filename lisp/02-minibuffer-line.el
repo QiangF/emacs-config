@@ -44,8 +44,8 @@
     mode-line-buffer-identification
     " (%l,%c)  %p/%I  %m "
     (vc-mode vc-mode)
-    "                                                                                        "
-    "                                                                                        ")
+    "                                                                        "
+    "                                                                        ")
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
@@ -54,7 +54,7 @@ Uses the same format as `mode-line-format'."
   '((t :inherit mode-line))
   "Face to use for the minibuffer-line.")
 
-(defcustom minibuffer-line-refresh-interval 1
+(defcustom minibuffer-line-refresh-interval 0.3
   "The frequency at which the minibuffer-line is updated, in seconds."
   :type 'integer)
 
@@ -68,13 +68,8 @@ Uses the same format as `mode-line-format'."
   :global t
   (with-current-buffer minibuffer-line--buffer
     (erase-buffer))
-  (when minibuffer-line--timer
-    (cancel-timer minibuffer-line--timer)
-    (setq minibuffer-line--timer nil))
   (when minibuffer-line-mode
-    (setq minibuffer-line--timer
-          (run-with-timer t minibuffer-line-refresh-interval
-                          #'minibuffer-line--update))
+    (add-to-list 'post-command-hook #'minibuffer-line--update)
     (minibuffer-line--update)))
 
 (defun minibuffer-line--update ()
