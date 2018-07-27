@@ -5,7 +5,8 @@
 
 (setq inhibit-default-init t
       inhibit-startup-screen t
-      inhibit-startup-buffer-menu t)
+      inhibit-startup-buffer-menu t
+      inhibit-message t)
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -162,3 +163,8 @@ end-of-buffer signals; pass the rest to the default handler."
     (command-error-default-function data context caller)))
 
 (setq command-error-function #'my-command-error-function)
+
+(add-hook 'isearch-mode-hook
+	  (lambda ()
+	    (make-variable-buffer-local 'inhibit-message)
+	    (setq inhibit-message nil)))
