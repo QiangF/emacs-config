@@ -44,8 +44,8 @@
     mode-line-buffer-identification
     " (%l,%c)  %p/%I  %m "
     (vc-mode vc-mode)
-    "                                                                        "
-    "                                                                        ")
+    "                                                                            "
+    "                                                                            ")
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
