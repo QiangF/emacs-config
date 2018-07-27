@@ -1,12 +1,11 @@
-(require 'multi-term)
 (require 'xterm-color)
 (require 'eshell)
 
 (setenv "TERM" "st-256color")
 
-(setq multi-term-program "/bin/bash"
-      term-unbind-key-list '("C-z" "C-x" "C-c" "C-t" "C-h" "C-y" "C-v" "<ESC>")
-      comint-terminfo-terminal "st-256color"
+(setq term-unbind-key-list '("C-z" "C-x" "C-c" "C-t" "C-h" "C-y" "C-v" "<ESC>"))
+
+(setq comint-terminfo-terminal "st-256color"
       comint-prompt-read-only t)
 
 (setq comint-output-filter-functions
