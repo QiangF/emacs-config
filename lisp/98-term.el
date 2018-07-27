@@ -19,8 +19,3 @@
 
 (add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
 (setq eshell-output-filter-functions (remove 'eshell-handle-ansi-color eshell-output-filter-functions))
-
-; Add these to your .bashrc
-; eval $(dircolors -b $HOME/.emacs.d/lib/dircolors-zenburn/dircolors)
-; alias dir='dir --color'
-; alias ls='ls --color'
