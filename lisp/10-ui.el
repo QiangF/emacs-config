@@ -161,13 +161,6 @@ Version 2016-07-20"
 (require 'ido-completing-read+)
 (ido-ubiquitous-mode 1)
 
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command) ;; old M-x
-(setq smex-save-file (concat temporary-file-directory "smex-data"))
-
 (defun my-command-error-function (data context caller)
   "Ignore the buffer-read-only, beginning-of-buffer,
 end-of-buffer signals; pass the rest to the default handler."
