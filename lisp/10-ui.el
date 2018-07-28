@@ -159,7 +159,8 @@ Version 2016-07-20"
 end-of-buffer signals; pass the rest to the default handler."
   (when (not (memq (car data) '(buffer-read-only
 				beginning-of-buffer
-				end-of-buffer)))
+				end-of-buffer
+				quit)))
     (command-error-default-function data context caller)))
 
 (setq command-error-function #'my-command-error-function)
