@@ -64,3 +64,6 @@
 [submodule "lib/xterm-color"]
 	path = lib/xterm-color
 	url = https://github.com/atomontage/xterm-color.git
+[submodule "lib/emacs-bash-completion"]
+	path = lib/emacs-bash-completion
+	url = https://github.com/szermatt/emacs-bash-completion.git
