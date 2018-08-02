@@ -53,7 +53,7 @@
 (setq global-auto-revert-non-file-buffers t)
 
 (blink-cursor-mode 0)
-(global-font-lock-mode 1) ; syntax coloring on
+
 (global-auto-revert-mode 1)
 
 (require 'volatile-highlights)
@@ -110,8 +110,6 @@
 (global-set-key (kbd "S-C-<down>") 'enlarge-window)
 
 (global-unset-key "\C-x\o")
-
-(setq font-lock-maximum-decoration nil)
 
 (setq enable-recursive-minibuffers t)
 
