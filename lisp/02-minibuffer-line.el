@@ -73,9 +73,11 @@ Uses the same format as `mode-line-format'."
     (minibuffer-line--update)))
 
 (defun minibuffer-line--update ()
-  (with-current-buffer minibuffer-line--buffer
-    (erase-buffer)
-    (insert (format-mode-line minibuffer-line-format 'minibuffer-line))))
+  (while-no-input
+    (redisplay)
+    (with-current-buffer minibuffer-line--buffer
+      (erase-buffer)
+      (insert (format-mode-line minibuffer-line-format 'minibuffer-line)))))
 
 (provide 'minibuffer-line)
 ;;; minibuffer-line.el ends here
