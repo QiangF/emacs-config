@@ -73,6 +73,8 @@
 
 (delete-selection-mode 1)
 
+(global-eldoc-mode -1)
+
 (setq winum-keymap
       (let ((map (make-sparse-keymap)))
 	(define-key map (kbd "C-`") 'winum-select-window-by-number)
