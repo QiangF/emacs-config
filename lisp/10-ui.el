@@ -62,9 +62,6 @@
 (require 'undo-tree)
 (global-undo-tree-mode 1)
 
-(require 'anzu)
-(global-anzu-mode 1)
-
 (menu-bar-mode 0)
 
 (column-number-mode 1)
