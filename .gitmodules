@@ -37,9 +37,6 @@
 [submodule "lib/emacs-winum"]
 	path = lib/emacs-winum
 	url = https://github.com/deb0ch/emacs-winum.git
-[submodule "lib/emacs-noflet"]
-	path = lib/emacs-noflet
-	url = https://github.com/nicferrier/emacs-noflet.git
 [submodule "lib/groovy-emacs-mode"]
 	path = lib/groovy-emacs-mode
 	url = https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes.git
