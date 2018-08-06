@@ -95,8 +95,7 @@
 
 (setq window-numbering-scope            'frame-local
       winum-auto-assign-0-to-minibuffer t
-      winum-auto-setup-mode-line        t
-      winum-mode-line-position          1)
+      winum-auto-setup-mode-line        nil)
 
 (set-face-attribute 'winum-face nil :weight 'bold)
 

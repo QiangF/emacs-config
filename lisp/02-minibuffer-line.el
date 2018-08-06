@@ -37,7 +37,7 @@
   :group 'mode-line)
 
 (defcustom minibuffer-line-format
-  '("%e" (:eval (winum-get-number-string))
+  '("%e"
     mode-line-front-space
     mode-line-mule-info mode-line-client
     mode-line-modified mode-line-remote "  "
