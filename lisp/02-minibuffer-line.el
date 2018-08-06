@@ -44,11 +44,13 @@
 		    (propertized-buffer-identification "%12f")
 		    (propertized-buffer-identification "%12b")))
 
+(defun mode-line-dirtrack ()
+  (setq mode-line-buffer-identification
+	'(:eval (propertized-buffer-identification default-directory))))
 
-(add-hook 'dired-mode-hook
-	  (lambda ()
-	    (setq mode-line-buffer-identification
-		  '(:eval (propertized-buffer-identification default-directory)))))
+(add-hook 'dired-mode-hook 'mode-line-dirtrack)
+(add-hook 'shell-mode-hook 'mode-line-dirtrack)
+(add-hook 'term-mode-hook  'mode-line-dirtrack)
 
 (defcustom minibuffer-line-format
   '(""
