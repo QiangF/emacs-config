@@ -143,3 +143,5 @@ end-of-buffer signals; pass the rest to the default handler."
 	  (lambda ()
 	    (make-variable-buffer-local 'inhibit-message)
 	    (setq inhibit-message nil)))
+
+(global-set-key (kbd "C-x C-f") nil)
