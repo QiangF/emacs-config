@@ -36,16 +36,26 @@
   "Use the idle minibuffer window to display status information."
   :group 'mode-line)
 
+(setq-default mode-line-end-spaces
+      (propertize " " 'display '(space :align-to right)))
+
+(setq-default mode-line-buffer-identification
+	      (list 'buffer-file-name
+		    (propertized-buffer-identification "%12f")
+		    (propertized-buffer-identification "%12b")))
+
+
+(add-hook 'dired-mode-hook
+	  (lambda ()
+	    (setq mode-line-buffer-identification
+		  '(:eval (propertized-buffer-identification default-directory)))))
+
 (defcustom minibuffer-line-format
-  '("%e"
-    mode-line-front-space
-    mode-line-mule-info mode-line-client
-    mode-line-modified mode-line-remote "  "
+  '(""
+    mode-line-modified
+    " (%l,%c) %p/%I  "
     mode-line-buffer-identification
-    " (%l,%c)  %p/%I  %m "
-    (vc-mode vc-mode)
-    "                                                                            "
-    "                                                                            ")
+    mode-line-end-spaces)
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
