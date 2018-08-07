@@ -139,6 +139,9 @@ end-of-buffer signals; pass the rest to the default handler."
 
 (setq command-error-function #'my-command-error-function)
 
+(setq save-silently t)
+(setq confirm-kill-processes nil)
+
 (add-hook 'isearch-mode-hook
 	  (lambda ()
 	    (make-variable-buffer-local 'inhibit-message)
