@@ -34,9 +34,6 @@
 [submodule "lib/bb-mode"]
 	path = lib/bb-mode
 	url = https://github.com/mferland/bb-mode.git
-[submodule "lib/emacs-winum"]
-	path = lib/emacs-winum
-	url = https://github.com/deb0ch/emacs-winum.git
 [submodule "lib/groovy-emacs-mode"]
 	path = lib/groovy-emacs-mode
 	url = https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes.git
