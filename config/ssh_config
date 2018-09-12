@@ -1,5 +1,5 @@
 Host mailstore-server
-    HostName scw1.adirat.com
+    HostName sky1.adirat.com
     User adi
 
 Host *
