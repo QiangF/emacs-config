@@ -81,7 +81,7 @@ Uses the same format as `mode-line-format'."
   (with-current-buffer minibuffer-line--buffer
     (erase-buffer))
   (when minibuffer-line-mode
-    (add-to-list 'post-command-hook #'minibuffer-line--update)
+    (add-hook 'post-command-hook 'minibuffer-line--update)
     (minibuffer-line--update)))
 
 (defun minibuffer-line--update ()
