@@ -66,7 +66,7 @@ Uses the same format as `mode-line-format'."
   '((t :inherit mode-line))
   "Face to use for the minibuffer-line.")
 
-(defcustom minibuffer-line-refresh-interval 0.3
+(defcustom minibuffer-line-refresh-interval 0.1
   "The frequency at which the minibuffer-line is updated, in seconds."
   :type 'integer)
 
@@ -80,16 +80,20 @@ Uses the same format as `mode-line-format'."
   :global t
   (with-current-buffer minibuffer-line--buffer
     (erase-buffer))
+  (when minibuffer-line--timer
+    (cancel-timer minibuffer-line--timer)
+    (setq minibuffer-line--timer nil))
   (when minibuffer-line-mode
-    (add-hook 'post-command-hook 'minibuffer-line--update)
+    (setq minibuffer-line--timer
+	  (run-with-timer t minibuffer-line-refresh-interval
+			  #'minibuffer-line--update))
+;    (add-hook 'post-command-hook 'minibuffer-line--update)
     (minibuffer-line--update)))
 
 (defun minibuffer-line--update ()
-  (while-no-input
-    (redisplay)
-    (with-current-buffer minibuffer-line--buffer
-      (erase-buffer)
-      (insert (format-mode-line minibuffer-line-format 'minibuffer-line)))))
+  (with-current-buffer minibuffer-line--buffer
+    (erase-buffer)
+    (insert (format-mode-line minibuffer-line-format 'minibuffer-line))))
 
 (provide 'minibuffer-line)
 ;;; minibuffer-line.el ends here
