@@ -7,6 +7,7 @@
       notmuch-show-empty-saved-searches t
       notmuch-show-all-tags-list t
       notmuch-crypto-process-mime t
+      notmuch-wash-wrap-lines-length 80
       notmuch-address-internal-completion '(received nil))
 
 (setq notmuch-hello-sections
