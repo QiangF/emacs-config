@@ -123,3 +123,6 @@ end-of-buffer signals; pass the rest to the default handler."
 
 (require 'autorevert)
 (setq auto-revert-verbose nil)
+
+(set-display-table-slot standard-display-table 'vertical-border ?│)
+(set-face-attribute 'vertical-border nil :foreground "#2B2B2B")
