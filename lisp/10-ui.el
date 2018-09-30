@@ -101,12 +101,12 @@
 (setq-default mode-line-format nil)
 
 (defun my-command-error-function (data context caller)
-  "Ignore the buffer-read-only, beginning-of-buffer,
-end-of-buffer signals; pass the rest to the default handler."
+  "Don't print some error messages to the echo area"
   (when (not (memq (car data) '(buffer-read-only
 				beginning-of-buffer
 				end-of-buffer
-				quit)))
+				quit
+				user-error)))
     (command-error-default-function data context caller)))
 
 (setq command-error-function #'my-command-error-function)
