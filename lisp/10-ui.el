@@ -120,3 +120,6 @@ end-of-buffer signals; pass the rest to the default handler."
 	    (setq inhibit-message nil)))
 
 (global-set-key (kbd "C-x C-f") nil)
+
+(require 'autorevert)
+(setq auto-revert-verbose nil)
