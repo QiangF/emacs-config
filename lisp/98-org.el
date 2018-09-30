@@ -4,3 +4,6 @@
   (dired-create-directory org-babel-temporary-directory))
 
 (require 'org)
+
+(setq org-agenda-files (file-expand-wildcards (concat user-emacs-directory "org/*.org.gpg"))
+      org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'")
