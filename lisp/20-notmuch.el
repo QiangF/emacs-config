@@ -127,7 +127,7 @@
 (defun notmuch-download-message-filter (proc string)
   (let* ((full-remote-name (replace-regexp-in-string "\n\\'" "" string))
 	   (mail-name (file-name-nondirectory full-remote-name))
-	   (local-name (expand-file-name (ido-read-file-name "enter file: "))))
+	   (local-name (expand-file-name (read-file-name "enter file: "))))
     (start-process "mail-scp" nil "mail-scp" full-remote-name local-name)
     (message "Succesfully saved %s" local-name)))
 
