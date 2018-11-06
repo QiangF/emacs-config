@@ -58,3 +58,6 @@
 [submodule "lib/emacs-bash-completion"]
 	path = lib/emacs-bash-completion
 	url = https://github.com/szermatt/emacs-bash-completion.git
+[submodule "lib/flx"]
+	path = lib/flx
+	url = https://github.com/lewang/flx.git
