@@ -3,7 +3,6 @@
 (unless (file-directory-p org-babel-temporary-directory)
   (dired-create-directory org-babel-temporary-directory))
 
-(require 'org)
+(setq org-agenda-files (file-expand-wildcards "~/org/*.org"))
 
-(setq org-agenda-files (file-expand-wildcards (concat user-emacs-directory "org/*.org.gpg"))
-      org-agenda-file-regexp "\\`[^.].*\\.org.gpg\\'")
+(global-set-key "\C-ca" 'org-agenda)
