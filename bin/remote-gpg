@@ -11,7 +11,8 @@ fi
 # remove any existing agent socket (in theory `StreamLocalBindUnlink yes` does this,
 # but in practice, not so much - https://bugzilla.mindrot.org/show_bug.cgi?id=2601)
 ssh $host rm -f ~/.gnupg/S.gpg-agent.yocto-native
-ssh -t -R ~/.gnupg/S.gpg-agent.yocto-native:/home/adi/.gnupg/S.gpg-agent.extra $host \
+ssh -t -R ~/.gnupg/S.gpg-agent.yocto-native:/run/user/1000/gnupg/S.gpg-agent.extra \
+	-R ~/.gnupg/S.gpg-agent.ssh:/run/user/1000/gnupg/S.gpg-agent.ssh $host \
 	sh -c 'echo; echo "Perform remote GPG operations and hit enter"; \
 	read; \
 	rm -f ~/.gnupg/S.gpg-agent.yocto-native';
