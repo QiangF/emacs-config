@@ -62,10 +62,6 @@
 Uses the same format as `mode-line-format'."
   :type 'sexp)
 
-(defface minibuffer-line
-  '((t :inherit mode-line))
-  "Face to use for the minibuffer-line.")
-
 (defcustom minibuffer-line-refresh-interval 0.1
   "The frequency at which the minibuffer-line is updated, in seconds."
   :type 'integer)
@@ -93,7 +89,7 @@ Uses the same format as `mode-line-format'."
 (defun minibuffer-line--update ()
   (with-current-buffer minibuffer-line--buffer
     (erase-buffer)
-    (insert (format-mode-line minibuffer-line-format 'minibuffer-line))))
+    (insert (format-mode-line minibuffer-line-format 'mode-line))))
 
 (provide 'minibuffer-line)
 ;;; minibuffer-line.el ends here
