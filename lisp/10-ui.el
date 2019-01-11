@@ -126,5 +126,3 @@
 
 (set-display-table-slot standard-display-table 'vertical-border ?│)
 (set-face-attribute 'vertical-border nil :foreground "#2B2B2B")
-
-(add-hook 'text-mode-hook (lambda () (auto-fill-mode -1)) t)

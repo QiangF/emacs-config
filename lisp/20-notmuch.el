@@ -161,3 +161,8 @@
 
 (set-face-attribute 'notmuch-tag-unread nil
 		    :foreground "#ff0000")
+
+(require 'messages-are-flowing)
+(add-hook 'message-mode-hook 'messages-are-flowing-use-and-mark-hard-newlines)
+(require 'mml)
+(setq mml-enable-flowed t)
