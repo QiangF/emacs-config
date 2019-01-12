@@ -75,8 +75,6 @@
 
 (global-eldoc-mode -1)
 
-(minibuffer-line-mode)
-
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<up>") 'shrink-window)
@@ -97,8 +95,6 @@
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
-
-(setq-default mode-line-format nil)
 
 (defun my-command-error-function (data context caller)
   "Don't print some error messages to the echo area"
