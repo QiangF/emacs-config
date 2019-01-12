@@ -8,6 +8,8 @@
       inhibit-startup-buffer-menu t
       inhibit-message t)
 
+(setq-default truncate-lines t)
+
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (setq make-backup-files nil) ;don't create backup~
