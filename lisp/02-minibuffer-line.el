@@ -1,3 +1,5 @@
+(require 'battery)
+
 (setq-default mode-line-format nil)
 
 (setq-default mode-line-buffer-identification
@@ -13,22 +15,33 @@
 (add-hook 'shell-mode-hook 'mode-line-dirtrack)
 (add-hook 'term-mode-hook  'mode-line-dirtrack)
 
-(setq-default mode-line-end-spaces
-      (propertize " " 'display '(space :align-to right)))
+(defun mode-line-fill (end-space)
+  (propertize " " 'display `((space :align-to (- right 1 ,end-space)))))
 
 (defcustom minibuffer-line-format
   '(""
     mode-line-modified
     " (%l,%c) %p/%I  "
     mode-line-buffer-identification
-    mode-line-end-spaces)
+    " "
+    (:eval (mode-line-fill (length battery-mode-line-string)))
+    battery-mode-line-string)
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
-
-(defvar minibuffer-line--timer nil)
 
 (defun minibuffer-line--update ()
   (with-current-buffer " *Minibuf-0*"
     (erase-buffer)
     (insert (format-mode-line minibuffer-line-format 'mode-line))))
+
+(defun minibuffer-line--bat-update ()
+  (battery-update)
+  (minibuffer-line--update))
+
+(defvar minibuffer-line--timer
+  (run-with-timer t 15 #'minibuffer-line--bat-update))
+
+(setq battery-mode-line-format "[%L %p%% %t]")
+
+(battery-update)
