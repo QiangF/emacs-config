@@ -1,4 +1,5 @@
 (require 'battery)
+(require 'time)
 
 (setq-default mode-line-format nil)
 
@@ -24,7 +25,10 @@
     " (%l,%c) %p/%I  "
     mode-line-buffer-identification
     " "
-    (:eval (mode-line-fill (length battery-mode-line-string)))
+    (:eval (mode-line-fill (+ (length battery-mode-line-string) 1
+			      (length display-time-string))))
+    display-time-string
+    " "
     battery-mode-line-string)
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
@@ -35,12 +39,18 @@ Uses the same format as `mode-line-format'."
     (erase-buffer)
     (insert (format-mode-line minibuffer-line-format 'mode-line))))
 
-(setq battery-mode-line-string "[no battery]")
-
+(setq battery-mode-line-string "no battery")
 (when battery-status-function
-  (defun minibuffer-line--bat-update ()
-    (battery-update)
-    (minibuffer-line--update))
-  (setq battery-mode-line-format "[%L %p%% %t]"
-	minibuffer-line--timer (run-with-timer t 15 #'minibuffer-line--bat-update))
+  (setq battery-mode-line-format "%L %p%% %t")
   (battery-update))
+
+(setq display-time-format "%a %H:%M")
+(display-time-update)
+
+(defun minibuffer-line--timer-update ()
+  (when battery-status-function (battery-update))
+  (display-time-update)
+  (minibuffer-line--update))
+
+(setq minibuffer-line--timer
+      (run-with-timer t 30 #'minibuffer-line--timer-update))
