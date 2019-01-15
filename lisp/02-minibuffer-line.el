@@ -35,13 +35,10 @@ Uses the same format as `mode-line-format'."
     (erase-buffer)
     (insert (format-mode-line minibuffer-line-format 'mode-line))))
 
-(defun minibuffer-line--bat-update ()
-  (battery-update)
-  (minibuffer-line--update))
-
-(defvar minibuffer-line--timer
-  (run-with-timer t 15 #'minibuffer-line--bat-update))
-
-(setq battery-mode-line-format "[%L %p%% %t]")
-
-(battery-update)
+(when battery-status-function
+  (defun minibuffer-line--bat-update ()
+    (battery-update)
+    (minibuffer-line--update))
+  (setq battery-mode-line-format "[%L %p%% %t]"
+	minibuffer-line--timer (run-with-timer t 15 #'minibuffer-line--bat-update))
+  (battery-update))
