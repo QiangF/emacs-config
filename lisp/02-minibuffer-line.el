@@ -35,6 +35,8 @@ Uses the same format as `mode-line-format'."
     (erase-buffer)
     (insert (format-mode-line minibuffer-line-format 'mode-line))))
 
+(setq battery-mode-line-string "[no battery]")
+
 (when battery-status-function
   (defun minibuffer-line--bat-update ()
     (battery-update)
