@@ -64,3 +64,6 @@
 [submodule "lib/messages-are-flowing"]
 	path = lib/messages-are-flowing
 	url = https://github.com/legoscia/messages-are-flowing.git
+[submodule "lib/pinentry-el"]
+	path = lib/pinentry-el
+	url = https://github.com/ueno/pinentry-el.git

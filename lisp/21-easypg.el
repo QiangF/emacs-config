@@ -1,4 +1,5 @@
 (require 'epa)
+(require 'pinentry)
 
 (setq password-cache-expiry nil
       epa-pinentry-mode 'loopback)
@@ -9,3 +10,5 @@
 	(concat "/run/user/" (number-to-string (user-uid)) "/gnupg/S.gpg-agent.ssh"))
 
 (defun epa-progress-callback-function (_context what _char current total handback) nil)
+
+(pinentry-start)
