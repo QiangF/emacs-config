@@ -27,9 +27,10 @@
     " "
     (:eval (mode-line-fill (+ (length battery-mode-line-string) 1
 			      (length display-time-string))))
-    display-time-string
+    battery-mode-line-string
     " "
-    battery-mode-line-string)
+    display-time-string
+)
   "Specification of the contents of the minibuffer-line.
 Uses the same format as `mode-line-format'."
   :type 'sexp)
