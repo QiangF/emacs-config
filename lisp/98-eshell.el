@@ -5,16 +5,26 @@
 (defun pretty-print-dir (dir)
   (cond ((string-equal dir "/") "/")
 	((string-equal dir (getenv "HOME")) "~")
-	(t (car (last (split-string (eshell/pwd) "/"))))))
+	(t (car (last (split-string dir "/"))))))
+
+(defun pretty-print-remote-dir (dir)
+  (let* ((lastdir (car (last (split-string dir "/"))))
+	 (userhost (cadr (split-string dir ":")))
+	 (user (if (string-match-p "@" userhost)
+		   (car (split-string userhost "@"))
+		 (getenv "USER")))
+	 (hostname (if (string-match-p "@" userhost)
+		       (cadr (split-string userhost "@"))
+		     userhost)))
+    (concat user "@" hostname " " (if (string= user lastdir) "~" lastdir))))
 
 (setq eshell-prompt-function
       (lambda ()
-	(let ((remoteid (file-remote-p default-directory)))
-	  (if remoteid
-	      (concat "[" remoteid "]$ ")
-	    (concat "[" (getenv "USER") "@" (system-name) " "
-		    (pretty-print-dir (eshell/pwd)) "]"
-		    (if (= (user-uid) 0) "# " "$ "))))))
+	(if (file-remote-p default-directory)
+	    (concat "[" (pretty-print-remote-dir (eshell/pwd)) "]$ ")
+	  (concat "[" (getenv "USER") "@" (system-name) " "
+		  (pretty-print-dir (eshell/pwd)) "]"
+		  (if (= (user-uid) 0) "# " "$ ")))))
 
 (setq eshell-prompt-regexp "^.+[#$] ")
 
