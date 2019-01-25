@@ -8,15 +8,16 @@
 	(t (car (last (split-string dir "/"))))))
 
 (defun pretty-print-remote-dir (dir)
-  (let* ((lastdir (car (last (split-string dir "/"))))
-	 (userhost (cadr (split-string dir ":")))
+  (let* ((userhost (cadr (split-string dir ":")))
 	 (user (if (string-match-p "@" userhost)
 		   (car (split-string userhost "@"))
 		 (getenv "USER")))
 	 (hostname (if (string-match-p "@" userhost)
 		       (cadr (split-string userhost "@"))
-		     userhost)))
-    (concat user "@" hostname " " (if (string= user lastdir) "~" lastdir))))
+		     userhost))
+	 (displaydir (if (string-match-p (concat "/home/" user "$") dir)
+			 "~" (car (last (split-string dir "/"))))))
+    (concat user "@" hostname " " displaydir)))
 
 (setq eshell-prompt-function
       (lambda ()
