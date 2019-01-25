@@ -9,9 +9,12 @@
 
 (setq eshell-prompt-function
       (lambda ()
-	(concat "[" (getenv "USER") "@" system-name " "
-		(pretty-print-dir (eshell/pwd)) "]"
-		(if (= (user-uid) 0) "# " "$ "))))
+	(let ((remoteid (file-remote-p default-directory)))
+	  (if remoteid
+	      (concat "[" remoteid "]$ ")
+	    (concat "[" (getenv "USER") "@" (system-name) " "
+		    (pretty-print-dir (eshell/pwd)) "]"
+		    (if (= (user-uid) 0) "# " "$ "))))))
 
 (setq eshell-prompt-regexp "^.+[#$] ")
 
