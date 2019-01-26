@@ -1,0 +1,15 @@
+#!/bin/bash
+
+remote="$1"
+program="$2"
+files="$3"
+
+separator="|||"
+
+tmp=${files//"$separator"/$'\2'}
+IFS=$'\2' read -a arr <<< "$tmp"
+for file in "${arr[@]}" ; do
+    ARGS="$ARGS $(printf '%q' "$file")"
+done
+
+exec ssh -q "$remote" "$program" "${ARGS}"
