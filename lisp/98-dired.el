@@ -25,9 +25,11 @@
 	   (userhost (cadr (split-string (car diredfiles) ":")))
 	   (files (mapcar (lambda (f) (car (last (split-string f ":")))) diredfiles))
 	   (filesstr (string-join files "|||")))
-      (when shplay-hostname (stop-play-file) (sleep-for 1))
+      (when shplay-hostname (stop-play-file) (sleep-for 2))
       (start-process "shplay-remote" nil "shplay-remote" userhost "shplay" filesstr)
       (setq shplay-hostname userhost))))
 
 (define-key dired-mode-map (kbd "P") 'play-file)
 (define-key dired-mode-map (kbd "S") 'stop-play-file)
+
+(define-key dired-mode-map (kbd "c") 'find-file)
