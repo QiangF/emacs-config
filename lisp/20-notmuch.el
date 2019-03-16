@@ -124,20 +124,6 @@
     (string-match (concat "^" message-cite-prefix-regexp)
                   (buffer-substring (line-beginning-position) (line-end-position)))))
 
-(defun notmuch-download-message-filter (proc string)
-  (let* ((full-remote-name (replace-regexp-in-string "\n\\'" "" string))
-	   (mail-name (file-name-nondirectory full-remote-name))
-	   (local-name (expand-file-name (read-file-name "enter file: "))))
-    (start-process "mail-scp" nil "mail-scp" full-remote-name local-name)
-    (message "Succesfully saved %s" local-name)))
-
-(defun notmuch-download-message ()
-  (interactive)
-  (start-process "notmuch-download-message" nil notmuch-command
-		 "search" "--output=files" (notmuch-show-get-message-id))
-  (set-process-filter (get-process "notmuch-download-message")
-		      'notmuch-download-message-filter))
-
 (setq notmuch-hello-auto-refresh nil)
 
 (setq notmuch-search-result-format '(("date" . "%12s ")
