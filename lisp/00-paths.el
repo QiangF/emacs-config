@@ -9,7 +9,6 @@
       (non-std-lib-paths (mapcar (apply-partially 'concat user-emacs-directory)
 			      '("lib/magit/lisp"
 				"lib/notmuch/emacs"
-				"lib/geiser/elisp"
 				"lisp"))))
   (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
 

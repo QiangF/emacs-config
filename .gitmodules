@@ -25,9 +25,6 @@
 [submodule "lib/s"]
 	path = lib/s
 	url = https://github.com/magnars/s.el.git
-[submodule "lib/geiser"]
-	path = lib/geiser
-	url = git://git.sv.gnu.org/geiser.git
 [submodule "lib/rust-mode"]
 	path = lib/rust-mode
 	url = https://github.com/rust-lang/rust-mode.git
@@ -58,9 +55,6 @@
 [submodule "lib/emacs-bash-completion"]
 	path = lib/emacs-bash-completion
 	url = https://github.com/szermatt/emacs-bash-completion.git
-[submodule "lib/flx"]
-	path = lib/flx
-	url = https://github.com/lewang/flx.git
 [submodule "lib/messages-are-flowing"]
 	path = lib/messages-are-flowing
 	url = https://github.com/legoscia/messages-are-flowing.git
