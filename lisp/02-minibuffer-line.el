@@ -49,5 +49,9 @@
   (display-time-update)
   (minibuffer-line--update))
 
+(when (and (boundp 'minibuffer-line--timer) minibuffer-line--timer)
+  (cancel-timer minibuffer-line--timer)
+  (setq minibuffer-line--timer nil))
+
 (setq minibuffer-line--timer
       (run-with-timer t 30 #'minibuffer-line--timer-update))
