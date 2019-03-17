@@ -2,7 +2,7 @@
 (require 'pinentry)
 
 (setq password-cache-expiry nil
-      epa-pinentry-mode 'loopback)
+      epg-pinentry-mode 'loopback)
 
 (add-to-list 'load-suffixes ".el.gpg")
 
