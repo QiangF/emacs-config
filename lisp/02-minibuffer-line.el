@@ -22,7 +22,7 @@
 (defcustom minibuffer-line-format
   '(""
     mode-line-modified
-    " (%l,%c) %p/%I  "
+    " (%l,%c) %p/%I "
     mode-line-buffer-identification
     " "
     (:eval (mode-line-fill (+ (length battery-mode-line-string) 1
