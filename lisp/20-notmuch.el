@@ -107,7 +107,9 @@
 (require 'nsm)
 (setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
 
-(setq notmuch-command "notmuch")
+(setq notmuch-command (executable-find "notmuch"))
+(unless notmuch-command
+  (setq notmuch-command "notmuch-remote"))
 
 (defun done-sync-sentinel (process event)
   (notmuch-refresh-all-buffers)
