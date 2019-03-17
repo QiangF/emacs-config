@@ -111,15 +111,6 @@
 (unless notmuch-command
   (setq notmuch-command "notmuch-remote"))
 
-(defun done-sync-sentinel (process event)
-  (notmuch-refresh-all-buffers)
-  (message "Mail sync complete"))
-
-(defun run-mail-sync ()
-  (interactive)
-  (set-process-sentinel (start-process "trigger-mail-sync" nil "trigger-mail-sync")
-			'done-sync-sentinel))
-
 (defun my-message-current-line-cited-p ()
   "Indicate whether the line at point is a cited line."
   (save-match-data
