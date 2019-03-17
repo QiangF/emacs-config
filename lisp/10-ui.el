@@ -126,3 +126,6 @@
 (set-face-attribute 'vertical-border nil :foreground "#2B2B2B")
 
 (add-to-list 'completion-styles 'flex)
+
+(put 'list-timers 'disabled nil)
+(put 'list-threads 'disabled nil)
