@@ -19,7 +19,7 @@
 (defun mode-line-fill (end-space)
   (propertize " " 'display `((space :align-to (- right 1 ,end-space)))))
 
-(defcustom minibuffer-line-format
+(setq minibuffer-line-format
   '(""
     mode-line-modified
     " (%l,%c) %p/%I "
@@ -29,11 +29,7 @@
 			      (length display-time-string))))
     battery-mode-line-string
     " "
-    display-time-string
-)
-  "Specification of the contents of the minibuffer-line.
-Uses the same format as `mode-line-format'."
-  :type 'sexp)
+    display-time-string))
 
 (defun minibuffer-line--update ()
   (with-current-buffer " *Minibuf-0*"
