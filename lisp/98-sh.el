@@ -10,12 +10,6 @@
       (remove 'ansi-color-process-output
 	      comint-output-filter-functions))
 
-(setq eshell-output-filter-functions
-      (remove 'eshell-handle-ansi-color
-	      eshell-output-filter-functions))
-
-(add-to-list 'eshell-preoutput-filter-functions 'xterm-color-filter)
-
 (add-hook 'shell-mode-hook
 	  (lambda ()
 	    (add-hook 'comint-preoutput-filter-functions 'xterm-color-filter nil t)))
