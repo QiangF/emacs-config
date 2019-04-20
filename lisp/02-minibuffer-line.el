@@ -17,7 +17,7 @@
 (add-hook 'term-mode-hook  'mode-line-dirtrack)
 
 (defun mode-line-fill (end-space)
-  (propertize " " 'display `((space :align-to (- right 1 ,end-space)))))
+  (propertize " " 'display `((space :align-to (- right 3 ,end-space)))))
 
 (setq minibuffer-line-format
   '(""
@@ -27,7 +27,7 @@
     " "
     (:eval (mode-line-fill (+ (length battery-mode-line-string)
 			      (length display-time-string)
-			      (length mode-name) 3)))
+			      (length mode-name))))
     mode-name " / "
     battery-mode-line-string
     display-time-string))

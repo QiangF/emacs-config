@@ -65,6 +65,8 @@
 (global-undo-tree-mode 1)
 
 (menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
 
 (column-number-mode 1)
 (line-number-mode 1)
@@ -72,6 +74,9 @@
 
 (electric-pair-mode 1)
 (show-paren-mode 1)
+
+(set-face-attribute 'fringe nil :background nil)
+(fringe-mode 1)
 
 (delete-selection-mode 1)
 
@@ -124,6 +129,8 @@
 
 (set-display-table-slot standard-display-table 'vertical-border ?│)
 (set-face-attribute 'vertical-border nil :foreground "#2B2B2B")
+
+(set-face-attribute 'mode-line nil :box nil)
 
 (add-to-list 'completion-styles 'flex)
 
