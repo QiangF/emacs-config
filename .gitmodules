@@ -58,3 +58,6 @@
 [submodule "lib/pinentry-el"]
 	path = lib/pinentry-el
 	url = https://github.com/ueno/pinentry-el.git
+[submodule "lib/markdown-mode"]
+	path = lib/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode.git
