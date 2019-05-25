@@ -2,5 +2,3 @@
 
 (setq tramp-persistency-file-name (concat temporary-file-directory "tramp-persistency")
       tramp-histfile-override nil)
-
-(setq tramp-default-method "ssh")
