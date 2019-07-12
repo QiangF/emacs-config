@@ -106,24 +106,8 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
 
-(defun my-command-error-function (data context caller)
-  "Don't print some error messages to the echo area"
-  (when (not (memq (car data) '(buffer-read-only
-				beginning-of-buffer
-				end-of-buffer
-				quit
-				user-error)))
-    (command-error-default-function data context caller)))
-
-(setq command-error-function #'my-command-error-function)
-
 (setq save-silently t)
 (setq confirm-kill-processes nil)
-
-(add-hook 'isearch-mode-hook
-	  (lambda ()
-	    (make-variable-buffer-local 'inhibit-message)
-	    (setq inhibit-message nil)))
 
 (global-set-key (kbd "C-x C-f") nil)
 
