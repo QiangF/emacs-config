@@ -120,6 +120,3 @@
 (set-face-attribute 'mode-line nil :box nil)
 
 (add-to-list 'completion-styles 'flex)
-
-(put 'list-timers 'disabled nil)
-(put 'list-threads 'disabled nil)
