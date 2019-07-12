@@ -1,10 +1,7 @@
 (require 'xterm-color)
 (require 'eshell)
 
-(setenv "TERM" "st-256color")
-
-(setq comint-terminfo-terminal "st-256color"
-      comint-prompt-read-only t)
+(setq comint-prompt-read-only t)
 
 (setq comint-output-filter-functions
       (remove 'ansi-color-process-output
