@@ -3,5 +3,9 @@ Host mailstore-server
     Port 888
     User adi
 
+Host *.labs.overthewire.org
+  SendEnv WECHALLTOKEN
+  SendEnv WECHALLUSER
+
 Host *
     StrictHostKeyChecking no
