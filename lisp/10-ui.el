@@ -120,3 +120,6 @@
 (set-face-attribute 'mode-line nil :box nil)
 
 (add-to-list 'completion-styles 'flex)
+
+;; Avoid performance issues in files with very long lines.
+(global-so-long-mode 1)
