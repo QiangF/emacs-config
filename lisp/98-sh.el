@@ -18,11 +18,6 @@
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
-(define-key (current-global-map)
-  [remap async-shell-command] 'with-editor-async-shell-command)
-(define-key (current-global-map)
-    [remap shell-command] 'with-editor-shell-command)
-
 (add-hook 'shell-mode-hook  'with-editor-export-editor)
 (add-hook 'term-exec-hook   'with-editor-export-editor)
 (add-hook 'eshell-mode-hook 'with-editor-export-editor)
