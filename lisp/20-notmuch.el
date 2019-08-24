@@ -7,8 +7,7 @@
       notmuch-show-empty-saved-searches t
       notmuch-show-all-tags-list t
       notmuch-crypto-process-mime t
-      notmuch-wash-wrap-lines-length 80
-      notmuch-address-internal-completion '(received nil))
+      notmuch-wash-wrap-lines-length 80)
 
 (setq notmuch-hello-sections
       '(notmuch-hello-insert-saved-searches
@@ -26,7 +25,8 @@
       message-default-mail-headers "Cc: \n"
       message-auto-save-directory nil
       mail-user-agent 'notmuch-user-agent
-      notmuch-message-replied-tags nil)
+      notmuch-message-replied-tags nil
+      notmuch-address-command 'internal)
 
 (defun setTlsConfig ()
   (interactive)
