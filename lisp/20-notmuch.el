@@ -51,7 +51,7 @@
 (define-key notmuch-hello-mode-map "g" 'notmuch-refresh-this-buffer)
 (define-key notmuch-search-mode-map "g" 'notmuch-refresh-this-buffer)
 
-(define-key notmuch-show-mode-map "r" 'notmuch-show-reply)
+(define-key notmuch-show-mode-map "r" (lambda () (interactive) (notmuch-show-reply t)))
 (define-key notmuch-show-mode-map "R" 'notmuch-show-reply-sender)
 
 (define-key notmuch-hello-mode-map "a" 'widget-button-press)
