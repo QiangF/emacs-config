@@ -6,6 +6,7 @@
       notmuch-hello-thousands-separator ""
       notmuch-show-empty-saved-searches t
       notmuch-show-all-tags-list t
+      notmuch-show-insert-filesize t
       notmuch-crypto-process-mime t
       notmuch-wash-wrap-lines-length 80)
 
