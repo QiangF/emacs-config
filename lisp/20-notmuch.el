@@ -1,5 +1,6 @@
 ; -*- lexical-binding: t -*-
 (require 'notmuch)
+(require 'notmuch-wash)
 
 (setq notmuch-show-logo nil
       notmuch-always-prompt-for-sender t
@@ -61,6 +62,10 @@
 
 (setq message-citation-line-format "On %a, %d %b %Y, %f wrote:")
 (setq message-citation-line-function 'message-insert-formatted-citation-line)
+
+(setq notmuch-show-insert-text/plain-hook
+      '(notmuch-wash-convert-inline-patch-to-part
+       notmuch-wash-excerpt-citations))
 
 (defun nm-add-show-key-toggle (key tag)
   "add toggle tag for notmuch-show selected message"
