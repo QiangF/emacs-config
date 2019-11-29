@@ -64,3 +64,6 @@
 [submodule "lib/markdown-mode"]
 	path = lib/markdown-mode
 	url = https://github.com/jrblevin/markdown-mode.git
+[submodule "lib/treepy"]
+	path = lib/treepy
+	url = https://github.com/volrath/treepy.el.git
