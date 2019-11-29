@@ -94,7 +94,7 @@
 
 (setq help-window-select t)
 
-(setq visible-bell t)
+(setq visible-bell nil)
 
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
