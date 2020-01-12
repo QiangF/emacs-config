@@ -4,17 +4,3 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 (setq magit-commit-arguments '("--signoff"))
-
-(set-face-attribute 'smerge-lower nil :background nil)
-(set-face-attribute 'smerge-base nil :background nil)
-(set-face-attribute 'smerge-upper nil :background nil)
-(set-face-attribute 'magit-diff-added nil :foreground "#7F9F7F" :background nil)
-(set-face-attribute 'magit-diff-added-highlight nil :foreground "#7F9F7F" :background nil)
-(set-face-attribute 'magit-diff-removed nil :foreground "#CC9393" :background nil)
-(set-face-attribute 'magit-diff-removed-highlight nil :foreground "#CC9393" :background nil)
-(set-face-attribute 'magit-section-highlight nil :background nil)
-(set-face-attribute 'magit-diff-file-heading nil :background nil :weight 'normal)
-(set-face-attribute 'magit-diff-file-heading-highlight nil :background nil :weight 'normal)
-(set-face-attribute 'magit-diff-file-heading-selection nil :background nil :weight 'normal)
-(set-face-attribute 'magit-diff-context-highlight nil :background nil)
-(set-face-attribute 'magit-diff-hunk-heading-highlight nil :background "#4F4F4F")
