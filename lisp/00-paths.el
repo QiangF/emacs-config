@@ -6,7 +6,8 @@
 
 (let ((lib-paths (directory-files lib-file-directory t directory-files-no-dot-files-regexp))
       (non-std-lib-paths (mapcar (apply-partially 'concat user-emacs-directory)
-			      '("lib/magit/lisp"
-				"lib/notmuch/emacs"
-				"lisp"))))
+				 '("lib/transient/lisp"
+				   "lib/magit/lisp"
+				   "lib/notmuch/emacs"
+				   "lisp"))))
   (mapc (apply-partially 'add-to-list 'load-path) (append non-std-lib-paths lib-paths)))
