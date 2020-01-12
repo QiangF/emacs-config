@@ -118,8 +118,9 @@
 (set-face-attribute 'vertical-border nil :foreground "#2B2B2B")
 
 (set-face-attribute 'mode-line nil :box nil)
+(set-face-attribute 'mode-line-inactive nil :box nil)
 
 (add-to-list 'completion-styles 'flex)
 
 ;; Avoid performance issues in files with very long lines.
-(global-so-long-mode 1)
+(global-so-long-mode)
