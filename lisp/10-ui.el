@@ -36,52 +36,51 @@
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(setq search-highlight 1
-      query-replace-highlight 1
-      case-fold-search 1)
+(setq search-highlight t
+      query-replace-highlight t
+      case-fold-search t)
 
 (setq scroll-margin 0
       scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
+      scroll-preserve-screen-position t)
 
-(setq backup-by-copying-when-linked 1
-      backup-by-copying-when-mismatch 1
+(setq backup-by-copying-when-linked t
+      backup-by-copying-when-mismatch t
       make-backup-files nil)
 
 (setq recenter-positions '(top middle bottom))
 
 (global-set-key (kbd "C-z") nil)
 
+(blink-cursor-mode)
+
 (setq global-auto-revert-non-file-buffers t)
-
-(blink-cursor-mode 0)
-
-(global-auto-revert-mode 1)
+(global-auto-revert-mode)
 
 (require 'volatile-highlights)
-(volatile-highlights-mode 1)
+(volatile-highlights-mode)
 
 (require 'undo-tree)
-(global-undo-tree-mode 1)
+(global-undo-tree-mode)
 
 (require 'anzu)
-(global-anzu-mode 1)
+(global-anzu-mode)
 
 (menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
-(column-number-mode 1)
-(line-number-mode 1)
-(size-indication-mode 1)
+(column-number-mode)
+(line-number-mode)
+(size-indication-mode)
 
-(electric-pair-mode 1)
-(show-paren-mode 1)
+(electric-pair-mode)
+(show-paren-mode)
 
 (set-face-attribute 'fringe nil :background nil)
 (fringe-mode 1)
 
-(delete-selection-mode 1)
+(delete-selection-mode)
 
 (global-eldoc-mode -1)
 
