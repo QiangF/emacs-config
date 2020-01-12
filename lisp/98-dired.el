@@ -33,3 +33,5 @@
                                      ("\\.doc?x\\'\\|\\.ppt?x\\'\\|\\.xls?x\\'" "libreoffice")
                                      ("\\.jpe?g\\'\\|\\.png\\'" "lximage-qt")
                                      ("\\.mpe?g\\'\\|\\.avi\\'\\|\\.mkv\\'\\|\\.mp4\\'" "vlc")))
+
+(setq dired-dwim-target t)
