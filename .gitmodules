@@ -13,9 +13,6 @@
 [submodule "lib/volatile-highlights"]
 	path = lib/volatile-highlights
 	url = https://github.com/k-talo/volatile-highlights.el.git
-[submodule "lib/undo-tree"]
-	path = lib/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
 [submodule "lib/anzu"]
 	path = lib/anzu
 	url = https://github.com/syohex/emacs-anzu.git
