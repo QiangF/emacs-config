@@ -64,3 +64,6 @@
 [submodule "lib/transient"]
 	path = lib/transient
 	url = https://github.com/magit/transient.git
+[submodule "lib/undo-tree"]
+	path = lib/undo-tree
+	url = https://gitlab.com/tsc25/undo-tree.git
