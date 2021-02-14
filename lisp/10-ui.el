@@ -123,3 +123,5 @@
 
 ;; Avoid performance issues in files with very long lines.
 (global-so-long-mode)
+
+(auto-fill-mode -1)

@@ -9,7 +9,7 @@
       notmuch-show-all-tags-list t
       notmuch-show-insert-filesize t
       notmuch-crypto-process-mime t
-      notmuch-wash-wrap-lines-length 80)
+      notmuch-wash-wrap-lines-length nil)
 
 (setq notmuch-hello-sections
       '(notmuch-hello-insert-saved-searches
