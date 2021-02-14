@@ -9,3 +9,5 @@ Host *.labs.overthewire.org
 
 Host *
     StrictHostKeyChecking no
+    KexAlgorithms +diffie-hellman-group1-sha1
+    Compression no
