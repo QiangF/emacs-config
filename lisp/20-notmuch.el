@@ -139,13 +139,6 @@
 (advice-add 'notmuch-hello :before 'load-mail-config)
 (advice-add 'notmuch-mua-new-mail :before 'load-mail-config)
 
-(set-face-attribute 'notmuch-tag-deleted nil
-		    :foreground "#ffe6e6"
-		    :inverse-video nil)
-
-(set-face-attribute 'notmuch-tag-unread nil
-		    :foreground "#ff0000")
-
 (require 'messages-are-flowing)
 (add-hook 'message-mode-hook 'messages-are-flowing-use-and-mark-hard-newlines)
 (require 'mml)
