@@ -67,3 +67,6 @@
 [submodule "lib/undo-tree"]
 	path = lib/undo-tree
 	url = https://gitlab.com/tsc25/undo-tree.git
+[submodule "lib/yaml-mode"]
+	path = lib/yaml-mode
+	url = https://github.com/yoshiki/yaml-mode.git

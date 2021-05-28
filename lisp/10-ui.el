@@ -126,3 +126,5 @@
 (global-so-long-mode)
 
 (auto-fill-mode -1)
+
+(require 'yaml-mode)
