@@ -1,6 +1,6 @@
 Host mailstore-server
-    HostName home.adirat.com
-    Port 888
+    HostName hetz1.adirat.com
+    Port 22
     User adi
 
 Host *.labs.overthewire.org
