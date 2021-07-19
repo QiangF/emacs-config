@@ -127,4 +127,6 @@
 
 (auto-fill-mode -1)
 
+(fido-mode)
+
 (require 'yaml-mode)
