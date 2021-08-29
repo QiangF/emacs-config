@@ -1,4 +1,4 @@
 emacs-config
 ============
-Some day I'll have to document how this all fits together (sorry).
-Hope you'll find something helpful in this repo though.
+This is my emacs config. Hope you find something useful in it.
+Some day I'll document it more. Good luck!
