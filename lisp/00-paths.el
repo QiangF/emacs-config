@@ -1,5 +1,4 @@
 (setq user-emacs-directory (expand-file-name user-emacs-directory)
-      temporary-file-directory (concat user-emacs-directory "tmp/")
       config-file-directory (concat user-emacs-directory "config/")
       lib-file-directory (concat user-emacs-directory "lib")
       lisp-file-directory (concat user-emacs-directory "lisp")
@@ -17,3 +16,5 @@
 
 (unless (string-match-p (regexp-quote binary-file-directory) (getenv "PATH"))
   (setenv "PATH" (concat (getenv "PATH") ":" binary-file-directory)))
+
+(require 'no-littering)

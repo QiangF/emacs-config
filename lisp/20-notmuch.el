@@ -109,9 +109,6 @@
       (lambda (prompt collection initial-input)
         (completing-read prompt (cons initial-input collection) nil t nil 'notmuch-address-history)))
 
-(require 'nsm)
-(setq nsm-settings-file (concat temporary-file-directory "network-security.data"))
-
 (setq notmuch-command (executable-find "notmuch"))
 (unless notmuch-command
   (setq notmuch-command "notmuch-remote"))

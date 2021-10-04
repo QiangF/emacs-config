@@ -61,7 +61,6 @@
 (volatile-highlights-mode)
 
 (require 'undo-tree)
-(setq undo-tree-history-directory-alist '(("" . "/home/adi/.emacs.d/undo-tree-history")))
 (global-undo-tree-mode)
 
 (require 'anzu)

@@ -109,8 +109,6 @@ directory to make multiple eshell windows easier."
 
 (setq eshell-command-aliases-list '(("sudo" "eshell/sudo $*")))
 
-(setq eshell-directory-name (concat temporary-file-directory "eshell/"))
-
 (setq vc-ignore-dir-regexp
       (format "%s\\|%s"
 	      vc-ignore-dir-regexp
