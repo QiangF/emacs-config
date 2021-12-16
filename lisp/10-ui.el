@@ -129,3 +129,5 @@
 (fido-mode)
 
 (require 'yaml-mode)
+
+(savehist-mode 1)
