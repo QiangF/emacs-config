@@ -26,26 +26,43 @@
 (eval-after-load "term"
   '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
 
-(define-key dired-mode-map (kbd "`") 'dired-open-term)
+(define-key dired-mode-map (kbd "`") 'aratiu/terminal)
 
-(defun terminal ()
-  "Switch to terminal. Launch if nonexistent."
+(defun aratiu/terminal (&optional path name)
+  "Opens a terminal at PATH. If no PATH is given, it uses
+the value of `default-directory'. PATH may be a tramp remote path.
+The term buffer is named based on `name' "
   (interactive)
-  (if (get-buffer "*ansi-term*")
-      (switch-to-buffer "*ansi-term*")
-    (ansi-term "/bin/bash"))
-  (get-buffer-process "*ansi-term*"))
+  (require 'term)
+  (unless path (setq path default-directory))
+  (unless name (setq name "term"))
+  (let ((path (replace-regexp-in-string "^file:" "" path))
+	(cd-str "fn=%s; if test ! -d $fn; then fn=$(dirname $fn); fi; cd $fn; exec bash")
+	(start-term (lambda (termbuf)
+		      (progn
+			(set-buffer termbuf)
+			(term-mode)
+			(term-char-mode)
+			(switch-to-buffer termbuf)))))
+    (if (tramp-tramp-file-p path)
+	(let* ((tstruct (tramp-dissect-file-name path))
+	       (cd-str-ssh (format cd-str (tramp-file-name-localname tstruct)))
+	       (user (if (tramp-file-name-user tstruct)
+			 (tramp-file-name-user tstruct)
+		       user-login-name))
+	       (switches (list "-l" user
+			       "-t" (tramp-file-name-host tstruct)
+			       cd-str-ssh))
+	       (termbuf (apply 'make-term name "ssh" nil switches)))
+	  (cond
+	   ((equal (tramp-file-name-method tstruct) "ssh")
+	    (funcall start-term termbuf))
+	   (t (error "not implemented for method %s"
+		     (tramp-file-name-method tstruct)))))
+      (let* ((cd-str-local (format cd-str path))
+	     (termbuf (apply 'make-term name "/bin/sh" nil (list "-c" cd-str-local))))
+	(funcall start-term termbuf)))))
 
-(defalias 'tt 'terminal)
-
-(defun dired-open-term ()
-  "Open an `ansi-term' that corresponds to current directory."
-  (interactive)
-  (let ((current-dir (dired-current-directory)))
-    (term-send-string
-     (terminal)
-     (if (file-remote-p current-dir)
-         (let ((v (tramp-dissect-file-name current-dir t)))
-           (format "ssh %s@%s\n"
-                   (aref v 1) (aref v 2)))
-       (format "cd '%s'\n" current-dir)))))
+(defun my-term-use-utf8 ()
+  (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+(add-hook 'term-exec-hook 'my-term-use-utf8)
