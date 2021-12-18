@@ -131,3 +131,7 @@
 (require 'yaml-mode)
 
 (savehist-mode 1)
+
+(setq-default bidi-paragraph-direction 'left-to-right)
+
+(setq bidi-inhibit-bpa t)
