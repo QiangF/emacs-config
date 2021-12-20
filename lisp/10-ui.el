@@ -24,7 +24,7 @@
 
 ; set font on frames created with 'emacsclient'
 (defun my-frame-set-font-hook (frame)
-  (set-frame-font "DejaVu Sans Mono-12" t t))
+  (set-frame-font "Hack-12" t t))
 (add-hook 'after-make-frame-functions 'my-frame-set-font-hook)
 
 ; set font in normal 'emacs' frames
@@ -135,3 +135,7 @@
 (setq-default bidi-paragraph-direction 'left-to-right)
 
 (setq bidi-inhibit-bpa t)
+
+(setq mode-line-compact t)
+(set-face-attribute 'mode-line-active nil :inherit 'mode-line)
+(set-face-attribute 'mode-line-inactive nil :inherit 'mode-line)
