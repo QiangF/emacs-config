@@ -35,7 +35,7 @@ The term buffer is named based on `name' "
   (interactive)
   (require 'term)
   (unless path (setq path default-directory))
-  (unless name (setq name "term"))
+  (unless name (setq name path))
   (let ((path (replace-regexp-in-string "^file:" "" path))
 	(cd-str "fn=%s; if test ! -d $fn; then fn=$(dirname $fn); fi; cd $fn; exec bash")
 	(start-term (lambda (termbuf)
