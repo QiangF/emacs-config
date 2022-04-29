@@ -78,7 +78,8 @@
 (show-paren-mode)
 
 (set-face-attribute 'fringe nil :background nil)
-(fringe-mode 1)
+;(fringe-mode 1)
+(fringe-mode -1)
 
 (delete-selection-mode)
 
