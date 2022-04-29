@@ -73,3 +73,9 @@
 [submodule "lib/no-littering"]
 	path = lib/no-littering
 	url = https://github.com/emacscollective/no-littering.git
+[submodule "lib/xelb"]
+	path = lib/xelb
+	url = https://github.com/ch11ng/xelb.git
+[submodule "lib/exwm"]
+	path = lib/exwm
+	url = https://github.com/ch11ng/exwm.git
