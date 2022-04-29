@@ -144,5 +144,5 @@
 (setq bidi-inhibit-bpa t)
 
 (setq mode-line-compact t)
-(set-face-attribute 'mode-line-active nil :inherit 'mode-line)
-(set-face-attribute 'mode-line-inactive nil :inherit 'mode-line)
+;(set-face-attribute 'mode-line-active nil :inherit 'mode-line)
+;(set-face-attribute 'mode-line-inactive nil :inherit 'mode-line)
