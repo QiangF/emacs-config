@@ -105,6 +105,13 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (define-key ibuffer-mode-map (kbd "a") 'ibuffer-visit-buffer)
 
+(setq ibuffer-formats
+      '((mark modified read-only " "
+              (name 60 60 :left :elide) " "
+              (size 9 -1 :right) " "
+              (mode 16 16 :left :elide) " " filename-and-process)
+        (mark " " (name 16 -1) " " filename)))
+
 (setq save-silently t)
 (setq confirm-kill-processes nil)
 
