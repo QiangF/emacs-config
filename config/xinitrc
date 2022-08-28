@@ -1,0 +1,38 @@
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
+		[ -x "$f" ] && . "$f"
+	done
+	unset f
+fi
+
+#xset -dpms
+
+#sleep 4 && /home/adi/workspace/random-dev/xrandr.sh &
+
+. $HOME/.emacs.d/config/exwm_screen_layout
+$HOME/.emacs.d/bin/exwm_xrandr.bash
+
+# Disable access control for the current user.
+xhost +SI:localuser:$USER
+
+# Make Java applications aware this is a non-reparenting window manager.
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Set default cursor.
+xsetroot -cursor_name left_ptr
+
+# Set keyboard repeat rate.
+xset r rate 330 25
+
+# xrandr --output eDP1 --mode 1368x768
+
+# If Emacs is started in server mode, `emacsclient` is a convenient way to
+# edit files in place (used by e.g. `git commit`).
+export VISUAL=emacsclient
+export EDITOR="$VISUAL"
+
+# Scrolling gtk3 apps won't work, unless GDK_CORE_DEVICE_EVENTS is defined
+export GDK_CORE_DEVICE_EVENTS=1
+
+/usr/bin/emacs --daemon
+exec /usr/bin/emacsclient -c
