@@ -12,7 +12,7 @@
   (exwm-config-default)
 
   ;; Set the initial number of workspaces (they can also be created later).
-  (setq exwm-workspace-number 4)
+  (setq exwm-workspace-number 10)
 
   (defun my/exwm--format-window-title-firefox (title &optional length)
     "Removes noise from and trims Firefox window titles.
