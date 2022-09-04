@@ -2,6 +2,8 @@
   (require 'exwm)
   (require 'exwm-config)
 
+  (add-to-list 'undo-tree-incompatible-major-modes 'exwm-mode)
+
   ;;(require 'exwm-systemtray)
   ;;(exwm-systemtray-enable)
 
