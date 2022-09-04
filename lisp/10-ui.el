@@ -41,7 +41,7 @@
       case-fold-search t)
 
 (setq scroll-margin 0
-      scroll-conservatively 100000
+      scroll-conservatively 0
       scroll-preserve-screen-position t)
 
 (setq backup-by-copying-when-linked t
