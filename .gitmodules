@@ -79,3 +79,6 @@
 [submodule "lib/exwm"]
 	path = lib/exwm
 	url = https://github.com/ch11ng/exwm.git
+[submodule "lib/mini-modeline"]
+	path = lib/mini-modeline
+	url = git@github.com:10ne1/emacs-mini-modeline.git
