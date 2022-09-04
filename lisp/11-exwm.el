@@ -46,4 +46,6 @@
   (add-hook 'exwm-update-title-hook
             (lambda ()
               (exwm-workspace-rename-buffer (my/exwm-buffer-name))))
+
+  (setq exwm-manage-configurations '((t char-mode t)))
 )
