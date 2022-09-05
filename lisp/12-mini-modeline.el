@@ -1,8 +1,5 @@
-;; (require 'toki-tabs)
 (require 'mini-modeline)
 (require 'cl-seq)
-
-;; (add-hook 'focus-in-hook 'mini-modeline-display)
 
 (setq mini-modeline-right-padding 0)
 (setq mini-modeline-truncate-p nil)
