@@ -101,7 +101,7 @@
     (when (and (bound-and-true-p persp-mode)
                (< 1 (length (hash-table-values (perspectives-hash)))))
       (setq workspace-str (concat workspace-str
-                                  (propertize (format ":%s" (persp-current-name)) 'face '((:background "#004040" :foreground "#ff0000"))))))
+				  (propertize (format ":%s" (persp-current-name)) 'face '((:background "#004040" :foreground "#ff0000"))))))
     workspace-str))
 
 (setq god-local-mode nil)
@@ -116,21 +116,21 @@
 (defvar my-modeline-background "black")
 
 (setq mini-modeline-r-format '("%e" mode-line-process
-                               mode-line-position
-                               mode-line-remote
-                               mode-line-mule-info
-                               mode-line-modified
+			       mode-line-position
+			       mode-line-remote
+			       mode-line-mule-info
+			       mode-line-modified
 			       " "
 			       (:eval (propertize (format-time-string "%H:%M")
 						  'face `((:foreground "green" :background ,my-modeline-background))))
-                               (:eval (and battery-mode-line-string
+			       (:eval (and battery-mode-line-string
 					   (concat
 					    " "
 					    (propertize
 					     battery-mode-line-string
 					     'face `((:foreground "plum3" :background ,my-modeline-background))))))
-  			       " "
-                               (:eval (awesome-tray-module-workspace-info)
+			       " "
+			       (:eval (awesome-tray-module-workspace-info)
 				      'face `((:background ,my-modeline-background)))))
 
 ;; (setq toki-tabs-visible-buffer-limit 4)
