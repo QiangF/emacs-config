@@ -5,8 +5,6 @@
 ;; (add-hook 'focus-in-hook 'mini-modeline-display)
 
 (setq mini-modeline-right-padding 0)
-;; remove pyim minibuffer message flashing
-;; (setq resize-mini-windows nil)
 (setq mini-modeline-truncate-p nil)
 (setq display-time-day-and-date nil)
 (setq mini-modeline-echo-duration 2)
@@ -114,10 +112,8 @@
 
 (set-face-attribute 'mode-line-buffer-id nil :foreground "red")
 
-;; (eval-after-load "rime"
-;;   (advice-add 'rime-terminate-translation :after #'my-clear-echo-area))
-;; (mini-modeline-mode)
-;; (setq resize-mini-windows t)
+(setq resize-mini-windows nil
+      resize-mini-frames nil)
 
 (defvar my-modeline-background "black")
 
