@@ -79,6 +79,7 @@
 
 (require 'battery)
 (if (battery--find-linux-sysfs-batteries)
+    (setq battery-mode-line-format "B%b%p")
     (display-battery-mode 1)
   (setq battery-mode-line-string nil))
 
@@ -120,13 +121,14 @@
                                mode-line-mule-info
                                mode-line-modified
 			       " "
-                               (:eval (propertize (format-time-string "%H:%M")
+			       (:eval (propertize (format-time-string "%H:%M")
 						  'face `((:foreground "green" :background ,my-modeline-background))))
-			       " "
                                (:eval (and battery-mode-line-string
-                                           (propertize
-                                            (concat "B" (substring battery-mode-line-string 1 -2))
-                                            'face `((:foreground "plum3" :background ,my-modeline-background)))))
+					   (concat
+					    " "
+					    (propertize
+					     battery-mode-line-string
+					     'face `((:foreground "plum3" :background ,my-modeline-background))))))
   			       " "
                                (:eval (awesome-tray-module-workspace-info)
 				      'face `((:background ,my-modeline-background)))))
