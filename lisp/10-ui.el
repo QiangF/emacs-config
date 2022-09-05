@@ -6,7 +6,7 @@
 (setq inhibit-default-init t
       inhibit-startup-screen t
       inhibit-startup-buffer-menu t
-      inhibit-message t)
+      inhibit-message nil)
 
 (setq-default truncate-lines t)
 
