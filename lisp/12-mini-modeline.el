@@ -2,26 +2,6 @@
 (require 'battery)
 (require 'cl-seq)
 
-(setq mini-modeline-right-padding 0)
-(setq mini-modeline-truncate-p nil)
-(setq display-time-day-and-date nil)
-(setq mini-modeline-echo-duration 2)
-(display-time-mode t)
-
-(defun mini-modeline-msg ()
-  "Place holder to display echo area message."
-  (let ((max-string-length 5000))
-    (if (> (length mini-modeline--msg) max-string-length)
-        (concat (substring mini-modeline--msg 0 (floor max-string-length 2))
-                "\n ...... \n"
-                (substring mini-modeline--msg-message (floor max-string-length -2)))
-      mini-modeline--msg)))
-
-(defvar symon-refresh-rate 4)
-(defvar symon-linux--last-network-rx 0)
-(defvar symon-linux--last-network-tx 0)
-(defvar my-last-symon-message "")
-
 (defun symon-linux--read-lines (file reader indices)
   (with-temp-buffer
     (insert-file-contents file)
@@ -33,6 +13,51 @@
                       (funcall reader (match-string 1))
                     (match-string 1)))))
             indices)))
+
+(defvar symon-linux--last-cpu-ticks nil)
+
+(defvar cpu-mode-line-string nil)
+
+(defvar cpu-update-interval 3)
+
+(defvar cpu-update-timer nil)
+
+(defvar symon-refresh-rate 4)
+(defvar symon-linux--last-network-rx 0)
+(defvar symon-linux--last-network-tx 0)
+(defvar my-last-symon-message "")
+
+(define-minor-mode display-cpu-mode
+  "Toggle cpu status display in mode line
+
+The text displayed in the mode line is controlled by
+`cpu-mode-line-format' and `cpu-status-function'.
+The mode line is be updated every `cpu-update-interval'
+seconds."
+  :global t
+  (if cpu-update-timer
+      (progn
+	(cancel-timer cpu-update-timer)
+	(setq cpu-update-timer nil)
+	(setq cpu-mode-line-string nil))
+    (setq cpu-update-timer (run-at-time nil cpu-update-interval
+                                            #'cpu-update))
+    (cpu-update)
+    (redisplay)))
+
+(defun cpu-update ()
+  "Update cpu status information in the mode line."
+  (setq cpu-mode-line-string (format "%s%%%%"
+	(cl-destructuring-bind (cpu)
+             (symon-linux--read-lines
+              "/proc/stat" (lambda (str) (mapcar 'read (split-string str nil t))) '("cpu"))
+           (let ((total (apply '+ cpu)) (idle (nth 3 cpu)))
+             (prog1 (when symon-linux--last-cpu-ticks
+                      (let ((total-diff (- total (car symon-linux--last-cpu-ticks)))
+                            (idle-diff (- idle (cdr symon-linux--last-cpu-ticks))))
+                        (unless (zerop total-diff)
+                          (/ (* (- total-diff idle-diff) 100) total-diff))))
+               (setq symon-linux--last-cpu-ticks (cons total idle))))))))
 
 ;; (defun my-update-symon ()
 ;;   (setq my-last-symon-message
@@ -78,6 +103,21 @@
 ;;            (let ((swapped (/ (- swaptotal swapfree) 1000)))
 ;;              (unless (zerop swapped) (format " %dMB Swapped" swapped)))))))
 
+(setq mini-modeline-right-padding 0)
+(setq mini-modeline-truncate-p nil)
+(setq display-time-day-and-date nil)
+(setq mini-modeline-echo-duration 2)
+(display-time-mode t)
+
+(defun mini-modeline-msg ()
+  "Place holder to display echo area message."
+  (let ((max-string-length 5000))
+    (if (> (length mini-modeline--msg) max-string-length)
+        (concat (substring mini-modeline--msg 0 (floor max-string-length 2))
+                "\n ...... \n"
+                (substring mini-modeline--msg-message (floor max-string-length -2)))
+      mini-modeline--msg)))
+
 (setq battery-mode-line-string nil
       battery-mode-line-format "B%b%p")
 
@@ -121,6 +161,13 @@
 			       mode-line-remote
 			       mode-line-mule-info
 			       mode-line-modified
+			       (:eval (when cpu-mode-line-string
+					   (concat
+					    " "
+					    (propertize
+					     cpu-mode-line-string
+					     'face `((:foreground "plum3" :background ,my-modeline-background)))
+					    )))
 			       " "
 			       (:eval (propertize (format-time-string "%H:%M")
 						  'face `((:foreground "green" :background ,my-modeline-background))))
