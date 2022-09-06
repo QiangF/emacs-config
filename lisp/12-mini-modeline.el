@@ -1,4 +1,5 @@
 (require 'mini-modeline)
+(require 'battery)
 (require 'cl-seq)
 
 (setq mini-modeline-right-padding 0)
@@ -77,11 +78,11 @@
 ;;            (let ((swapped (/ (- swaptotal swapfree) 1000)))
 ;;              (unless (zerop swapped) (format " %dMB Swapped" swapped)))))))
 
-(require 'battery)
-(if (battery--find-linux-sysfs-batteries)
-    (setq battery-mode-line-format "B%b%p")
-    (display-battery-mode 1)
-  (setq battery-mode-line-string nil))
+(setq battery-mode-line-string nil
+      battery-mode-line-format "B%b%p")
+
+(when (battery--find-linux-sysfs-batteries)
+    (display-battery-mode 1))
 
 (defun awesome-tray-module-workspace-info ()
   (let ((workspace-str ""))
@@ -123,7 +124,7 @@
 			       " "
 			       (:eval (propertize (format-time-string "%H:%M")
 						  'face `((:foreground "green" :background ,my-modeline-background))))
-			       (:eval (and battery-mode-line-string
+			       (:eval (when battery-mode-line-string
 					   (concat
 					    " "
 					    (propertize
