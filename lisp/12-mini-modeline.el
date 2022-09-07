@@ -17,9 +17,7 @@
 (defvar symon-linux--last-cpu-ticks nil)
 
 (defvar sysmon-modeline-string nil)
-
-(defvar sysmon-update-interval 3)
-
+(defvar sysmon-update-interval 2)
 (defvar sysmon-update-timer nil)
 
 (defvar symon-refresh-rate 4)
