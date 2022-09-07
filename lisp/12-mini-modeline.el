@@ -15,15 +15,12 @@
             indices)))
 
 (defvar symon-linux--last-cpu-ticks nil)
-
 (defvar sysmon-modeline-string nil)
 (defvar sysmon-update-interval 2)
 (defvar sysmon-update-timer nil)
-
 (defvar symon-refresh-rate 4)
 (defvar symon-linux--last-network-rx 0)
 (defvar symon-linux--last-network-tx 0)
-(defvar my-last-symon-message "")
 
 (define-minor-mode sysmon-display-mode
   "Toggle system monitor display in mode line
@@ -178,33 +175,6 @@ The mode line is be updated every `sysmon-update-interval' seconds."
 			       " "
 			       (:eval (awesome-tray-module-workspace-info)
 				      'face `((:background ,my-modeline-background)))))
-
-;; (setq toki-tabs-visible-buffer-limit 4)
-
-;; (defface toki-modeline-path-face
-;;   '((((background light))
-;;      :foreground "#ff0000" :italic t)
-;;     (t
-;;      :foreground "#ff0000" :italic t))
-;;   "Face for file path.")
-
-;; (defun toki-modeline-tabs ()
-;;   "Return tabs."
-;;   (if (bound-and-true-p toki-tabs-mode)
-;;       (toki-tabs-string)
-;;     ""))
-
-;; (setq mini-modeline-l-format '((:eval (toki-modeline-tabs))))
-
-;; (defun my-echo-tabs ()
-;;   (let ((mini-modeline--msg nil)
-;;         (mini-modeline--msg-message nil))
-;;     (when (timerp mini-modeline--timer) (cancel-timer mini-modeline--timer))
-;;     (mini-modeline-display 'force)
-;;     (setq mini-modeline--timer
-;;           (run-with-timer mini-modeline-echo-duration 1 #'mini-modeline-display 'force))))
-
-;; (add-hook 'toki-tabs-update-hook 'my-echo-tabs)
 
 (setq max-mini-window-height 1)
 
