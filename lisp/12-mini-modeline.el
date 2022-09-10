@@ -34,8 +34,7 @@
     (setq dool-proc
       (start-process
        "dool-proc" nil
-       "/home/adi/workspace/dool/dool"
-       "-cndsm" "--nocolor" "--noheaders"
+       "dool" "-cndsm" "--nocolor" "--noheaders"
        "--output" "/dev/null"))
     (set-process-filter dool-proc 'sysmon-modeline-filter-fun)))
 

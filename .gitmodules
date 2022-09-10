@@ -82,3 +82,6 @@
 [submodule "lib/mini-modeline"]
 	path = lib/mini-modeline
 	url = git@github.com:10ne1/emacs-mini-modeline.git
+[submodule "lib/dool"]
+	path = lib/dool
+	url = git@github.com:10ne1/dool.git
