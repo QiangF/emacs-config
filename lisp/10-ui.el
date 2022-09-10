@@ -6,7 +6,7 @@
 (setq inhibit-default-init t
       inhibit-startup-screen t
       inhibit-startup-buffer-menu t
-      inhibit-message nil)
+      inhibit-message t)
 
 (setq-default truncate-lines t)
 
@@ -72,7 +72,7 @@
 
 (column-number-mode)
 (line-number-mode)
-(size-indication-mode)
+;(size-indication-mode)
 
 (electric-pair-mode)
 (show-paren-mode)
