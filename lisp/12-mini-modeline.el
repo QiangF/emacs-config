@@ -6,7 +6,7 @@
 (defun sysmon-modeline-filter-fun (process output)
   (let ((stokens (split-string output split-string-default-separators)))
     (setq sysmon-modeline-string
-	  (format "u:%-4ss:%-4srx:%-5stx:%-5sdw:%-5sdr:%-5suse:%-6sfre:%-3sbuf:%-5scac:%-3sswp:%s/%-2s"
+	  (format "u:%-3s s:%-3s rx:%-4s tx:%-4s dw:%-4s dr:%-4s use:%s fre:%s buf:%s cch:%s swp:%s/%s"
 	   (car stokens) ;usr
 	   (cadr stokens) ;sys
 	   (caddr stokens) ;rx
@@ -79,33 +79,24 @@
 (setq resize-mini-windows nil
       resize-mini-frames nil)
 
-(defvar my-modeline-background "black")
-
 (setq mini-modeline-r-format '("%e"
 			       " "
 			       mode-line-position
 			       mode-line-remote
 			       mode-line-mule-info
 			       mode-line-modified
-			       (:eval (when sysmon-modeline-string
-					   (concat
-					    " "
-					    (propertize
-					     sysmon-modeline-string
-					     'face `((:foreground "plum3" :background ,my-modeline-background)))
-					    )))
+			       "  "
+			       sysmon-modeline-string
 			       " "
-			       (:eval (propertize (format-time-string "%H:%M")
-						  'face `((:foreground "green" :background ,my-modeline-background))))
                                (:eval (when battery-mode-line-string
-                                        (concat
-                                         " "
                                          (propertize
                                           battery-mode-line-string
-                                          'face `((:foreground "plum3" :background ,my-modeline-background))))))
+                                          'face `((:foreground "plum3")))))
 			       " "
-			       (:eval (awesome-tray-module-workspace-info)
-				      'face `((:background ,my-modeline-background)))))
+			       (:eval (propertize (format-time-string "%H:%M")
+						  'face `((:foreground "green"))))
+			       " "
+			       (:eval (awesome-tray-module-workspace-info))))
 
 (setq max-mini-window-height 1)
 
@@ -122,4 +113,5 @@ end-of-buffer signals; pass the rest to the default handler."
 
 (add-hook 'before-make-frame-hook 'mini-modeline-mode)
 
-(sysmon-display-mode)
+(when (not dool-proc)
+  (sysmon-display-mode))
