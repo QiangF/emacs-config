@@ -79,9 +79,8 @@
 (setq resize-mini-windows nil
       resize-mini-frames nil)
 
-(setq mini-modeline-r-format '("%e"
-			       " "
-			       mode-line-position
+(setq mini-modeline-r-format '(" %l,%C"
+			       "  "
 			       mode-line-remote
 			       mode-line-mule-info
 			       mode-line-modified
